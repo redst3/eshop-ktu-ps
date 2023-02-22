@@ -1,6 +1,9 @@
 import React from "react";
+import "./zpages.scss";
 
 const Products = () => {
-  return <div>Products</div>;
+  <div className="products">
+    <div></div>
+  </div>;
 };
 export default Products;

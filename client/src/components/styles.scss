@@ -1,0 +1,135 @@
+.navbar {
+  height: 80px;
+  .wrapper {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .item {
+      display: flex;
+      font-size: 20px;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    .center {
+      font-size: 30px;
+      letter-spacing: 3px;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    .icons {
+      display: flex;
+      gap: 15px;
+      color: rgb(78, 82, 82);
+      cursor: pointer;
+      .cartIcon {
+        position: relative;
+        span {
+          font-size: 12px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: rgb(0, 255, 200);
+          position: absolute;
+          right: -10px;
+          top: -10px;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  height: 150px;
+  border: 2px solid rgb(143, 141, 141);
+  background-color: rgb(173, 185, 185);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  .left {
+    display: flex;
+    gap: 50px;
+  }
+  .center {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .right {
+    display: flex;
+    gap: 20px;
+  }
+}
+.slider {
+  height: calc(100vh - 80px);
+  width: 100vw;
+  position: relative;
+  .container {
+    width: 300vw;
+    height: 100%;
+    display: flex;
+    transition: 1s ease;
+    img {
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .slider-icons {
+    width: fit-content;
+    position: absolute;
+    display: flex;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    margin: auto;
+    gap: 3px;
+    .slider-icon {
+      width: 50px;
+      height: 50px;
+      border: 1px solid gray;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+
+.featuredProducts {
+  margin: 100px 200px;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      flex: 2;
+    }
+    p {
+      flex: 3;
+      color: gray;
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+}
+.card {
+}
