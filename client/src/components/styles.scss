@@ -16,8 +16,12 @@
       gap: 25px;
     }
     .center {
-      font-size: 30px;
-      letter-spacing: 3px;
+      display: flex;
+      .logo {
+        overflow: hidden;
+        width: 400px;
+        height: 60px;
+      }
     }
     .right {
       display: flex;
@@ -131,6 +135,26 @@
     display: flex;
     justify-content: center;
     gap: 50px;
+    opacity: 0;
+    transition: all 1s;
+    filter: blur(5px);
+    transform: translateY(50%);
+  }
+  @media (prefers-reduced-motion) {
+    .bottom {
+      transition: none;
+    }
+  }
+  .visible {
+    opacity: 1;
+    transition: all 2s;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion) {
+    .visible {
+      transition: none;
+    }
   }
 }
 .card {
@@ -154,6 +178,7 @@
       height: 100%;
       object-fit: cover;
       position: absolute;
+      transition: all 2s;
     }
     .firstImage {
       z-index: 1;
@@ -220,7 +245,8 @@
     gap: 10px;
     position: relative;
     overflow: hidden;
-    button {
+    cursor: pointer;
+    span {
       position: absolute;
       min-width: 100px;
       width: fit-content;
@@ -230,11 +256,15 @@
       left: 0;
       margin: auto;
       height: 30px;
-      cursor: pointer;
       border: none;
-      background-color: white;
+      border-radius: 5px;
+      background-color: rgba(3, 128, 70, 0.7);
+      padding: 5px;
       text-transform: uppercase;
       font-weight: 600;
+      color: white;
+      justify-content: center;
+      text-align: center;
     }
     img {
       width: 100%;

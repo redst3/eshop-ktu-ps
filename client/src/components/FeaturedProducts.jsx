@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.scss";
 import { Card } from "./Card";
 
 export const FeaturedProducts = ({ type }) => {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    });
+    const hiddenCards = document.querySelectorAll(".bottom");
+    hiddenCards.forEach((card) => {
+      observer.observe(card);
+    });
+  }, []);
   const data = [
     {
       id: 1,

@@ -5,14 +5,20 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { motion } from "framer-motion";
 
 const Layout = () => {
   return (
-    <div className="app">
+    <motion.div
+      className="app"
+      initial={{ opacity: 0.2 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5 }}
+    >
       <Navbar />
       <Outlet />
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
