@@ -4,7 +4,8 @@ import "./zpages.scss";
 const Product = () => {
   return (
     <div className="product">
-      <div></div>
+      <div className="left"></div>
+      <div className="right"></div>
     </div>
   );
 };
