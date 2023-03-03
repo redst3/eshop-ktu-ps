@@ -59,19 +59,14 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <motion.div
-        className="right"
-        initial={{ x: "1000px" }}
-        animate={{ x: 0 }}
-        transition={{ duration: 2, stiffness: 100, type: "spring" }}
-      >
+      <div className="right">
         <img
           className="categoryImg"
           src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="categoryImg"
         ></img>
         <List categoryId={categoryId} maxPrice={maxPrice} sort={sort} />
-      </motion.div>
+      </div>
     </div>
   );
 };

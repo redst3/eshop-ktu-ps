@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import "./styles.scss";
 
 function Slider() {
@@ -30,12 +28,8 @@ function Slider() {
         <img src={data[2]} alt="2" />
       </div>
       <div className="slider-icons">
-        <div className="slider-icon" onClick={prevSlide}>
-          <ArrowLeftIcon />
-        </div>
-        <div className="slider-icon" onClick={nextSlide}>
-          <ArrowRightIcon />
-        </div>
+        <div className="slider-icon" onClick={prevSlide}></div>
+        <div className="slider-icon" onClick={nextSlide}></div>
       </div>
     </div>
   );

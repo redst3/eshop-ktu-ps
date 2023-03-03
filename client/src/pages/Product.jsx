@@ -3,6 +3,7 @@ import "./zpages.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
+import { motion } from "framer-motion";
 
 const Product = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -16,7 +17,8 @@ const Product = () => {
       <div className="left">
         <div className="images">
           {images.map((image, id) => (
-            <img
+            <motion.img
+              whileHover={{ scale: 0.95 }}
               src={image}
               alt="product"
               key={id}
@@ -57,7 +59,7 @@ const Product = () => {
             +
           </button>
         </div>
-        <div className="cart">
+        <div className="add-to-cart">
           <button className="addTo">
             <AddShoppingCartIcon /> ADD TO CART
           </button>
