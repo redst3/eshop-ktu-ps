@@ -1,0 +1,134 @@
+.login {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: gray;
+  .login-window {
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    color: white;
+    margin-top: 40px;
+    width: 400px;
+    height: 500px;
+    border-radius: 5px;
+    .login-form {
+      letter-spacing: 3px;
+      .login-form-email,
+      .login-form-password {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin: 30px;
+      }
+      label {
+        font-size: 27px;
+      }
+      .form-input {
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .login-form-submit {
+        .login-form-submit-button {
+          width: 250px;
+          color: white;
+          font-size: 25px;
+          background-color: rgba(255, 255, 255, 0.07);
+          cursor: pointer;
+        }
+      }
+    }
+    .navigate-register {
+      margin-top: 20px;
+      color: white;
+    }
+    .navigate-register:hover {
+      color: #00f3aa;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.register {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: gray;
+  .register-window {
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    color: white;
+    margin-top: 40px;
+    width: 400px;
+    height: 580px;
+    border-radius: 5px;
+    .register-form {
+      letter-spacing: 3px;
+      .register-name {
+        padding-right: 60px;
+      }
+      .register-form-name {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .register-form-email,
+      .register-form-password {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin: 30px;
+      }
+      label {
+        font-size: 27px;
+      }
+      .form-input {
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      input {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .register-form-submit {
+        .register-form-submit-button {
+          width: 250px;
+          color: white;
+          font-size: 25px;
+          background-color: rgba(255, 255, 255, 0.07);
+          cursor: pointer;
+        }
+      }
+    }
+    .navigate-login {
+      margin-top: 20px;
+      color: white;
+    }
+    .navigate-login:hover {
+      color: #00f3aa;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}

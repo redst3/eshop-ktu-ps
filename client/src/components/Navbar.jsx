@@ -49,7 +49,9 @@ const Navbar = () => {
           </div>
           <div className="icons">
             <SearchIcon />
-            <PersonOutlineOutlinedIcon />
+            <Link className="link" to="/login">
+              <PersonOutlineOutlinedIcon />
+            </Link>
             <FavoriteBorderOutlinedIcon />
             <div
               className="cartIcon"

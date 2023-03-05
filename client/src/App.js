@@ -5,6 +5,8 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LoginPage from "./pages/UserPages/LoginPage";
+import RegisterPage from "./pages/UserPages/RegisterPage";
 import { motion } from "framer-motion";
 
 const Layout = () => {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
       },
       {
         path: "/products/:id",
