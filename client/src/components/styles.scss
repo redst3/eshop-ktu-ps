@@ -183,7 +183,7 @@
     }
     span {
       position: absolute;
-      z-index: 3;
+      z-index: 2;
       top: 10px;
       left: 5px;
       background-color: white;
@@ -307,6 +307,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 30px 30px 30px 30px;
+  min-height: 80vh;
 }
 .product {
   padding: 40px 60px;

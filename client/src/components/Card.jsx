@@ -8,15 +8,31 @@ export const Card = ({ item }) => {
     <Link className="link" to={`/product/${item.id}`}>
       <motion.div className="card" whileHover={{ scale: 1.05 }}>
         <div className="image">
-          {item.isNew && <span>New</span>}
-          <img src={item.img} alt={item.id} className="firstImage" />
-          <img src={item.img2} alt={item.id} className="secondImage" />
+          {item?.attributes.new && <span>New</span>}
+          <img
+            src={
+              process.env.REACT_APP_IMG_URL +
+              item?.attributes.img.data[0].attributes.url
+            }
+            alt={item.id}
+            className="firstImage"
+          />
+          <img
+            src={
+              process.env.REACT_APP_IMG_URL +
+              (item?.attributes.img.data.length > 1
+                ? item?.attributes.img.data[1].attributes.url
+                : item?.attributes.img.data[0].attributes.url)
+            }
+            alt={item.id}
+            className="secondImage"
+          />
         </div>
-        <h2>{item.title}</h2>
-        <h3>{item.author}</h3>
+        <h2>{item?.attributes.title}</h2>
+        <h3>{item?.attributes.author}</h3>
         <div className="prices">
-          <h3>{item.oldPrice} €</h3>
-          <h3>{item.newPrice} €</h3>
+          <h3>{item?.attributes.price * 2} €</h3>
+          <h3>{item?.attributes.price} €</h3>
         </div>
       </motion.div>
     </Link>
