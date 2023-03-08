@@ -10,6 +10,14 @@ import Cart from "./Cart";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  // create a listener for mouse click outside of the cart div
+  // if the click is outside of the cart div, close the cart
+  document.addEventListener("click", (e) => {
+    let zz = String(e.target.className);
+    if (!(zz.includes("p01hz") || zz.includes("[object SVGAnimatedString]"))) {
+      setOpen(false);
+    }
+  });
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -21,12 +29,12 @@ const Navbar = () => {
           </div>
           <div className="item">
             <Link className="link" to="/products/2">
-              Paintings
+              Vases
             </Link>
           </div>
           <div className="item">
             <Link className="link" to="/products/3">
-              Paintings
+              empty
             </Link>
           </div>
         </div>

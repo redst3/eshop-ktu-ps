@@ -28,27 +28,29 @@ const Cart = () => {
     },
   ];
   return (
-    <div className="cart">
-      <h1>Currently selected items</h1>
+    <div className="cart p01hz">
+      <h1 className="p01hz">Currently selected items</h1>
       {data?.map((item) => (
-        <div className="item" key={item.id}>
-          <img src={item.img} alt={item.id} />
-          <div className="info">
-            <h1>{item.title}</h1>
-            <p>{item.desc?.substring(0, 70)}</p>
-            <div className="price">1 x {item.newPrice}</div>
+        <div className="item p01hz" key={item.id}>
+          <img className="p01hz" src={item.img} alt={item.id} />
+          <div className="info p01hz">
+            <h1 className="p01hz">{item.title}</h1>
+            <p className="p01hz">{item.desc?.substring(0, 70)}</p>
+            <div className="price p01hz">1 x {item.newPrice}</div>
           </div>
-          <DeleteOutlinedIcon className="delete" />
+          <div className="p01hz">
+            <DeleteOutlinedIcon className="delete" />
+          </div>
         </div>
       ))}
-      <div className="total">
-        <span>PRICE</span>
-        <span>mnogo</span>
+      <div className="total p01hz">
+        <span className="p01hz">PRICE</span>
+        <span className="p01hz">mnogo</span>
       </div>
-      <div className="checkout-button">
-        <button className="checkout">Checkout</button>
+      <div className="checkout-button p01hz">
+        <button className="checkout p01hz">Checkout</button>
       </div>
-      <span className="reset-cart">Reset cart</span>
+      <span className="reset-cart p01hz">Reset cart</span>
     </div>
   );
 };

@@ -10,11 +10,9 @@ function Slider() {
   ];
   const prevSlide = () => {
     setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2);
-    console.log(currentSlide);
   };
   const nextSlide = () => {
     setCurrentSlide(currentSlide < data.length - 1 ? currentSlide + 1 : 0);
-    console.log(currentSlide);
   };
 
   return (
