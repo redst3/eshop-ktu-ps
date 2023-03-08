@@ -14,7 +14,7 @@ function Categories() {
           />
           <span>
             <Link className="link" to="/products">
-              Watercolour
+              Vases
             </Link>
           </span>
         </motion.div>
@@ -25,7 +25,7 @@ function Categories() {
           />
           <span>
             <Link className="link" to="/products">
-              Sale
+              Paintings
             </Link>
           </span>
         </motion.div>
@@ -38,7 +38,7 @@ function Categories() {
           />
           <span>
             <Link className="link" to="/products">
-              Digital
+              Candles
             </Link>
           </span>
         </motion.div>
@@ -53,7 +53,7 @@ function Categories() {
               />
               <span>
                 <Link className="link" to="/products">
-                  Oil
+                  Cushions
                 </Link>
               </span>
             </motion.div>
@@ -66,7 +66,7 @@ function Categories() {
               />
               <span>
                 <Link className="link" to="/products">
-                  Sale
+                  Lamps
                 </Link>
               </span>
             </motion.div>
@@ -79,7 +79,7 @@ function Categories() {
           />
           <span>
             <Link className="link" to="/products">
-              Sale
+              Mirrors
             </Link>
           </span>
         </motion.div>
