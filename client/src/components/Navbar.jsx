@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,10 +8,10 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./styles.scss";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [cartSize, setCartSize] = useState(0);
   document.addEventListener("click", (e) => {
     let zz = String(e.target.className);
     if (!(zz.includes("p01hz") || zz.includes("[object SVGAnimatedString]"))) {
@@ -24,21 +24,21 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <div className="left">
-          <div className="item">
+          <motion.div className="item" whileHover={{ scale: 1.15 }}>
             <Link className="link" to="/products/1">
-              Paintings
+              Browse
             </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/products/2">
-              Vases
+          </motion.div>
+          <motion.div className="item" whileHover={{ scale: 1.15 }}>
+            <Link className="link" to="/">
+              Custom paintings
             </Link>
-          </div>
-          <div className="item">
-            <Link className="link" to="/products/3">
-              empty
+          </motion.div>
+          <motion.div className="item" whileHover={{ scale: 1.15 }}>
+            <Link className="link" to="/">
+              Preview
             </Link>
-          </div>
+          </motion.div>
         </div>
         <div className="center">
           <Link className="link" to="/">
@@ -47,23 +47,30 @@ const Navbar = () => {
         </div>
         <div className="right">
           <div className="item"></div>
-          <div className="item">
+          <motion.div className="item" whileHover={{ scale: 1.15 }}>
             <Link className="link" to="/">
               About
             </Link>
-          </div>
-          <div className="item">
+          </motion.div>
+          <motion.div className="item" whileHover={{ scale: 1.15 }}>
             <Link className="link" to="/">
               Contact
             </Link>
-          </div>
+          </motion.div>
           <div className="icons">
-            <SearchIcon />
+            <motion.div whileHover={{ scale: 1.15 }}>
+              <SearchIcon />
+            </motion.div>
             <Link className="link" to="/login">
-              <PersonOutlineOutlinedIcon />
+              <motion.div whileHover={{ scale: 1.15 }}>
+                <PersonOutlineOutlinedIcon />
+              </motion.div>
             </Link>
-            <FavoriteBorderOutlinedIcon />
-            <div
+            <motion.div whileHover={{ scale: 1.15 }}>
+              <FavoriteBorderOutlinedIcon />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.15 }}
               className="cartIcon"
               onClick={() => {
                 setOpen(open ? false : true);
@@ -71,7 +78,7 @@ const Navbar = () => {
             >
               <ShoppingCartOutlinedIcon />
               <span>{products.length}</span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

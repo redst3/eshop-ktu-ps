@@ -11,7 +11,7 @@ const Products = () => {
   const [price, setPrice] = useState(1000);
   const [sort, setSort] = useState("asc");
   const [selected, setSelected] = useState([]);
-  const { data, loading, error } = useFetch(
+  const { data } = useFetch(
     `/sub-categories?[filters][category][id][$eq]=${categoryId}`
   );
   const categories = useFetch(`/categories?populate=*`);
@@ -55,14 +55,15 @@ const Products = () => {
               />
               <span>{maxPrice}</span>
               <div className="filter">
-                <button
+                <motion.button
+                  whileHover={{ scale: 0.95 }}
                   className="priceButton"
                   onClick={() => {
                     setPrice(maxPrice);
                   }}
                 >
                   filter
-                </button>
+                </motion.button>
               </div>
             </div>
             <div className="filter">

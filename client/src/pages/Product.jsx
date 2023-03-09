@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./zpages.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BalanceIcon from "@mui/icons-material/Balance";
 import { motion } from "framer-motion";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
@@ -10,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { addProductToCart } from "../services/reduceCart";
 const Product = () => {
   const categoryId = parseInt(useParams().id);
-  const { data, loading, error } = useFetch(
+  const { data, error } = useFetch(
     `/products?populate=*&[filters][id][$eq]=${categoryId}`
   );
   const [selectedImage, setSelectedImage] = useState(0);
@@ -50,7 +49,8 @@ const Product = () => {
             <span className="price">{data[0]?.attributes.price} €</span>
             <p>{data[0]?.attributes.description}</p>
             <div className="quantity">
-              <button
+              <motion.button
+                whileHover={{ scale: 0.95 }}
                 onClick={() =>
                   quantity > 1
                     ? setQuantity(quantity - 1)
@@ -58,9 +58,10 @@ const Product = () => {
                 }
               >
                 -
-              </button>
+              </motion.button>
               <span>{quantity}</span>
-              <button
+              <motion.button
+                whileHover={{ scale: 0.95 }}
                 onClick={() =>
                   quantity < 5
                     ? setQuantity(quantity + 1)
@@ -68,10 +69,11 @@ const Product = () => {
                 }
               >
                 +
-              </button>
+              </motion.button>
             </div>
             <div className="add-to-cart">
-              <button
+              <motion.button
+                whileHover={{ scale: 0.95 }}
                 className="addTo"
                 onClick={() =>
                   dispatchHook(
@@ -89,15 +91,12 @@ const Product = () => {
                 }
               >
                 <AddShoppingCartIcon /> ADD TO CART
-              </button>
+              </motion.button>
             </div>
             <div className="links">
-              <div className="item">
+              <motion.div className="item" whileHover={{ scale: 1.05 }}>
                 <FavoriteBorderIcon /> ADD TO WISHLIST
-              </div>
-              <div className="item">
-                <BalanceIcon /> ADD TO COMPARE
-              </div>
+              </motion.div>
             </div>
             <hr
               style={{

@@ -4,7 +4,7 @@ import "./styles.scss";
 import useFetch from "../hooks/useFetch";
 
 const List = ({ categoryId, maxPrice, sort, selectedSubCategories }) => {
-  const { data, loading, error } = useFetch(
+  const { data, loading } = useFetch(
     `/products?populate=*&[filters][category][id]=${categoryId}
     ${selectedSubCategories.map(
       (item) => `&[filters][sub_category][id][$eq]=${item}`
