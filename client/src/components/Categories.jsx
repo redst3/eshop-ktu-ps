@@ -8,80 +8,69 @@ function Categories() {
     <div className="categories">
       <div className="col">
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <img
-            src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-          <span>
-            <Link className="link" to="/products">
-              Vases
-            </Link>
-          </span>
+          <Link className="link" to="/products/2">
+            <img
+              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+            <span>Vases</span>
+          </Link>
         </motion.div>
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <img
-            src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-          <span>
-            <Link className="link" to="/products">
-              Paintings
-            </Link>
-          </span>
+          <Link className="link" to="/products/1">
+            <img
+              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+            <span>Paintings</span>
+          </Link>
         </motion.div>
       </div>
       <div className="col">
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <img
-            src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-          <span>
-            <Link className="link" to="/products">
-              Candles
-            </Link>
-          </span>
+          <Link className="link" to="/products">
+            <img
+              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+            <span>Candles</span>
+          </Link>
         </motion.div>
       </div>
       <div className="col col-l">
         <div className="row">
           <div className="col">
             <motion.div className="row" whileHover={{ scale: 0.95 }}>
-              <img
-                src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt=""
-              />
-              <span>
-                <Link className="link" to="/products">
-                  Cushions
-                </Link>
-              </span>
+              <Link className="link" to="/products">
+                <img
+                  src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt=""
+                />
+                <span>Cushions</span>
+              </Link>
             </motion.div>
           </div>
           <div className="col">
             <motion.div className="row" whileHover={{ scale: 0.95 }}>
-              <img
-                src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt=""
-              />
-              <span>
-                <Link className="link" to="/products">
-                  Lamps
-                </Link>
-              </span>
+              <Link className="link" to="/products">
+                <img
+                  src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  alt=""
+                />
+                <span>Lamps</span>
+              </Link>
             </motion.div>
           </div>
         </div>
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <img
-            src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-          <span>
-            <Link className="link" to="/products">
-              Mirrors
-            </Link>
-          </span>
+          <Link className="link wide" to="/products">
+            <img
+              className="img"
+              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt=""
+            />
+            <span>Mirrors</span>
+          </Link>
         </motion.div>
       </div>
     </div>

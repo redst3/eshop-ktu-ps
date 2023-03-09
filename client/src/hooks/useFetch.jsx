@@ -10,6 +10,9 @@ const useFetch = (url, options) => {
         setLoading(true);
         const res = await makeRequest.get(url);
         setData(res.data.data);
+        if (res.data.data.length === 0) {
+          setError(true);
+        }
       } catch (errors) {
         setError(true);
       }

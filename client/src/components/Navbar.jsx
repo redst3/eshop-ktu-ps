@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
@@ -7,17 +7,19 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./styles.scss";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  // create a listener for mouse click outside of the cart div
-  // if the click is outside of the cart div, close the cart
+  const [cartSize, setCartSize] = useState(0);
   document.addEventListener("click", (e) => {
     let zz = String(e.target.className);
     if (!(zz.includes("p01hz") || zz.includes("[object SVGAnimatedString]"))) {
       setOpen(false);
     }
   });
+  const products = useSelector((state) => state.cart.products);
+
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -68,7 +70,7 @@ const Navbar = () => {
               }}
             >
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>

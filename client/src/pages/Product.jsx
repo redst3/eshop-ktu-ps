@@ -6,6 +6,8 @@ import BalanceIcon from "@mui/icons-material/Balance";
 import { motion } from "framer-motion";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../services/reduceCart";
 const Product = () => {
   const categoryId = parseInt(useParams().id);
   const { data, loading, error } = useFetch(
@@ -13,10 +15,10 @@ const Product = () => {
   );
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  var food = false;
+  const dispatchHook = useDispatch();
   return (
     <div className="product">
-      {data.length === 0 ? (
+      {error ? (
         <h1>Something went wrong....</h1>
       ) : (
         <>
@@ -69,7 +71,23 @@ const Product = () => {
               </button>
             </div>
             <div className="add-to-cart">
-              <button className="addTo">
+              <button
+                className="addTo"
+                onClick={() =>
+                  dispatchHook(
+                    addProductToCart({
+                      id: data[0]?.id,
+                      title: data[0]?.attributes.title,
+                      author: data[0]?.attributes.author,
+                      price: data[0]?.attributes.price,
+                      img:
+                        process.env.REACT_APP_IMG_URL +
+                        data[0]?.attributes.img.data[0].attributes.url,
+                      quantity,
+                    })
+                  )
+                }
+              >
                 <AddShoppingCartIcon /> ADD TO CART
               </button>
             </div>

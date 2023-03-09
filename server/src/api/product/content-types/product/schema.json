@@ -59,6 +59,10 @@
     },
     "author": {
       "type": "string"
+    },
+    "on_sale": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -29,10 +29,18 @@ export const Card = ({ item }) => {
           />
         </div>
         <h2>{item?.attributes.title}</h2>
-        <h3>{item?.attributes.author}</h3>
+        <h3>
+          {item?.attributes.author !== null ? item?.attributes.author : "-"}
+        </h3>
         <div className="prices">
-          <h3>{item?.attributes.price * 2} €</h3>
-          <h3>{item?.attributes.price} €</h3>
+          {item?.attributes.on_sale ? (
+            <>
+              <h3>{(item?.attributes.price * 1.33).toFixed(2)} €</h3>
+              <h3>{item?.attributes.price} €</h3>
+            </>
+          ) : (
+            <h4 className="normal">{item?.attributes.price} €</h4>
+          )}
         </div>
       </motion.div>
     </Link>
