@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import LoginPage from "./pages/UserPages/LoginPage";
 import RegisterPage from "./pages/UserPages/RegisterPage";
 import { motion } from "framer-motion";
+import ProtectedRoutes from "./services/protectedRoutes";
 
 const Layout = () => {
   return (
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
+        // element: <ProtectedRoutes requiredRole={"user"} page={<Products />} />,
         element: <Products />,
       },
       {
