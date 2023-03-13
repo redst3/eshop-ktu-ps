@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore; 
@@ -8,13 +9,9 @@ using persuasiveAPI.Auth.Model;
 using persuasiveAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -39,15 +36,9 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<AuthDbSeeder>();
+builder.Services.AddCors();
 var app = builder.Build();
-
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials());
 
 app.UseHttpsRedirection();
 app.MapControllers();

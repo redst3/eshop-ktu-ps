@@ -3,11 +3,10 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const protectedRoutes = ({ requiredRole, page }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const role = localStorage.getItem("role");
-
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const role = sessionStorage.getItem("role");
   if (user) {
-    if (requiredRole === role || requiredRole === "adminn") {
+    if (requiredRole === role || requiredRole === "admin") {
       return page;
     } else {
       return <Navigate to="/" />;

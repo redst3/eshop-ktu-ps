@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Categories from "../components/Categories";
 import { FeaturedProducts } from "../components/FeaturedProducts";
 import Slider from "../components/Slider";
 import "./zpages.scss";
 
 const Home = () => {
+  useEffect(() => {
+    if (sessionStorage.getItem("userchange")) {
+      sessionStorage.removeItem("userchange");
+      window.location.reload();
+    }
+  }, []);
+
   return (
     <div className="home">
       <Slider />

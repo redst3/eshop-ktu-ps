@@ -9,15 +9,12 @@ import LoginPage from "./pages/UserPages/LoginPage";
 import RegisterPage from "./pages/UserPages/RegisterPage";
 import { motion } from "framer-motion";
 import ProtectedRoutes from "./services/protectedRoutes";
+import { IntroductionPage } from "./pages/PreviewItemsPages/IntroductionPage";
+import { PreviewItemsPage } from "./pages/PreviewItemsPages/PreviewItemsPage";
 
 const Layout = () => {
   return (
-    <motion.div
-      className="app"
-      initial={{ opacity: 0.2 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-    >
+    <motion.div className="app">
       <Navbar />
       <Outlet />
       <Footer />
@@ -44,12 +41,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        // element: <ProtectedRoutes requiredRole={"user"} page={<Products />} />,
         element: <Products />,
       },
       {
         path: "/product/:id",
         element: <Product />,
+      },
+      {
+        path: "/preview/introduction",
+        element: (
+          <ProtectedRoutes requiredRole={"User"} page={<IntroductionPage />} />
+        ),
+      },
+      {
+        path: "/preview/preview-items",
+        element: (
+          <ProtectedRoutes requiredRole={"User"} page={<PreviewItemsPage />} />
+        ),
       },
     ],
   },
