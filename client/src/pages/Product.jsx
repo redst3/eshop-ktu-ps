@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./zpages.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -7,14 +7,54 @@ import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../services/reduceCart";
+import wishServices from "../services/WishlistServices";
+import { useNavigate } from "react-router-dom";
 const Product = () => {
-  const categoryId = parseInt(useParams().id);
+  const productId = parseInt(useParams().id);
+  const [exists, setExists] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
   const { data, error } = useFetch(
-    `/products?populate=*&[filters][id][$eq]=${categoryId}`
+    `/products?populate=*&[filters][id][$eq]=${productId}`
   );
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const dispatchHook = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("wishlist")) {
+      setWishlist(JSON.parse(sessionStorage.getItem("wishlist")));
+      if (JSON.parse(sessionStorage.getItem("wishlist").includes(productId))) {
+        setExists(true);
+      }
+    }
+  }, [productId]);
+
+  const handleAddToWishlist = async () => {
+    if (sessionStorage.getItem("wishlist")) {
+      if (exists) {
+        setExists(false);
+        let newWishlist = wishlist.filter((item) => item !== productId);
+        sessionStorage.setItem("wishlist", JSON.stringify(newWishlist));
+        setWishlist(newWishlist);
+        await wishServices.deleteFromWishList(
+          JSON.parse(sessionStorage.getItem("user")).sub,
+          productId
+        );
+      } else {
+        setExists(true);
+        let newWishlist = [...wishlist, productId];
+        sessionStorage.setItem("wishlist", JSON.stringify(newWishlist));
+        setWishlist(newWishlist);
+        await wishServices.addToWishList(
+          JSON.parse(sessionStorage.getItem("user")).sub,
+          productId
+        );
+      }
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div className="product">
       {error ? (
@@ -94,9 +134,28 @@ const Product = () => {
               </motion.button>
             </div>
             <div className="links">
-              <motion.div className="item" whileHover={{ scale: 1.05 }}>
-                <FavoriteBorderIcon /> ADD TO WISHLIST
-              </motion.div>
+              {exists ? (
+                <>
+                  {" "}
+                  <motion.div
+                    className="item-exists"
+                    whileHover={{ scale: 1.05 }}
+                    onClick={handleAddToWishlist}
+                  >
+                    <FavoriteBorderIcon /> REMOVE FROM WISHLIST
+                  </motion.div>
+                </>
+              ) : (
+                <>
+                  <motion.div
+                    className="item"
+                    whileHover={{ scale: 1.05 }}
+                    onClick={handleAddToWishlist}
+                  >
+                    <FavoriteBorderIcon /> ADD TO WISHLIST
+                  </motion.div>
+                </>
+              )}
             </div>
             <hr
               style={{

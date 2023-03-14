@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const Products = () => {
   const categoryId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [price, setPrice] = useState(1000);
+  const [price, setPrice] = useState(500);
   const [sort, setSort] = useState("asc");
   const [selected, setSelected] = useState([]);
   const { data } = useFetch(
@@ -50,6 +50,7 @@ const Products = () => {
               <input
                 type="range"
                 min="0"
+                value={maxPrice}
                 max="1000"
                 onChange={(e) => setMaxPrice(e.target.value)}
               />

@@ -6,7 +6,7 @@ const protectedRoutes = ({ requiredRole, page }) => {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const role = sessionStorage.getItem("role");
   if (user) {
-    if (requiredRole === role || requiredRole === "admin") {
+    if (requiredRole === role || role === "Admin") {
       return page;
     } else {
       return <Navigate to="/" />;

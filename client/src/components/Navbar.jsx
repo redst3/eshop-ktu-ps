@@ -102,7 +102,9 @@ const Navbar = () => {
               </Link>
             )}
             <motion.div whileHover={{ scale: 1.15 }}>
-              <FavoriteBorderOutlinedIcon />
+              <Link to={"/user/wishlist"} className="link wishlist">
+                <FavoriteBorderOutlinedIcon />
+              </Link>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.15 }}

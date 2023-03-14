@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using persuasiveAPI.Auth;
 using persuasiveAPI.Auth.Model;
 using persuasiveAPI.Auth.Dtos;
+using persuasiveAPI.Data.Repositories;
 
 namespace persuasiveAPI.Controllers;
 
@@ -14,13 +15,15 @@ public class AuthController : ControllerBase
     private readonly UserManager<User> _userManager;
     private readonly IJwtTokenService _jwtTokenService;
     private readonly IAuthorizationService _authorizationService;
+    private readonly IWishlistRepository _wishlistRepository;
 
     public AuthController(UserManager<User> userManager, IJwtTokenService jwtTokenService,
-        IAuthorizationService authService)
+        IAuthorizationService authService, IWishlistRepository wishlistRepository)
     {
         _userManager = userManager;
         _jwtTokenService = jwtTokenService;
         _authorizationService = authService;
+        _wishlistRepository = wishlistRepository;
     }
 
     [HttpPost]
@@ -42,8 +45,8 @@ public class AuthController : ControllerBase
         {
             return BadRequest(createUserResult.Errors);
         }
-
         await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+        await _wishlistRepository.CreateWishlist(newUser.Id);
 
         return CreatedAtAction(nameof(Register), new UserDto(newUser.Id, newUser.UserName, newUser.Email));
 

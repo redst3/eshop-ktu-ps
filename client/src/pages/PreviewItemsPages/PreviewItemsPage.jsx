@@ -3,6 +3,13 @@ import { useSelector } from "react-redux";
 import Draggable from "react-draggable";
 
 export const PreviewItemsPage = () => {
+  const data = {
+    img: "https://img.freepik.com/premium-photo/realistic-3d-render-room-beautiful-sunlight-window-frame-shadow-beige-blank-wall-white-skirting-board-empty-room-new-wooden-parquet-floor-background-interior-side-view_695590-889.jpg?w=2000",
+  };
+  const [rotateY, setRotateY] = useState(0);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateZ, setRotateZ] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const products = useSelector((state) => state.cart.products);
   const [previewProducts, setPreviewProducts] = useState([...products]);
   const [displayProducts, setDisplayProducts] = useState([]);
@@ -18,6 +25,14 @@ export const PreviewItemsPage = () => {
       );
       setDisplayProducts([...displayProducts, { ...e, quantity: 1 }]);
     }
+  };
+  const handleClick = (e) => {
+    const product = e.target.closest(".image-container");
+    document.querySelectorAll(".product-delete").forEach((item) => {
+      item.hidden = true;
+    });
+    const span = product.querySelector(".product-delete");
+    span.hidden = false;
   };
   const handleDrag = (e) => {
     console.log("test");
@@ -63,15 +78,15 @@ export const PreviewItemsPage = () => {
         </div>
         <div className="middle">
           <div className="image-holder">
-            <img className="background" src="" alt="" />
+            <img className="background" src={data.img} alt="" />
             <div className="product-images">
               {displayProducts?.map((item, key) => (
                 <Draggable onDrag={handleDrag} key={key}>
-                  <div className="image-container">
+                  <div className="image-container" onClick={handleClick}>
                     <div
                       className="rotate-image"
                       style={{
-                        transform: `rotate3d(0,1,1, 45deg)`,
+                        transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`,
                       }}
                     >
                       <img
@@ -85,6 +100,7 @@ export const PreviewItemsPage = () => {
                     </div>
                     <span
                       className="product-delete"
+                      hidden
                       onClick={() => handleDelete(item)}
                     >
                       X
@@ -95,7 +111,17 @@ export const PreviewItemsPage = () => {
             </div>
           </div>
         </div>
-        <div className="bottom"></div>
+        <div className="bottom">
+          <button onClick={() => setRotateX(rotateX - 1)}>-1</button>
+          <span>{rotateX}</span>
+          <button onClick={() => setRotateX(rotateX + 1)}>+1</button>
+          <button onClick={() => setRotateY(rotateY - 1)}>-1</button>
+          <span>{rotateY}</span>
+          <button onClick={() => setRotateY(rotateY + 1)}>+1</button>
+          <button onClick={() => setRotateZ(rotateZ - 1)}>-1</button>
+          <span>{rotateZ}</span>
+          <button onClick={() => setRotateZ(rotateZ + 1)}>+1</button>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./authPages.scss";
 import authServices from "../../services/AuthServices";
+import wishServices from "../../services/WishlistServices";
 import { useEffect } from "react";
 
 const Login = () => {
@@ -13,12 +14,15 @@ const Login = () => {
 
   const handleSumbit = (e) => {
     e.preventDefault();
+    if (!username || !password) return setError("Please fill in all fields");
     authServices.login(username, password).then(
-      () => {
+      (response) => {
+        wishServices.getWishList(response);
         navigate("/");
       },
       (error) => {
-        setError(error);
+        setError(error.response.data);
+        console.log(error);
       }
     );
   };
@@ -34,7 +38,7 @@ const Login = () => {
         <h1 className="login-title">Existing User</h1>
         <form className="login-form">
           <div className="login-form-email">
-            <label htmlFor="email">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               className="form-input"
               name="username"
@@ -55,7 +59,7 @@ const Login = () => {
           <div className="login-form-submit">
             <input
               className="login-form-submit-button"
-              type="button"
+              type="submit"
               value="Login"
               onClick={handleSumbit}
             />

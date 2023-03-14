@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using persuasiveAPI.Auth;
 using persuasiveAPI.Auth.Model;
 using persuasiveAPI.Data;
+using persuasiveAPI.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -35,6 +36,7 @@ builder.Services.AddAuthentication(options =>
 
 });
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
+builder.Services.AddTransient<IWishlistRepository, WishlistRepository>();
 builder.Services.AddScoped<AuthDbSeeder>();
 builder.Services.AddCors();
 var app = builder.Build();

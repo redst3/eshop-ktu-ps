@@ -1,8 +1,6 @@
 import axios from "axios";
 import jwt from "jwt-decode";
-// import { Navigate } from "react-router-dom";
-
-const API_URL = "https://localhost:44300/api";
+const API_URL = "http://localhost:5246/api";
 
 class AuthService {
   login(username, password) {
@@ -27,12 +25,12 @@ class AuthService {
         sessionStorage.setItem("userchange", true);
         let roles =
           user["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-        console.log(roles);
         if (roles.length === 3) {
           sessionStorage.setItem("role", "Admin");
         } else {
           sessionStorage.setItem("role", roles);
         }
+        return user.sub;
       }
       return response.data;
     });

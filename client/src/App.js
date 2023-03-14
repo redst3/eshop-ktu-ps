@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import ProtectedRoutes from "./services/protectedRoutes";
 import { IntroductionPage } from "./pages/PreviewItemsPages/IntroductionPage";
 import { PreviewItemsPage } from "./pages/PreviewItemsPages/PreviewItemsPage";
+import { WishlistPage } from "./pages/UserPages/WishlistPage";
 
 const Layout = () => {
   return (
@@ -57,6 +58,12 @@ const router = createBrowserRouter([
         path: "/preview/preview-items",
         element: (
           <ProtectedRoutes requiredRole={"User"} page={<PreviewItemsPage />} />
+        ),
+      },
+      {
+        path: "/user/wishlist",
+        element: (
+          <ProtectedRoutes requiredRole={"User"} page={<WishlistPage />} />
         ),
       },
     ],

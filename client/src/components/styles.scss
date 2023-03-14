@@ -57,6 +57,9 @@
         color: green;
       }
     }
+    .wishlist:hover {
+      color: red;
+    }
   }
 }
 
@@ -484,9 +487,18 @@
         gap: 6px;
         color: rgb(3, 75, 75);
       }
-      .item:hover {
+      // .item:hover {
+      //   color: red;
+      // }
+      .item-exists {
+        display: flex;
+        align-items: center;
+        gap: 6px;
         color: red;
       }
+      // .item-exists:hover {
+      //   color: rgb(3, 75, 75);
+      // }
     }
     .info {
       display: flex;

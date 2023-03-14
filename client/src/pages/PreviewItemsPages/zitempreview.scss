@@ -52,6 +52,11 @@
         border: 1px solid black;
         width: 100%;
         .background {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: relative;
+          z-index: 0;
         }
         .product-images {
           .image-container {
