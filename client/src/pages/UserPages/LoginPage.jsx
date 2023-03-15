@@ -26,8 +26,9 @@ const Login = () => {
     );
   };
   const handleWishlist = async (userId) => {
-    await wishServices.getWishList(userId);
-    window.location.reload();
+    await wishServices.getWishList(userId).then(() => {
+      navigate("/");
+    });
   };
   useEffect(() => {
     if (sessionStorage.getItem("user")) {

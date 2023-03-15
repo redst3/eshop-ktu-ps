@@ -17,6 +17,7 @@ class WishlistService {
     axios(config)
       .then(function (response) {
         sessionStorage.setItem("wishlist", response.data.productIds);
+        return true;
       })
       .catch(function (error) {
         console.log(error);

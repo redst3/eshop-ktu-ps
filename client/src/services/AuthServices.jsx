@@ -36,7 +36,6 @@ class AuthService {
   }
   logout() {
     sessionStorage.clear();
-    sessionStorage.setItem("userchange", true);
   }
   async register(username, password, email) {
     var data = JSON.stringify({
