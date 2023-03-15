@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  height: 85vh;
+  height: 90vh;
   .left {
     border: 1px solid black;
     width: 30%;
@@ -27,7 +27,13 @@
         font-weight: 500;
       }
     }
+    .left-bottom {
+      display: flex;
+      position: absolute;
+      bottom: 10px;
+    }
   }
+
   .right {
     border: 1px solid green;
     width: 70%;
@@ -37,7 +43,7 @@
     flex-direction: column;
     .top {
       border: 1px solid red;
-      height: 10%;
+      height: 5%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -48,6 +54,7 @@
       display: flex;
       justify-content: center;
       .image-holder {
+        position: relative;
         margin: 10px;
         border: 1px solid black;
         width: 100%;
@@ -59,12 +66,16 @@
           z-index: 0;
         }
         .product-images {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          z-index: 100;
           .image-container {
-            display: inline-block;
-            position: relative;
+            position: inherit;
             .rotate-image {
-              padding: 20px;
               z-index: 5;
+
               .product-image {
                 width: [width];
                 height: [height];
@@ -75,12 +86,11 @@
             }
             .product-delete {
               position: absolute;
-              right: 5px;
-              top: 1px;
+              right: 0px;
+              top: 0px;
               z-index: 6;
               color: red;
               border: 2px solid red;
-              padding: 2px;
               user-select: none;
               cursor: pointer;
             }
@@ -90,22 +100,37 @@
     }
     .bottom {
       border: 1px solid yellow;
-      height: 10%;
+      height: 12%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      .bottom-adjust {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid teal;
+        width: 700px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+
+        .preview-range {
+          width: 500px;
+        }
+      }
     }
   }
   .cart-items {
     padding: 10px;
-    max-width: 400px;
-    width: 400px;
+    height: 68.1%;
     user-select: none;
-    /* Works on Firefox */
     scrollbar-width: thin;
     scrollbar-color: teal teal;
-    /* Works on Chrome, Edge, and Safari */
+    border: 1px solid teal;
+
     *::-webkit-scrollbar {
       width: 1px;
     }
-
     *::-webkit-scrollbar-track {
       background: teal;
     }

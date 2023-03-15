@@ -12,21 +12,33 @@ import ProtectedRoutes from "./services/protectedRoutes";
 import { IntroductionPage } from "./pages/PreviewItemsPages/IntroductionPage";
 import { PreviewItemsPage } from "./pages/PreviewItemsPages/PreviewItemsPage";
 import { WishlistPage } from "./pages/UserPages/WishlistPage";
+import { ErrorPage } from "./pages/ErrorPage";
 
-const Layout = () => {
-  return (
-    <motion.div className="app">
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </motion.div>
-  );
+const Layout = (error) => {
+  if (error.error) {
+    return (
+      <motion.div className="app">
+        <Navbar />
+        <ErrorPage />
+        <Footer />
+      </motion.div>
+    );
+  } else {
+    return (
+      <motion.div className="app">
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </motion.div>
+    );
+  }
 };
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <Layout error />,
     children: [
       {
         path: "/",

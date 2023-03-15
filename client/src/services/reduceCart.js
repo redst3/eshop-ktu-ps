@@ -27,9 +27,28 @@ export const cartSlice = createSlice({
     resetCart: (state) => {
       state.products = [];
     },
+    updateCart: (state, action) => {
+      // update cart with items that come from action.payload and check if item is in cart, increase quantity
+      state.products = [];
+      const products = action.payload;
+      products.forEach((product) => {
+        const productInCart = state.products.find(
+          (item) => item.id === product.id
+        );
+        if (productInCart) {
+          productInCart.quantity += product.quantity;
+        } else {
+          state.products.push(product);
+        }
+      });
+    },
   },
 });
 
-export const { addProductToCart, removeProductFromCart, resetCart } =
-  cartSlice.actions;
+export const {
+  addProductToCart,
+  removeProductFromCart,
+  resetCart,
+  updateCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

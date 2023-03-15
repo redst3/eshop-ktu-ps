@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = "http://localhost:5246/api/wishlists/";
 
 class WishlistService {
-  getWishList(userId) {
+  async getWishList(userId) {
     var data = "";
 
     var config = {

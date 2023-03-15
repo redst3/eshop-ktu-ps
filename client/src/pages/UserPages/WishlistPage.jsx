@@ -7,12 +7,18 @@ export const WishlistPage = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState(false);
   const { data } = useFetch(
-    `/products?populate=*${JSON.parse(sessionStorage.getItem("wishlist")).map(
-      (item, index) => `&[filters][id][$in][${index}]=${item}`
-    )}`
+    `/products?populate=*${
+      sessionStorage.getItem("wishlist") === null
+        ? ""
+        : JSON.parse(sessionStorage.getItem("wishlist")).map(
+            (item, index) => `&[filters][id][$in][${index}]=${item}`
+          )
+    }`
   );
   useEffect(() => {
-    if (JSON.parse(sessionStorage.getItem("wishlist")).length === 0) {
+    if (sessionStorage.getItem("wishlist") === null) {
+      setErrors(true);
+    } else if (JSON.parse(sessionStorage.getItem("wishlist")).length === 0) {
       setErrors(true);
     }
   }, []);

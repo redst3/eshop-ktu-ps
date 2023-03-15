@@ -17,14 +17,17 @@ const Login = () => {
     if (!username || !password) return setError("Please fill in all fields");
     authServices.login(username, password).then(
       (response) => {
-        wishServices.getWishList(response);
-        navigate("/");
+        handleWishlist(response);
       },
       (error) => {
-        setError(error.response.data);
+        setError(error.code);
         console.log(error);
       }
     );
+  };
+  const handleWishlist = async (userId) => {
+    await wishServices.getWishList(userId);
+    navigate("/");
   };
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
