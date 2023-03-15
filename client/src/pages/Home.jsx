@@ -5,12 +5,12 @@ import Slider from "../components/Slider";
 import "./zpages.scss";
 
 const Home = () => {
-  useEffect(() => {
-    if (sessionStorage.getItem("userchange")) {
-      sessionStorage.removeItem("userchange");
-      window.location.reload();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("userchange")) {
+  //     sessionStorage.removeItem("userchange");
+  //     window.location.reload();
+  //   }
+  // }, []);
 
   return (
     <div className="home">
