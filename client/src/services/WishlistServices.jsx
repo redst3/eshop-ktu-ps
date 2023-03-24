@@ -13,7 +13,6 @@ class WishlistService {
       headers: {},
       data: data,
     };
-    console.log(config);
     axios(config)
       .then(function (response) {
         sessionStorage.setItem("wishlist", response.data.productIds);

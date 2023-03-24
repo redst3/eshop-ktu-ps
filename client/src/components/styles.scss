@@ -1,8 +1,21 @@
+.scrolled-navbar {
+}
+.navbar-placeholder {
+  height: 80px;
+}
 .navbar {
+  user-select: none;
   height: 80px;
   box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -webkit-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   .wrapper {
     padding: 10px 30px;
     display: flex;
@@ -62,6 +75,78 @@
     }
   }
 }
+@media screen and (min-width: 950px) {
+  .right {
+    .mobile {
+      display: none;
+    }
+  }
+  .mobile-nav {
+    display: none;
+  }
+}
+@media screen and (max-width: 950px) {
+  .navbar {
+    .wrapper {
+      .left {
+        display: none;
+      }
+      .center {
+        .logo {
+          width: 200px;
+          height: 60px;
+        }
+      }
+      .right {
+        .mobile {
+          cursor: pointer;
+        }
+      }
+    }
+    .navbar-mobile {
+      user-select: none;
+      z-index: 102;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 40vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: translateX(100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      .navbar-close {
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+      .navbar-menu-items {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        div {
+          color: aqua;
+        }
+      }
+    }
+    .show {
+      transform: translateX(0);
+      transition: all 0.5s ease;
+    }
+    .mobile-navbar-placeholder {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      backdrop-filter: blur(10px);
+      transition: 1s ease-in-out;
+    }
+  }
+}
 
 .footer {
   height: 150px;
@@ -74,6 +159,7 @@
   padding-right: 20px;
   font-size: 20px;
   font-weight: bold;
+  user-select: none;
   .left {
     display: flex;
     gap: 50px;
@@ -263,6 +349,7 @@
   height: 80vh;
   gap: 10px;
   margin: 10px;
+  user-select: none;
   .col {
     flex: 1;
     display: flex;

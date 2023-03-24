@@ -10,7 +10,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  // const [update, setUpdate] = useState();
+  const [update, setUpdate] = useState(false);
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -22,14 +22,20 @@ const Login = () => {
       (error) => {
         setError(error.code);
         console.log(error);
+        return;
       }
     );
   };
   const handleWishlist = async (userId) => {
     await wishServices.getWishList(userId).then(() => {
-      navigate("/");
+      setUpdate(true);
     });
   };
+  useEffect(() => {
+    if (update) {
+      navigate("/");
+    }
+  }, [update, navigate]);
   useEffect(() => {
     if (sessionStorage.getItem("user")) {
       navigate("/");

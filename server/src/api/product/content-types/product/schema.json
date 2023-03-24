@@ -63,6 +63,12 @@
     "on_sale": {
       "type": "boolean",
       "default": false
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "mappedBy": "products"
     }
   }
 }

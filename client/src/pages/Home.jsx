@@ -10,7 +10,7 @@ const Home = () => {
       sessionStorage.removeItem("userchange");
       window.location.reload();
     }
-  }, []);
+  }, [sessionStorage.getItem("userchange")]);
 
   return (
     <div className="home">

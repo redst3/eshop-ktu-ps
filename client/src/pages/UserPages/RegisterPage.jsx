@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./authPages.scss";
 import authServices from "../../services/AuthServices";
 import { useNavigate } from "react-router-dom";
-
+// TODO password validation for too short number of characters not working
 const Register = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
