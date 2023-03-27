@@ -12,4 +12,5 @@ public class Context : IdentityDbContext<User>
 
     public Context(DbContextOptions<Context> options) : base(options){} 
     public DbSet<Wishlist> Wishlists { get; set; }
+    public DbSet<BackgroundImage> BackgroundImages { get; set; }
 }

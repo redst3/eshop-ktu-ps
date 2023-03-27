@@ -1,16 +1,14 @@
-.scrolled-navbar {
-}
 .navbar-placeholder {
   height: 80px;
 }
 .navbar {
   user-select: none;
-  height: 80px;
+  height: 75px;
   box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -webkit-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.73);
+  --webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   position: fixed;
   top: 0;
@@ -177,7 +175,7 @@
 }
 .slider {
   height: calc(100vh - 80px);
-  width: 100vw;
+  width: 99.7vw;
   position: relative;
   overflow: hidden;
   .container {
@@ -407,7 +405,7 @@
     flex: 1;
     position: sticky;
     height: 100%;
-    top: 30px;
+    top: 80px;
     padding-right: 50px;
     .filter {
       margin-bottom: 30px;
@@ -574,9 +572,6 @@
         gap: 6px;
         color: rgb(3, 75, 75);
       }
-      // .item:hover {
-      //   color: red;
-      // }
       .item-exists {
         display: flex;
         align-items: center;
@@ -626,12 +621,12 @@
     overflow-y: scroll;
     overflow-x: hidden;
     user-select: none;
-    /* Works on Firefox */
     scrollbar-width: thin;
     scrollbar-color: teal teal;
-    /* Works on Chrome, Edge, and Safari */
     *::-webkit-scrollbar {
       width: 1px;
+      scrollbar-width: thin;
+      scrollbar-color: teal teal;
     }
 
     *::-webkit-scrollbar-track {

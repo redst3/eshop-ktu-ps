@@ -6,7 +6,7 @@ import "./zitempreview.scss";
 export const IntroductionPage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/preview/preview-items");
+    navigate("/preview/upload");
   };
   return (
     <div className="introduction">

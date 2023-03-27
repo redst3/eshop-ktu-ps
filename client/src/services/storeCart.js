@@ -12,8 +12,6 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const stripe = require("stripe")(process.env.STRIPE_KEY);
-
 const persistConfig = {
   key: "root",
   version: 1,

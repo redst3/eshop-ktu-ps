@@ -10,6 +10,7 @@ export const PreviewItemsPage = () => {
   const [selectedX, setSelectedX] = useState(0);
   const [selectedY, setSelectedY] = useState(0);
   const [selectedZ, setSelectedZ] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const products = useSelector((state) => state.cart.products);
   const [previewProducts, setPreviewProducts] = useState([...products]);
@@ -35,6 +36,7 @@ export const PreviewItemsPage = () => {
       item.hidden = true;
     });
     const values = [...product.children[0].style.transform.matchAll(/\d+/g)];
+    setSelectedSize(parseInt(product.children[0].children[0].height));
     const span = product.querySelector(".product-delete");
     span.hidden = false;
     // set values of selected product to states and use them in range inputs
@@ -53,11 +55,19 @@ export const PreviewItemsPage = () => {
     }
     selectedProduct.children[0].style.transform = `rotateX(${selectedX}deg) rotateY(${selectedY}deg) rotateZ(${selectedZ}deg)`;
   };
+  const handleResize = (e) => {
+    setSelectedSize(parseInt(e.target.value));
+    selectedProduct.children[0].children[0].height = selectedSize;
+    selectedProduct.children[0].children[0].width = selectedSize;
+  };
   const handleReset = () => {
     setSelectedX(0);
     setSelectedY(0);
     setSelectedZ(0);
+    setSelectedSize(200);
     selectedProduct.children[0].style.transform = `rotateX(${0}deg) rotateY(${0}deg) rotateZ(${0}deg)`;
+    selectedProduct.children[0].children[0].height = 200;
+    selectedProduct.children[0].children[0].width = 200;
   };
   const handleDelete = (e) => {
     if (previewProducts.find((item) => item.id === e.id)) {
@@ -93,7 +103,12 @@ export const PreviewItemsPage = () => {
           ))}
         </div>
         <div className="left-bottom">
-          <h1>Adjust:</h1>
+          <h1>Adjust</h1>
+          <div>
+            <h2>Options</h2>
+            <button>Rotate</button>
+            <button>Resize</button>
+          </div>
         </div>
       </div>
       <div className="right">
@@ -141,40 +156,58 @@ export const PreviewItemsPage = () => {
           ) : (
             <>
               <div className="bottom-range">
-                <div className="bottom-adjust">
-                  <input
-                    type="range"
-                    min="-180"
-                    max="180"
-                    value={selectedX}
-                    className="preview-range"
-                    onChange={(e) => {
-                      handleRotate(e, "x");
-                    }}
-                  ></input>
-                  <span>X is rotated {selectedX} degrees</span>
+                <div className="adjust-image" hidden>
+                  <div className="bottom-adjust">
+                    <input
+                      type="range"
+                      min="-180"
+                      max="180"
+                      value={selectedX}
+                      className="preview-range"
+                      onChange={(e) => {
+                        handleRotate(e, "x");
+                      }}
+                    ></input>
+                    <span>X is rotated {selectedX} degrees</span>
+                  </div>
+                  <div className="bottom-adjust">
+                    <input
+                      type="range"
+                      min="-180"
+                      max="180"
+                      value={selectedY}
+                      className="preview-range"
+                      onChange={(e) => handleRotate(e, "y")}
+                    ></input>
+                    <span></span>
+                  </div>
+                  <div className="bottom-adjust">
+                    <input
+                      type="range"
+                      min="-180"
+                      max="180"
+                      value={selectedZ}
+                      className="preview-range"
+                      onChange={(e) => handleRotate(e, "z")}
+                    ></input>
+                    <span>Z is rotated {selectedZ} degrees</span>
+                  </div>
                 </div>
-                <div className="bottom-adjust">
-                  <input
-                    type="range"
-                    min="-180"
-                    max="180"
-                    value={selectedY}
-                    className="preview-range"
-                    onChange={(e) => handleRotate(e, "y")}
-                  ></input>
-                  <span>Y is rotated {selectedY} degrees</span>
-                </div>
-                <div className="bottom-adjust">
-                  <input
-                    type="range"
-                    min="-180"
-                    max="180"
-                    value={selectedZ}
-                    className="preview-range"
-                    onChange={(e) => handleRotate(e, "z")}
-                  ></input>
-                  <span>Z is rotated {selectedZ} degrees</span>
+                <div className="resize-image">
+                  <div className="bottom-adjust">
+                    <input
+                      type="range"
+                      min="0"
+                      max="400"
+                      value={selectedSize}
+                      className="preview-range"
+                      onChange={(e) => handleResize(e)}
+                    ></input>
+                    <span>
+                      Image is resized by{" "}
+                      {((selectedSize * 100) / (400 - 0)).toFixed(0) - 50} %
+                    </span>
+                  </div>
                 </div>
               </div>
               <div className="buttons">

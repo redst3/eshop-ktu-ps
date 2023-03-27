@@ -13,6 +13,7 @@ import { IntroductionPage } from "./pages/PreviewItemsPages/IntroductionPage";
 import { PreviewItemsPage } from "./pages/PreviewItemsPages/PreviewItemsPage";
 import { WishlistPage } from "./pages/UserPages/WishlistPage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { AdjustUploadImagePage } from "./pages/PreviewItemsPages/AdjustUploadImagePage";
 
 const Layout = (error) => {
   if (error.error) {
@@ -64,6 +65,15 @@ const router = createBrowserRouter([
         path: "/preview/introduction",
         element: (
           <ProtectedRoutes requiredRole={"User"} page={<IntroductionPage />} />
+        ),
+      },
+      {
+        path: "/preview/upload",
+        element: (
+          <ProtectedRoutes
+            requiredRole={"User"}
+            page={<AdjustUploadImagePage />}
+          />
         ),
       },
       {

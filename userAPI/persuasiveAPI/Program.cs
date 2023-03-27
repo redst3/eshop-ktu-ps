@@ -37,6 +37,7 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddTransient<IJwtTokenService, JwtTokenService>();
 builder.Services.AddTransient<IWishlistRepository, WishlistRepository>();
+builder.Services.AddTransient<IBackgroundImageRepository, BackgroundImageRepository>();
 builder.Services.AddScoped<AuthDbSeeder>();
 builder.Services.AddCors();
 var app = builder.Build();

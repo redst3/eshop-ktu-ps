@@ -64,11 +64,11 @@
       "type": "boolean",
       "default": false
     },
-    "orders": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::order.order",
-      "mappedBy": "products"
+    "width": {
+      "type": "decimal"
+    },
+    "height": {
+      "type": "decimal"
     }
   }
 }
