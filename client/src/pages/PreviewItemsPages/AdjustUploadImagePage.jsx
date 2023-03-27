@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./zitempreview.scss";
 import { PathLine } from "react-svg-pathline";
+import backgroundService from "../../services/BackgroundImageServices";
 export const AdjustUploadImagePage = () => {
+  const [data, setData] = useState();
   const [lines, setLines] = useState([]);
   const [linelength, setLinelength] = useState([]);
+  const [loadedImage, setLoadedImage] = useState(false);
+  const [loadedContent, setLoadedContent] = useState(null);
+  const [loadedType, setLoadedType] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [firstClick, setFirstClick] = useState(null);
   const [drawLines, setDrawLines] = useState(false);
   const [pixelSize, setPixelSize] = useState(1);
   const [selectedLineSize, setSelectedLineSize] = useState(0);
   const [lastSelectedLineSize, setLastSelectedLineSize] = useState(0);
+  useEffect(() => {
+    var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+    async function fetchData() {
+      await backgroundService
+        .getBackgroundImage(userId)
+        .then((response) => {
+          setPixelSize(response.px_to_cm);
+          setLoadedImage(true);
+          setLoadedContent(response.image.fileContents);
+          setLoadedType(response.image.contentType);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    fetchData(userId);
+  }, []);
   const handleClick = (e) => {
     if (drawLines === false) return;
     var rect = document.querySelector(".line-frame").getBoundingClientRect();
@@ -29,7 +51,7 @@ export const AdjustUploadImagePage = () => {
         { x: x, y: y },
       ],
     ]);
-    setLinelength([...linelength, distanceSquared]);
+    setLinelength([...linelength, (distanceSquared * pixelSize).toFixed(2)]);
     setFirstClick(null);
   };
   const handleUndo = () => {
@@ -37,6 +59,11 @@ export const AdjustUploadImagePage = () => {
     setLines(lines.slice(0, -1));
     setLinelength(linelength.slice(0, -1));
     setFirstClick(null);
+    var allLines = document.querySelectorAll(".line");
+    allLines.forEach((line) => {
+      line.style.stroke = "red";
+    });
+    document.querySelector(".image-option-pixels").hidden = true;
   };
   const handleLineClick = (e, length) => {
     if (drawLines) return;
@@ -53,8 +80,45 @@ export const AdjustUploadImagePage = () => {
   const handleUpdate = () => {
     if (drawLines) return;
     if (selectedLineSize === lastSelectedLineSize) return;
-    setPixelSize(parseInt(selectedLineSize) / parseInt(lastSelectedLineSize));
+    var newSize =
+      parseFloat(selectedLineSize) / parseFloat(lastSelectedLineSize);
+    var newlengths = [];
+    linelength.forEach((length) => {
+      newlengths.push((parseFloat(length) * newSize).toFixed(2));
+    });
+    setPixelSize(newSize);
+    setLinelength(newlengths);
+    var lines = document.querySelectorAll(".line");
+    lines.forEach((line) => {
+      line.style.stroke = "red";
+    });
+    document.querySelector(".image-option-pixels").hidden = true;
   };
+  const handleUpload = async () => {
+    var status = document.getElementById("status");
+    if (selectedImage === null) {
+      status.innerHTML = "Image cannot be empty!";
+      status.style.color = "red";
+      return;
+    }
+    try {
+      var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+    } catch {
+      status.innerHTML = "You are not logged in!";
+      status.style.color = "red";
+      return;
+    }
+    await backgroundService
+      .uploadBackgroundInformation(userId, selectedImage, pixelSize)
+      .then(() => {
+        status.innerHTML = "Information has been saved successfully!";
+      })
+      .catch((err) => {
+        status.innerHTML = err;
+        status.style.color = "red";
+      });
+  };
+
   return (
     <div className="adjust-upload-page">
       <div className="container">
@@ -66,6 +130,7 @@ export const AdjustUploadImagePage = () => {
               name="myImage"
               onChange={(event) => {
                 setSelectedImage(event.target.files[0]);
+                setLoadedImage(false);
                 setLines([]);
                 setLinelength([]);
               }}
@@ -88,7 +153,6 @@ export const AdjustUploadImagePage = () => {
             <div className="image-option">
               <button onClick={handleUndo}>Undo</button>
             </div>
-
             <div className="image-option-pixels" hidden>
               <label>Selected Line length in cm</label>
               <input
@@ -100,12 +164,24 @@ export const AdjustUploadImagePage = () => {
               />
               <button onClick={handleUpdate}>Update all line lengths</button>
             </div>
+            <div className="image-option">
+              <button onClick={handleUpload}>Save image and information</button>
+              <span id="status" className="upload-status"></span>
+              <button onClick={() => console.log("continue")}>Continue</button>
+            </div>
+            <div className="image-option">
+              <span>Pixel size - {pixelSize}</span>
+            </div>
           </div>
         </div>
         <div className="right">
-          {selectedImage && (
+          {loadedImage ? ( // This is image that is fetched from database if found
             <div className="image-holder" onClick={handleClick}>
-              <img alt="not found" src={URL.createObjectURL(selectedImage)} />
+              <img
+                alt="not found"
+                src={`data:${loadedType};base64,${loadedContent}`}
+                type={loadedType}
+              />
               <svg className="line-frame">
                 {lines.map((line, index) => (
                   <svg className="line-svg" key={index}>
@@ -118,14 +194,34 @@ export const AdjustUploadImagePage = () => {
                       r={1}
                       onClick={(e) => handleLineClick(e, linelength[index])}
                     />
-                    <title>
-                      Line length - {(linelength[index] * pixelSize).toFixed(2)}{" "}
-                      cm
-                    </title>
+                    <title>Line length - {linelength[index]} cm</title>
                   </svg>
                 ))}
               </svg>
             </div>
+          ) : (
+            // This is image that is uploaded
+            selectedImage && (
+              <div className="image-holder" onClick={handleClick}>
+                <img alt="not found" src={URL.createObjectURL(selectedImage)} />
+                <svg className="line-frame">
+                  {lines.map((line, index) => (
+                    <svg className="line-svg" key={index}>
+                      <PathLine
+                        className="line"
+                        points={line}
+                        stroke="red"
+                        strokeWidth="5"
+                        fill="none"
+                        r={1}
+                        onClick={(e) => handleLineClick(e, linelength[index])}
+                      />
+                      <title>Line length - {linelength[index]} cm</title>
+                    </svg>
+                  ))}
+                </svg>
+              </div>
+            )
           )}
         </div>
       </div>
