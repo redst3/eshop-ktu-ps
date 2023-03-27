@@ -47,6 +47,7 @@ app.UseHttpsRedirection();
 app.MapControllers();
 app.UseAuthorization();
 app.UseAuthentication();
+app.UseStaticFiles();
 app.Services.CreateScope().ServiceProvider.GetRequiredService<AuthDbSeeder>().SeedAsync().Wait();
 
 app.Run();
