@@ -5,8 +5,10 @@ const API_URL = "http://localhost:5246/api/backgroundimages/";
 class BackgroundImageService {
   async uploadBackgroundInformation(userId, file, px_to_cm) {
     var formdata = new FormData();
-    formdata.append("background", file, file.name);
-    formdata.append("px_to_cm", px_to_cm.toFixed(4));
+    if (file !== null) {
+      formdata.append("background", file, file.name);
+    }
+    formdata.append("px_to_cm", px_to_cm.toFixed(3));
     let config = {
       method: "post",
       maxBodyLength: Infinity,

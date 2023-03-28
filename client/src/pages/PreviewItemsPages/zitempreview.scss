@@ -174,12 +174,86 @@
     user-select: none;
     .left {
       flex: 1;
-      border: 1px solid black;
       height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      -webkit-box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      -moz-box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      .image-options {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .image-option {
+          height: 15vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          .upload-status {
+            color: green;
+          }
+        }
+        .image-option-pixels {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          border: 1px solid teal;
+          padding: 5px;
+        }
+        button {
+          width: 250px;
+          padding: 10px;
+          background-color: turquoise;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: teal;
+          color: white;
+        }
+        .continue-disabled {
+          background-color: grey;
+          cursor: not-allowed;
+        }
+        .continue-disabled:hover {
+          background-color: grey;
+          color: rgb(110, 110, 110);
+        }
+        .image-upload {
+          width: 230px;
+          height: 20px;
+          padding: 10px;
+          background-color: turquoise;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          border: none;
+          font-size: 20px;
+          font-weight: bold;
+          cursor: pointer;
+          input {
+            position: absolute;
+            left: -99999rem;
+          }
+        }
+      }
     }
     .right {
       flex: 3;
-      border: 1px solid green;
       height: 100%;
       display: flex;
       justify-content: center;

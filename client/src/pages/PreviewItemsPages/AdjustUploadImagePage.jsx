@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./zitempreview.scss";
 import { PathLine } from "react-svg-pathline";
 import backgroundService from "../../services/BackgroundImageServices";
 export const AdjustUploadImagePage = () => {
-  const [data, setData] = useState();
+  const navigate = useNavigate();
+  const [next, setNext] = useState("disabled");
   const [lines, setLines] = useState([]);
   const [linelength, setLinelength] = useState([]);
   const [loadedImage, setLoadedImage] = useState(false);
@@ -17,6 +19,7 @@ export const AdjustUploadImagePage = () => {
   const [lastSelectedLineSize, setLastSelectedLineSize] = useState(0);
   useEffect(() => {
     var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+    document.getElementById("continue").disabled = true;
     async function fetchData() {
       await backgroundService
         .getBackgroundImage(userId)
@@ -34,6 +37,7 @@ export const AdjustUploadImagePage = () => {
   }, []);
   const handleClick = (e) => {
     if (drawLines === false) return;
+    document.getElementById("status").innerHTML = "";
     var rect = document.querySelector(".line-frame").getBoundingClientRect();
     var x = e.clientX - rect.left; //x position within the element.
     var y = e.clientY - rect.top; //y position within the element.
@@ -55,6 +59,7 @@ export const AdjustUploadImagePage = () => {
     setFirstClick(null);
   };
   const handleUndo = () => {
+    document.getElementById("status").innerHTML = "";
     if (lines.length === 0) return;
     setLines(lines.slice(0, -1));
     setLinelength(linelength.slice(0, -1));
@@ -63,11 +68,11 @@ export const AdjustUploadImagePage = () => {
     allLines.forEach((line) => {
       line.style.stroke = "red";
     });
-    document.querySelector(".image-option-pixels").hidden = true;
+    document.querySelector(".image-option-pixels").style = "display:none";
   };
   const handleLineClick = (e, length) => {
     if (drawLines) return;
-
+    document.getElementById("status").innerHTML = "";
     var lines = document.querySelectorAll(".line");
     lines.forEach((line) => {
       line.style.stroke = "red";
@@ -75,48 +80,65 @@ export const AdjustUploadImagePage = () => {
     e.target.style.stroke = "blue";
     setSelectedLineSize(length);
     setLastSelectedLineSize(length);
-    document.querySelector(".image-option-pixels").hidden = false;
+    document.querySelector(".image-option-pixels").style = "display:flex";
   };
   const handleUpdate = () => {
+    document.getElementById("status").innerHTML = "";
     if (drawLines) return;
     if (selectedLineSize === lastSelectedLineSize) return;
+    if (selectedLineSize <= 0) return;
+    if (isNaN(selectedLineSize)) return;
     var newSize =
       parseFloat(selectedLineSize) / parseFloat(lastSelectedLineSize);
     var newlengths = [];
     linelength.forEach((length) => {
       newlengths.push((parseFloat(length) * newSize).toFixed(2));
     });
-    setPixelSize(newSize);
+    setPixelSize(pixelSize * newSize);
     setLinelength(newlengths);
     var lines = document.querySelectorAll(".line");
     lines.forEach((line) => {
       line.style.stroke = "red";
     });
-    document.querySelector(".image-option-pixels").hidden = true;
+    document.querySelector(".image-option-pixels").style = "display:none";
   };
   const handleUpload = async () => {
     var status = document.getElementById("status");
-    if (selectedImage === null) {
-      status.innerHTML = "Image cannot be empty!";
-      status.style.color = "red";
-      return;
+    if (status.innerHTML === "Information has been saved successfully!") return;
+    var flag = false;
+    if (selectedImage) {
+      flag = true;
     }
-    try {
-      var userId = JSON.parse(sessionStorage.getItem("user")).sub;
-    } catch {
-      status.innerHTML = "You are not logged in!";
-      status.style.color = "red";
-      return;
+    if (loadedImage) {
+      flag = true;
     }
-    await backgroundService
-      .uploadBackgroundInformation(userId, selectedImage, pixelSize)
-      .then(() => {
-        status.innerHTML = "Information has been saved successfully!";
-      })
-      .catch((err) => {
-        status.innerHTML = err;
+    if (flag) {
+      try {
+        var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+      } catch {
+        status.innerHTML = "You are not logged in!";
         status.style.color = "red";
-      });
+        return;
+      }
+      await backgroundService
+        .uploadBackgroundInformation(userId, selectedImage, pixelSize)
+        .then(() => {
+          status.innerHTML = "Information has been saved successfully!";
+          setNext("");
+          document.getElementById("continue").disabled = false;
+        })
+        .catch((err) => {
+          status.innerHTML = err;
+          status.style.color = "red";
+        });
+    }
+    if (!flag) {
+      status.innerHTML = "Please select an image!";
+      status.style.color = "red";
+    }
+  };
+  const handleNavigation = () => {
+    navigate("/preview/preview-items");
   };
 
   return (
@@ -125,21 +147,27 @@ export const AdjustUploadImagePage = () => {
         <div className="left">
           <h1>Options</h1>
           <div className="image-options">
-            <input
-              type="file"
-              name="myImage"
-              onChange={(event) => {
-                setSelectedImage(event.target.files[0]);
-                setLoadedImage(false);
-                setLines([]);
-                setLinelength([]);
-              }}
-            />
+            <label htmlFor="upload" className="image-upload">
+              Upload Image
+              <input
+                id="upload"
+                type="file"
+                accept="image/jpg, image/jpeg, image/png"
+                name="myImage"
+                onChange={(event) => {
+                  setSelectedImage(event.target.files[0]);
+                  setLoadedImage(false);
+                  setLines([]);
+                  setLinelength([]);
+                }}
+              />
+            </label>
             <div className="image-option">
               <button
                 onClick={() => {
                   setDrawLines(drawLines ? false : true);
-                  document.querySelector(".image-option-pixels").hidden = true;
+                  document.querySelector(".image-option-pixels").style =
+                    "display:none";
                   var lines = document.querySelectorAll(".line");
                   lines.forEach((line) => {
                     line.style.stroke = "red";
@@ -153,24 +181,29 @@ export const AdjustUploadImagePage = () => {
             <div className="image-option">
               <button onClick={handleUndo}>Undo</button>
             </div>
-            <div className="image-option-pixels" hidden>
+            <div className="image-option">
+              <button onClick={handleUpload}>Save image and information</button>
+              <span id="status" className="upload-status"></span>
+              <button
+                id="continue"
+                onClick={handleNavigation}
+                className={"continue-" + next}
+              >
+                Continue
+              </button>
+            </div>
+            <div className="image-option-pixels">
               <label>Selected Line length in cm</label>
               <input
-                type="text"
+                type="number"
+                min={10}
+                max={10000}
                 value={selectedLineSize}
                 onChange={(e) => {
                   setSelectedLineSize(e.target.value);
                 }}
               />
               <button onClick={handleUpdate}>Update all line lengths</button>
-            </div>
-            <div className="image-option">
-              <button onClick={handleUpload}>Save image and information</button>
-              <span id="status" className="upload-status"></span>
-              <button onClick={() => console.log("continue")}>Continue</button>
-            </div>
-            <div className="image-option">
-              <span>Pixel size - {pixelSize}</span>
             </div>
           </div>
         </div>
