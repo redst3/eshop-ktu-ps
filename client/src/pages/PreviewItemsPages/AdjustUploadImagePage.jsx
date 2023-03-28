@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./zitempreview.scss";
 import { PathLine } from "react-svg-pathline";
 import backgroundService from "../../services/BackgroundImageServices";
+import { motion } from "framer-motion";
 export const AdjustUploadImagePage = () => {
   const navigate = useNavigate();
   const [next, setNext] = useState("disabled");
@@ -147,7 +148,11 @@ export const AdjustUploadImagePage = () => {
         <div className="left">
           <h1>Options</h1>
           <div className="image-options">
-            <label htmlFor="upload" className="image-upload">
+            <motion.label
+              htmlFor="upload"
+              className="image-upload"
+              whileHover={{ scale: 0.95 }}
+            >
               Upload Image
               <input
                 id="upload"
@@ -161,9 +166,10 @@ export const AdjustUploadImagePage = () => {
                   setLinelength([]);
                 }}
               />
-            </label>
+            </motion.label>
             <div className="image-option">
-              <button
+              <motion.button
+                whileHover={{ scale: 0.95 }}
                 onClick={() => {
                   setDrawLines(drawLines ? false : true);
                   document.querySelector(".image-option-pixels").style =
@@ -175,22 +181,29 @@ export const AdjustUploadImagePage = () => {
                 }}
               >
                 Draw Lines
-              </button>
+              </motion.button>
               <span>{drawLines ? "ON" : "OFF"}</span>
             </div>
             <div className="image-option">
-              <button onClick={handleUndo}>Undo</button>
+              <motion.button whileHover={{ scale: 0.95 }} onClick={handleUndo}>
+                Undo
+              </motion.button>
             </div>
             <div className="image-option">
-              <button onClick={handleUpload}>Save image and information</button>
+              <motion.button
+                whileHover={{ scale: 0.95 }}
+                onClick={handleUpload}
+              >
+                Save image and information
+              </motion.button>
               <span id="status" className="upload-status"></span>
-              <button
+              <motion.button
                 id="continue"
                 onClick={handleNavigation}
                 className={"continue-" + next}
               >
                 Continue
-              </button>
+              </motion.button>
             </div>
             <div className="image-option-pixels">
               <label>Selected Line length in cm</label>
@@ -203,7 +216,12 @@ export const AdjustUploadImagePage = () => {
                   setSelectedLineSize(e.target.value);
                 }}
               />
-              <button onClick={handleUpdate}>Update all line lengths</button>
+              <motion.button
+                whileHover={{ scale: 0.95 }}
+                onClick={handleUpdate}
+              >
+                Update all line lengths
+              </motion.button>
             </div>
           </div>
         </div>

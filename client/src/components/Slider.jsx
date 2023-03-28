@@ -4,9 +4,9 @@ import "./styles.scss";
 function Slider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const data = [
-    "https://images.unsplash.com/photo-1613336026275-d6d473084e85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    "https://plus.unsplash.com/premium_photo-1666900440561-94dcb6865554?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
-    "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    "https://media.architecturaldigest.com/photos/629f848b56ab5dc0e3622ee5/master/pass/Limewash%20cover.jpg",
+    "https://media.architecturaldigest.com/photos/571e97c5741fcddb16b559c9/2:1/w_5127,h_2563,c_limit/modernist-decor-inspiration-01.jpg",
+    "https://r4.wallpaperflare.com/wallpaper/128/588/887/interior-design-futuristic-tron-legacy-wallpaper-794068ada11a7d6b3677a84ff041b6ed.jpg",
   ];
   const prevSlide = () => {
     setCurrentSlide(currentSlide > 0 ? currentSlide - 1 : 2);
@@ -22,8 +22,13 @@ function Slider() {
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         <img src={data[0]} alt="0" />
+        <div className="info modal-1" data-translate="100">
+          aaa
+        </div>
         <img src={data[1]} alt="1" />
+        <div className="info modal-2">aaa</div>
         <img src={data[2]} alt="2" />
+        <div className="info modal-3">aaa</div>
       </div>
       <div className="slider-icons">
         <div className="slider-icon" onClick={prevSlide}></div>
