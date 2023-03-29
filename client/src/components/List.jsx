@@ -12,9 +12,11 @@ const List = ({ categoryId, maxPrice, sort, selectedSubCategories }) => {
   );
   return (
     <div className="listCards">
-      {loading
-        ? "loading"
-        : data?.map((item) => <Card item={item} key={item.id} />)}
+      {loading ? (
+        <div id="spin" className="spinner"></div>
+      ) : (
+        data?.map((item) => <Card item={item} key={item.id} />)
+      )}
     </div>
   );
 };

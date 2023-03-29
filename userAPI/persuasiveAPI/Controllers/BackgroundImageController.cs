@@ -17,6 +17,7 @@ public class BackgroundImageController: ControllerBase
     }
     [HttpGet]
     [Route("{userId}")]
+    [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> GetBackgroundImage(string userId)
     {
         var background = await _backgroundImageRepository.GetBackgroundByUserId(userId);
@@ -66,6 +67,6 @@ public class BackgroundImageController: ControllerBase
             backgroundImage.px_to_cm = px_to_cm;
             await _backgroundImageRepository.UpdateBackgroundImage(backgroundImage);
         }
-        return Ok();
+        return Ok("Background information updated");
     }
 }

@@ -1,6 +1,7 @@
 import "./App.scss";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
+import AllProducts from "./pages/AllProducts";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import Navbar from "./components/Navbar";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage />,
+      },
+      {
+        path: "/products",
+        element: <AllProducts />,
       },
       {
         path: "/products/:id",

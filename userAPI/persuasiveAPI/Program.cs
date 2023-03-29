@@ -45,8 +45,8 @@ app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin =
 
 app.UseHttpsRedirection();
 app.MapControllers();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 app.UseStaticFiles();
 app.Services.CreateScope().ServiceProvider.GetRequiredService<AuthDbSeeder>().SeedAsync().Wait();
 

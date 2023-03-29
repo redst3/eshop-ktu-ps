@@ -25,14 +25,24 @@ const Products = () => {
   return (
     <div className="products">
       {data.length === 0 ? (
-        <h1>Something went wrong....</h1>
+        <h1>
+          Are you sure this category exists?
+          <br />
+          <center>
+            <Link to="/products">Go back</Link>
+          </center>
+        </h1>
       ) : (
         <>
           <div className="left">
             <div className="filter">
-              <h2> Secondary Categories</h2>
+              <h2> SECONDARY CATEGORIES</h2>
               {data?.map((item) => (
-                <div className="inputItem" key={item.id}>
+                <div
+                  className="inputItem"
+                  key={item.id}
+                  style={{ textTransform: "uppercase" }}
+                >
                   <input
                     type="checkbox"
                     id={item.id}
@@ -45,7 +55,7 @@ const Products = () => {
               ))}
             </div>
             <div className="filter">
-              <h2>Filter by price</h2>
+              <h2>FILTER BY PRICE</h2>
               <span>0</span>
               <input
                 type="range"
@@ -63,12 +73,12 @@ const Products = () => {
                     setPrice(maxPrice);
                   }}
                 >
-                  filter
+                  FILTER
                 </motion.button>
               </div>
             </div>
             <div className="filter">
-              <h2>Sort by</h2>
+              <h2>SORT BY</h2>
               <div className="inputItem">
                 <input
                   type="radio"
@@ -77,7 +87,7 @@ const Products = () => {
                   name="price"
                   onChange={() => setSort("asc")}
                 ></input>
-                <label htmlFor="asc">Lowest first</label>
+                <label htmlFor="asc">LOWEST FIRST</label>
               </div>
               <div className="inputItem">
                 <input
@@ -87,11 +97,11 @@ const Products = () => {
                   name="price"
                   onChange={() => setSort("desc")}
                 ></input>
-                <label htmlFor="desc">Highest first</label>
+                <label htmlFor="desc">HIGHEST FIRST</label>
               </div>
             </div>
-            <div className="filter">
-              <h2>Browse more categories</h2>
+            <div className="filter" style={{ textTransform: "uppercase" }}>
+              <h2>BROWSE MORE CATEGORIES</h2>
               {categories.data?.map((item) => (
                 <Link
                   className="link"

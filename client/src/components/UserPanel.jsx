@@ -17,14 +17,14 @@ export const UserPanel = () => {
           className="user-panel-order-history h01hz"
           whileHover={{ scale: 1.15 }}
         >
-          <button className="h01hz">View purchase history</button>
+          <button className="h01hz">PURCHASE HISTORY</button>
         </motion.div>
         <motion.div
           className="user-panel-logout h01hz"
           whileHover={{ scale: 1.15 }}
         >
           <button className="h01hz" onClick={handleLogout}>
-            Logout
+            LOGOUT
           </button>
         </motion.div>
       </div>

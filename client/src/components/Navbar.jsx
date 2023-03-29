@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../img/logo.png";
+import logo from "../img/logo_nobackground.png";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -69,20 +69,17 @@ const Navbar = () => {
         <div className="wrapper">
           <div className="left">
             <motion.div className="item" whileHover={{ scale: 1.15 }}>
-              <Link className="link" to="/products/1">
-                Browse
+              <Link className="link" to="/products">
+                BROWSE
               </Link>
             </motion.div>
-            <motion.div className="item" whileHover={{ scale: 1.15 }}>
-              <Link className="link" to="/">
-                Custom paintings
-              </Link>
-            </motion.div>
-            <motion.div className="item" whileHover={{ scale: 1.15 }}>
-              <Link className="link" to="/preview/introduction">
-                Preview
-              </Link>
-            </motion.div>
+            {user ? (
+              <motion.div className="item" whileHover={{ scale: 1.15 }}>
+                <Link className="link" to="/preview/introduction">
+                  PREVIEW
+                </Link>
+              </motion.div>
+            ) : null}
           </div>
           <div className="center">
             <Link className="link" to="/">

@@ -30,7 +30,9 @@ class BackgroundImageService {
       method: "get",
       maxBodyLength: Infinity,
       url: API_URL + userId,
-      headers: {},
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
     };
     const response = await axios(config);
     return response.data;

@@ -165,12 +165,12 @@ const Product = () => {
               }}
             />
             <div className="info">
-              <span>About</span>
+              <span>ABOUT</span>
               <span className="info-about">
-                Category: {data[0]?.attributes.category.data.attributes.title}
+                CATEGORY: {data[0]?.attributes.category.data.attributes.title}
               </span>
               <span className="info-about">
-                Sub-Category:{" "}
+                SUB-CATEGORY:{" "}
                 {data[0]?.attributes.sub_category.data.attributes.title}
               </span>
             </div>

@@ -25,22 +25,19 @@ export const FeaturedProducts = ({ type }) => {
   return (
     <div className="featuredProducts">
       <div className="top">
-        <h1>{type} Products</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          sollicitudin urna vitae urna commodo porttitor. Praesent consequat
-          accumsan eros, et ullamcorper magna ullamcorper malesuada. Morbi
-          dignissim porta lacinia. In convallis at urna at finibus. Mauris
-          dignissim tortor ac nunc condimentum, vestibulum feugiat quam
-          efficitur. Donec neque es
-        </p>
+        <center>
+          <h1>{type} Products</h1>
+          <hr></hr>
+        </center>
       </div>
       <div className="bottom">
-        {error
-          ? "Error occured"
-          : loading
-          ? "Loading"
-          : data.map((item) => <Card item={item} key={item.id} />)}
+        {error ? (
+          "Something went wrong..."
+        ) : loading ? (
+          <div id="spin" className="spinner"></div>
+        ) : (
+          data.map((item) => <Card item={item} key={item.id} />)
+        )}
       </div>
     </div>
   );
