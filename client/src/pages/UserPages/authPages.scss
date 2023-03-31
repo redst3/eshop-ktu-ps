@@ -1,9 +1,10 @@
 .login {
-  height: 80vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: gray;
+  background-image: url("../../img/slider/1.webp");
+  background-size: cover;
   .login-window {
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);
@@ -66,7 +67,8 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: gray;
+  background-image: url("../../img/slider/1.webp");
+  background-size: cover;
   .register-window {
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);

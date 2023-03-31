@@ -44,10 +44,10 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-window">
-        <h1 className="login-title">Existing User</h1>
+        <h1 className="login-title">EXISTING USER</h1>
         <form className="login-form">
           <div className="login-form-email">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">USERNAME</label>
             <input
               className="form-input"
               name="username"
@@ -56,7 +56,7 @@ const Login = () => {
             />
           </div>
           <div className="login-form-password">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">PASSWORD</label>
             <input
               className="form-input"
               type="password"
@@ -69,7 +69,7 @@ const Login = () => {
             <input
               className="login-form-submit-button"
               type="submit"
-              value="Login"
+              value="LOGIN"
               onClick={handleSumbit}
             />
           </div>
@@ -77,7 +77,7 @@ const Login = () => {
         <p className="error-message">{error}</p>
         <Link to="/register">
           <div className="navigate-register">
-            <p>Don't have an account?</p>
+            <p>DON`T HAVE AN ACCOUNT?</p>
           </div>
         </Link>
       </div>

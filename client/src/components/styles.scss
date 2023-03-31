@@ -8,6 +8,7 @@
   -webkit-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   background-color: rgba(255, 255, 255, 0.73);
+  backdrop-filter: blur(10px);
   --webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   position: fixed;
@@ -168,11 +169,10 @@
     }
   }
 }
-
 .footer {
-  height: 150px;
-  border: 2px solid rgb(143, 141, 141);
-  background-color: rgb(173, 185, 185);
+  height: 50px;
+  backdrop-filter: blur(2px);
+  --webkit-backdrop-filter: blur(2px);
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -33,10 +33,10 @@ const Register = () => {
   return (
     <div className="register">
       <div className="register-window">
-        <h1 className="register-title">New user registration</h1>
+        <h1 className="register-title">REGISTRATION</h1>
         <form className="register-form">
           <div className="register-form-email">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">EMAIL</label>
             <input
               className="form-input"
               type="email"
@@ -46,7 +46,7 @@ const Register = () => {
             />
           </div>{" "}
           <div className="register-form-email">
-            <label htmlFor="email">Username</label>
+            <label htmlFor="email">USERNAME</label>
             <input
               className="form-input"
               name="username"
@@ -55,7 +55,7 @@ const Register = () => {
             />
           </div>
           <div className="register-form-password">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">PASSWORD</label>
             <input
               className="form-input"
               type="password"
@@ -68,7 +68,7 @@ const Register = () => {
             <input
               className="register-form-submit-button"
               type="submit"
-              value="Register"
+              value="REGISTER"
               onClick={handleSumbit}
             />
           </div>
@@ -76,7 +76,7 @@ const Register = () => {
         <p className="error-message">{error}</p>
         <Link to="/login">
           <div className="navigate-login">
-            <p>Already have an account?</p>
+            <p>ALREADY HAVE AN ACCOUNT?</p>
           </div>
         </Link>
       </div>
