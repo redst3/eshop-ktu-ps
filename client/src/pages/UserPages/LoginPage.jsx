@@ -27,9 +27,8 @@ const Login = () => {
     );
   };
   const handleWishlist = async (userId) => {
-    await wishServices.getWishList(userId).then(() => {
-      setUpdate(true);
-    });
+    await wishServices.getWishList(userId);
+    setUpdate(true);
   };
   useEffect(() => {
     if (update) {

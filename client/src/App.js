@@ -15,6 +15,7 @@ import { PreviewItemsPage } from "./pages/PreviewItemsPages/PreviewItemsPage";
 import { WishlistPage } from "./pages/UserPages/WishlistPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { AdjustUploadImagePage } from "./pages/PreviewItemsPages/AdjustUploadImagePage";
+import { PreviewItemsAferAdjustPage } from "./pages/PreviewItemsPages/PreviewItemsAfterAdjustPage";
 
 const Layout = (error) => {
   if (error.error) {
@@ -85,6 +86,15 @@ const router = createBrowserRouter([
         path: "/preview/preview-items",
         element: (
           <ProtectedRoutes requiredRole={"User"} page={<PreviewItemsPage />} />
+        ),
+      },
+      {
+        path: "/preview/preview-items-temp",
+        element: (
+          <ProtectedRoutes
+            requiredRole={"User"}
+            page={<PreviewItemsAferAdjustPage />}
+          />
         ),
       },
       {

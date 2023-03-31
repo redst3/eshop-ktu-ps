@@ -13,7 +13,7 @@ const Product = () => {
   const productId = parseInt(useParams().id);
   const [exists, setExists] = useState(false);
   const [wishlist, setWishlist] = useState([]);
-  const { data, error } = useFetch(
+  const { data, error, loading } = useFetch(
     `/products?populate=*&[filters][id][$eq]=${productId}`
   );
   const [selectedImage, setSelectedImage] = useState(0);
@@ -28,6 +28,7 @@ const Product = () => {
         setExists(true);
       }
     }
+    window.scrollTo(0, 0);
   }, [productId]);
 
   const handleAddToWishlist = async () => {
@@ -57,7 +58,9 @@ const Product = () => {
   };
   return (
     <div className="product">
-      {error ? (
+      {loading ? (
+        <div id="spin" className="spinner"></div>
+      ) : error ? (
         <h1>Something went wrong....</h1>
       ) : (
         <>
@@ -122,6 +125,8 @@ const Product = () => {
                       title: data[0]?.attributes.title,
                       author: data[0]?.attributes.author,
                       price: data[0]?.attributes.price,
+                      width: data[0]?.attributes.width,
+                      height: data[0]?.attributes.height,
                       img:
                         process.env.REACT_APP_IMG_URL +
                         data[0]?.attributes.img.data[0].attributes.url,
@@ -172,6 +177,12 @@ const Product = () => {
               <span className="info-about">
                 SUB-CATEGORY:{" "}
                 {data[0]?.attributes.sub_category.data.attributes.title}
+              </span>
+              <span className="info-about">
+                WIDTH: {data[0]?.attributes.width} cm
+              </span>
+              <span className="info-about">
+                HEIGHT: {data[0]?.attributes.height} cm
               </span>
             </div>
           </div>

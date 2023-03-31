@@ -68,6 +68,11 @@ const Navbar = () => {
       <div className="navbar">
         <div className="wrapper">
           <div className="left">
+            <Link className="link" to="/">
+              <img src={logo} className="logo" alt="logo"></img>
+            </Link>
+          </div>
+          <div className="center">
             <motion.div className="item" whileHover={{ scale: 1.15 }}>
               <Link className="link" to="/products">
                 BROWSE
@@ -80,11 +85,6 @@ const Navbar = () => {
                 </Link>
               </motion.div>
             ) : null}
-          </div>
-          <div className="center">
-            <Link className="link" to="/">
-              <img src={logo} className="logo" alt="logo"></img>
-            </Link>
           </div>
           <div className="right">
             <div className="icons">
@@ -142,6 +142,16 @@ const Navbar = () => {
               <div className="navbar-close">
                 <ArrowBackIcon onClick={handleMobileNavbar} />
               </div>
+              <motion.div
+                className="navbar-menu-browse"
+                whileHover={{ scale: 1.15 }}
+              >
+                <div onClick={handleMobileNavbar}>
+                  <Link className="link" to="/products">
+                    BROWSE ALL
+                  </Link>
+                </div>
+              </motion.div>
               <center>
                 <h3>BROWSE BY CATEGORY</h3>
               </center>

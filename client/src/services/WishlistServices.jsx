@@ -13,14 +13,19 @@ class WishlistService {
       headers: {},
       data: data,
     };
-    axios(config)
-      .then(function (response) {
-        sessionStorage.setItem("wishlist", response.data.productIds);
-        return true;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const response = await axios(config);
+    if (response.status === 200) {
+      sessionStorage.setItem("wishlist", response.data.productIds);
+    } else {
+      console.log(response.statusText);
+    }
+    // .then(function (response) {
+    //   sessionStorage.setItem("wishlist", response.data.productIds);
+    //   return true;
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
   addToWishList(userId, productId) {
     var data = "";

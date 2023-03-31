@@ -70,7 +70,7 @@ const AllProducts = () => {
             </div>
           </div>
           <div className="filter" style={{ textTransform: "uppercase" }}>
-            <h2>BROWSE MORE CATEGORIES</h2>
+            <h2>CATEGORIES</h2>
             {categories.data?.map((item) => (
               <Link
                 className="link"

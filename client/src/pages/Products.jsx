@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import List from "../components/List";
 import useFetch from "../hooks/useFetch";
@@ -11,7 +11,7 @@ const Products = () => {
   const [price, setPrice] = useState(500);
   const [sort, setSort] = useState("asc");
   const [selected, setSelected] = useState([]);
-  const { data } = useFetch(
+  const { data, loading } = useFetch(
     `/sub-categories?[filters][category][id][$eq]=${categoryId}`
   );
   const categories = useFetch(`/categories?populate=*`);
@@ -22,9 +22,14 @@ const Products = () => {
       setSelected(selected.filter((item) => item !== e.target.value));
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="products">
-      {data.length === 0 ? (
+      {loading ? (
+        <div id="spin" className="spinner"></div>
+      ) : data.length === 0 ? (
         <h1>
           Are you sure this category exists?
           <br />
@@ -101,7 +106,7 @@ const Products = () => {
               </div>
             </div>
             <div className="filter" style={{ textTransform: "uppercase" }}>
-              <h2>BROWSE MORE CATEGORIES</h2>
+              <h2>CATEGORIES</h2>
               {categories.data?.map((item) => (
                 <Link
                   className="link"
