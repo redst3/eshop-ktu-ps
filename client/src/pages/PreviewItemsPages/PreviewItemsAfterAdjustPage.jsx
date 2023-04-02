@@ -6,13 +6,20 @@ import { updateCart } from "../../services/reduceCart";
 import { useSelector } from "react-redux";
 import Draggable from "react-draggable";
 import backgroundService from "../../services/BackgroundImageServices";
+import AlertConfirm from "react-alert-confirm";
+import ClearIcon from "@mui/icons-material/Clear";
+import "react-alert-confirm/lib/style.css";
 import "./zitempreview.scss";
 import "../../components/styles.scss";
 import useFetch from "../../hooks/useFetch";
 import x_img from "../../img/rotate/x.png";
 import y_img from "../../img/rotate/y.png";
 import z_img from "../../img/rotate/z.png";
-
+AlertConfirm.config({
+  maskClosable: true,
+  okText: "Continue",
+  cancelText: "Go back",
+});
 export const PreviewItemsAferAdjustPage = () => {
   const navigate = useNavigate();
   const [loadedImage, setLoadedImage] = useState(false);
@@ -25,9 +32,14 @@ export const PreviewItemsAferAdjustPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [option, setOption] = useState("cart");
   const products = useSelector((state) => state.cart.products);
-  const [previewProducts, setPreviewProducts] = useState([...products]);
+  const [previewProducts, setPreviewProducts] = useState([
+    ...products.map((item) => {
+      return { ...item, inCart: true };
+    }),
+  ]);
   const [displayProducts, setDisplayProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const dispatchHook = useDispatch();
   const { data } = useFetch(
     `/products?populate=*&[filters][title][$containsi]=${keyword}`
   );
@@ -52,17 +64,19 @@ export const PreviewItemsAferAdjustPage = () => {
     const product = e.target.closest(".image-container");
     document.querySelectorAll(".product-delete").forEach((item) => {
       item.hidden = true;
+      item.classList.remove("active");
     });
     const values = [...product.children[0].style.transform.matchAll(/\d+/g)];
     const span = product.querySelector(".product-delete");
     span.hidden = false;
+    span.classList.add("active");
     // set values of selected product to states and use them in range inputs
     setSelectedX(values[0][0]);
     setSelectedY(values[1][0]);
     setSelectedZ(values[2][0]);
     setSelectedProduct(product);
   };
-  const handleProduct = (e) => {
+  const handleCartProduct = (e) => {
     if (e.quantity === 1) {
       setPreviewProducts(previewProducts.filter((item) => item.id !== e.id));
       setDisplayProducts([...displayProducts, e]);
@@ -75,6 +89,21 @@ export const PreviewItemsAferAdjustPage = () => {
       setDisplayProducts([...displayProducts, { ...e, quantity: 1 }]);
     }
   };
+  const handleShopProduct = (e) => {
+    const product = {
+      id: e.id,
+      title: e.attributes.title,
+      author: e.attributes.author,
+      price: e.attributes.price,
+      quantity: 1,
+      img:
+        process.env.REACT_APP_IMG_URL + e.attributes.img.data[0].attributes.url,
+      height: e.attributes.height,
+      width: e.attributes.width,
+      inCart: false,
+    };
+    setDisplayProducts([...displayProducts, product]);
+  };
   const handleRotate = (e, direction) => {
     if (direction === "x") {
       setSelectedX(e.target.value);
@@ -85,17 +114,76 @@ export const PreviewItemsAferAdjustPage = () => {
     }
     selectedProduct.children[0].style.transform = `rotateX(${selectedX}deg) rotateY(${selectedY}deg) rotateZ(${selectedZ}deg)`;
   };
+  const handleReset = () => {
+    setSelectedX(0);
+    setSelectedY(0);
+    setSelectedZ(0);
+    selectedProduct.children[0].style.transform = `rotateX(${0}deg) rotateY(${0}deg) rotateZ(${0}deg)`;
+    selectedProduct.children[0].children[0].height = 200;
+    selectedProduct.children[0].children[0].width = 200;
+  };
+  const handleConfirm = () => {
+    AlertConfirm("Are you sure you want to update the cart?").then((res) => {
+      if (res[0]) {
+        var length = displayProducts.filter(
+          (item) => item.quantity !== 0
+        ).length;
+        if (length === 0) {
+          AlertConfirm.alert("There is no items in the background!");
+        } else {
+          dispatchHook(
+            updateCart(displayProducts.filter((item) => item.quantity !== 0))
+          );
+          window.location.reload();
+        }
+      }
+    });
+  };
+  const handleDelete = (e) => {
+    // iterate display products and find product in array and change its quantity to 0 and add it to preview products
+    const product = displayProducts.find((item) => item.id === e.id);
+    setDisplayProducts(
+      displayProducts.map((item) =>
+        item === e ? { ...item, quantity: 0 } : item
+      )
+    );
+    if (!e.inCart) {
+      return;
+    }
+    if (previewProducts.find((item) => item.id === e.id)) {
+      setPreviewProducts(
+        previewProducts.map((item) =>
+          item.id === e.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setPreviewProducts([...previewProducts, { ...product, quantity: 1 }]);
+    }
+  };
   return (
     <div className="adjust-upload-page">
       <div className="container">
         <div className="left">
-          <div className="image-options">
+          <div className="image-options-back" style={{ marginTop: "20px" }}>
             <button
               className="options-button"
-              style={{ marginTop: "20px" }}
+              onClick={() =>
+                AlertConfirm(
+                  "This will open image upload and line adjustment screen, continue?"
+                ).then((res) => {
+                  if (res[0]) {
+                    navigate("/preview/upload");
+                  }
+                })
+              }
+            >
+              BACK
+            </button>
+            <button
+              className="options-button"
               onClick={() => setOption(option === "cart" ? "all" : "cart")}
             >
-              SWITCH
+              {option === "cart" ? "ALL" : "CART"}
             </button>
           </div>
           {option === "cart" ? (
@@ -108,13 +196,17 @@ export const PreviewItemsAferAdjustPage = () => {
                       <div
                         className="item"
                         key={item.id}
-                        onClick={() => handleProduct(item)}
+                        onClick={() => handleCartProduct(item)}
                       >
                         <img src={item.img} alt={item.id} />
                         <div className="info">
                           <h1>{item.title}</h1>
+                          <h1 className="author">
+                            {item.author ? item.author : "-"}
+                          </h1>
                           <div className="price">
-                            {item.quantity} x {item.price} €
+                            {item.quantity + " X " + item.price} €
+                            <span className="measurements">{`${item.width} cm x ${item.height} cm  `}</span>
                           </div>
                         </div>
                       </div>
@@ -138,7 +230,7 @@ export const PreviewItemsAferAdjustPage = () => {
                       <div
                         className="item"
                         key={item.id}
-                        onClick={() => console.log(item)}
+                        onClick={() => handleShopProduct(item)}
                       >
                         <img
                           src={
@@ -154,7 +246,10 @@ export const PreviewItemsAferAdjustPage = () => {
                               ? item.attributes.author
                               : "-"}
                           </h1>
-                          <div className="price">{item.attributes.price} €</div>
+                          <div className="price">
+                            {item.attributes.price} €
+                            <span className="measurements">{`${item.attributes?.width} cm x ${item.attributes?.height} cm  `}</span>
+                          </div>
                         </div>
                       </div>
                     ))
@@ -174,95 +269,115 @@ export const PreviewItemsAferAdjustPage = () => {
               </div>
             </>
           )}
-          <hr style={{ width: "100%", marginTop: "5px" }} />
           <div className="bottom">
-            <div className="bottom-selected">
-              <span>Adjust selected product</span>
-              <div className="bottom-adjust">
-                <input
-                  type="range"
-                  min="-180"
-                  max="180"
-                  value={selectedX}
-                  className="preview-range"
-                  onChange={(e) => {
-                    handleRotate(e, "x");
-                  }}
-                ></input>
-                <img src={x_img} alt="xaxis"></img>
+            <div className="bottom-selected-container">
+              <hr style={{ width: "90%" }} />
+              <div className="bottom-selected">
+                {selectedProduct && (
+                  <>
+                    <span onClick={handleReset}>RESET</span>
+                    <div className="bottom-adjust">
+                      <input
+                        type="range"
+                        min="-180"
+                        max="180"
+                        value={selectedX}
+                        className="preview-range"
+                        onChange={(e) => {
+                          handleRotate(e, "x");
+                        }}
+                      ></input>
+                      <img src={x_img} alt="xaxis"></img>
+                    </div>
+                    <div className="bottom-adjust">
+                      <input
+                        type="range"
+                        min="-180"
+                        max="180"
+                        value={selectedY}
+                        className="preview-range"
+                        onChange={(e) => {
+                          handleRotate(e, "y");
+                        }}
+                      ></input>
+                      <img src={y_img} alt="yaxis"></img>
+                    </div>
+                    <div className="bottom-adjust">
+                      <input
+                        type="range"
+                        min="-180"
+                        max="180"
+                        value={selectedZ}
+                        className="preview-range"
+                        onChange={(e) => {
+                          handleRotate(e, "z");
+                        }}
+                      ></input>
+                      <img className="z-axis" src={z_img} alt="zaxis"></img>
+                    </div>
+                  </>
+                )}
               </div>
-              <div className="bottom-adjust">
-                <input
-                  type="range"
-                  min="-180"
-                  max="180"
-                  value={selectedY}
-                  className="preview-range"
-                  onChange={(e) => {
-                    handleRotate(e, "y");
-                  }}
-                ></input>
-                <img src={y_img} alt="yaxis"></img>
-              </div>
-              <div className="bottom-adjust">
-                <input
-                  type="range"
-                  min="-180"
-                  max="180"
-                  value={selectedZ}
-                  className="preview-range"
-                  onChange={(e) => {
-                    handleRotate(e, "z");
-                  }}
-                ></input>
-                <img className="z-axis" src={z_img} alt="zaxis"></img>
-              </div>
+              <hr style={{ width: "90%" }} />
             </div>
-            <hr style={{ width: "100%", marginTop: "5px" }} />
             <div className="update">
-              <button>Update cart with products on background</button>
+              <button onClick={handleConfirm}>
+                Update cart with products on background
+              </button>
             </div>
           </div>
         </div>
 
         <div className="right">
           {loadedImage ? (
-            <div className="image-holder" onClick={() => console.log("cklick")}>
+            <div className="image-holder">
               <img
                 className="background"
                 alt="not found"
                 src={`data:${loadedType};base64,${loadedContent}`}
                 type={loadedType}
+                onClick={() => {
+                  setSelectedProduct(null);
+                  document
+                    .querySelectorAll(".product-delete")
+                    .forEach((item) => {
+                      item.hidden = true;
+                      item.classList.remove("active");
+                    });
+                }}
               />
               <div className="product-images">
-                {displayProducts?.map((item, key) => (
-                  <Draggable key={key} bounds=".image-holder">
-                    <div className="image-container" onClick={handleClick}>
-                      <div
-                        className="rotate-image"
-                        style={{
-                          transform: `rotateX(${0}deg) rotateY(${0}deg) rotateZ(${0}deg)`,
-                          width: `${item.width * pixelSize}px`,
-                          height: `${item.height * pixelSize}px}`,
-                        }}
-                      >
-                        <img
-                          draggable="false"
-                          className="product-image"
-                          src={item.img}
-                          alt="img"
-                        />
-                      </div>
-                      <span
-                        className="product-delete"
-                        hidden
-                        onClick={() => console.log("handleDelete(item)")}
-                      >
-                        X
-                      </span>
-                    </div>
-                  </Draggable>
-                ))}
+                {displayProducts?.map(
+                  (item, key) =>
+                    item.quantity > 0 && (
+                      <Draggable key={key} bounds=".image-holder">
+                        <div className="image-container" onClick={handleClick}>
+                          <div
+                            className="rotate-image"
+                            style={{
+                              transform: `rotateX(${0}deg) rotateY(${0}deg) rotateZ(${0}deg)`,
+                              width: `${item.width * pixelSize}px`,
+                              height: `${item.height * pixelSize}px}`,
+                            }}
+                          >
+                            <img
+                              draggable="false"
+                              className="product-image"
+                              src={item.img}
+                              alt="img"
+                            />
+                          </div>
+                          <span
+                            className="product-delete"
+                            hidden
+                            onClick={() => handleDelete(item)}
+                          >
+                            <ClearIcon />
+                          </span>
+                        </div>
+                      </Draggable>
+                    )
+                )}
               </div>
             </div>
           ) : (

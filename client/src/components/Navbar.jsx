@@ -109,7 +109,7 @@ const Navbar = () => {
                 </Link>
               )}
               <motion.div whileHover={{ scale: 1.15 }}>
-                <Link to={"/user/wishlist"} className="link wishlist">
+                <Link to="/user/wishlist" className="link wishlist">
                   <FavoriteBorderOutlinedIcon />
                 </Link>
               </motion.div>
@@ -168,7 +168,7 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/1">
+                  <Link className="link" to="/products/2">
                     VASES
                   </Link>
                 </motion.div>
@@ -176,7 +176,7 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/1">
+                  <Link className="link" to="/products/3">
                     CANDLES
                   </Link>
                 </motion.div>
@@ -184,7 +184,7 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/1">
+                  <Link className="link" to="/products/4">
                     CUSHIONS
                   </Link>
                 </motion.div>
@@ -192,7 +192,7 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/1">
+                  <Link className="link" to="/products/5">
                     MIRRORS
                   </Link>
                 </motion.div>
@@ -200,7 +200,7 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/1">
+                  <Link className="link" to="/products/6">
                     LAMPS
                   </Link>
                 </motion.div>

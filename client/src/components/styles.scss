@@ -8,8 +8,8 @@
   -webkit-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 8px 5px 1px rgba(0, 0, 0, 0.14);
   background-color: rgba(255, 255, 255, 0.73);
-  backdrop-filter: blur(10px);
-  --webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  --webkit-backdrop-filter: blur(5px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   position: fixed;
   top: 0;
@@ -160,12 +160,15 @@
       transition: all 0.5s ease;
     }
     .mobile-navbar-placeholder {
+      display: flex;
       position: absolute;
       top: 0;
       width: 100vw;
       height: 100vh;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(5px);
+      --webkit-backdrop-filter: blur(5px);
       transition: 1s ease-in-out;
+      z-index: 995;
     }
   }
 }
@@ -173,6 +176,7 @@
   height: 50px;
   backdrop-filter: blur(2px);
   --webkit-backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.73);
   display: flex;
   justify-content: space-between;
   align-items: center;

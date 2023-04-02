@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import backgroundService from "../../services/BackgroundImageServices";
 import "./zitempreview.scss";
 
 export const IntroductionPage = () => {
   const navigate = useNavigate();
+  const [loadedImage, setLoadedImage] = useState(false);
+  useEffect(() => {
+    var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+    async function fetchData() {
+      await backgroundService.getBackgroundImage(userId).then(() => {
+        setLoadedImage(true);
+      });
+    }
+    fetchData(userId);
+  }, [navigate]);
   const handleClick = () => {
-    navigate("/preview/upload");
+    loadedImage
+      ? navigate("/preview/preview-items-temp")
+      : navigate("/preview/upload");
   };
   return (
     <div className="introduction">

@@ -160,6 +160,9 @@
       .price {
         font-size: bold;
       }
+      .measurements {
+        font-size: 12px;
+      }
     }
   }
 }
@@ -170,7 +173,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 93vh;
+    height: 95vh;
     user-select: none;
     .left {
       background-color: white;
@@ -184,6 +187,30 @@
       -moz-box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
       .size {
         height: 50vh;
+      }
+      .image-options-back {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        button {
+          width: 100px;
+          padding: 10px;
+          background-color: turquoise;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+        button:hover {
+          background-color: teal;
+          color: white;
+        }
       }
       .image-options {
         display: flex;
@@ -262,6 +289,7 @@
           user-select: none;
           scrollbar-width: thin;
           scrollbar-color: teal teal;
+          border-radius: 5px;
 
           box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.63);
           -webkit-box-shadow: 0px 0px 18px 1px rgba(0, 0, 0, 0.63);
@@ -284,7 +312,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding-bottom: 10px;
+            padding: 5px;
             width: 280px;
             img {
               width: 60px;
@@ -313,9 +341,20 @@
                 font-weight: 300;
               }
               .price {
+                display: flex;
+                flex-direction: column;
                 font-size: bold;
+
+                .measurements {
+                  font-size: 10px;
+                }
               }
             }
+          }
+          .item:hover {
+            background-color: teal;
+            color: white;
+            cursor: pointer;
           }
         }
         .search {
@@ -348,30 +387,53 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .bottom-selected {
-          height: 15vh;
+        .bottom-selected-container {
+          margin-top: 15px;
+          width: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 10px;
-          width: 80%;
-          .bottom-adjust {
+          .bottom-selected {
+            height: 15vh;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            height: 25px;
-            img {
-              width: 25px;
-              height: 25px;
-              object-fit: scale-down;
+            gap: 5px;
+            width: 80%;
+            span {
+              padding: 5px;
+              background-color: turquoise;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 5px;
+              font-size: 10px;
+              cursor: pointer;
+              border-radius: 5px;
             }
-            .z-axis {
-              width: 25px;
-              height: 20px;
-              object-fit: scale-down;
+            span:hover {
+              background-color: teal;
+              color: white;
+            }
+            .bottom-adjust {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 15px;
+              height: 25px;
+              img {
+                width: 25px;
+                height: 25px;
+                object-fit: scale-down;
+              }
+              .z-axis {
+                width: 25px;
+                height: 20px;
+                object-fit: scale-down;
+              }
             }
           }
         }
@@ -427,7 +489,7 @@
           top: 0;
           left: 0;
           display: flex;
-          z-index: 100;
+          z-index: 99;
           .image-container {
             position: inherit;
             .rotate-image {
@@ -443,10 +505,19 @@
               right: 0px;
               top: 0px;
               z-index: 6;
-              color: red;
-              border: 2px solid red;
+              color: teal;
               user-select: none;
               cursor: pointer;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: white;
+              border: 1px teal solid;
+            }
+            .active {
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
           }
         }

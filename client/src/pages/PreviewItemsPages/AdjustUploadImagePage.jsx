@@ -200,6 +200,7 @@ export const AdjustUploadImagePage = () => {
               <motion.button
                 id="continue"
                 onClick={handleNavigation}
+                whileHover={{ scale: 0.95 }}
                 className={"continue-" + next}
               >
                 Continue
