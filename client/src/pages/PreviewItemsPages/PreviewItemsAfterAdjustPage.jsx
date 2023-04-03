@@ -165,7 +165,8 @@ export const PreviewItemsAferAdjustPage = () => {
       <div className="container">
         <div className="left">
           <div className="image-options-back" style={{ marginTop: "20px" }}>
-            <button
+            <motion.button
+              whileHover={{ scale: 0.95 }}
               className="options-button"
               onClick={() =>
                 AlertConfirm(
@@ -178,13 +179,14 @@ export const PreviewItemsAferAdjustPage = () => {
               }
             >
               BACK
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 0.95 }}
               className="options-button"
               onClick={() => setOption(option === "cart" ? "all" : "cart")}
             >
               {option === "cart" ? "ALL" : "CART"}
-            </button>
+            </motion.button>
           </div>
           {option === "cart" ? (
             <>
@@ -193,7 +195,8 @@ export const PreviewItemsAferAdjustPage = () => {
                 <div className="cart-items">
                   {previewProducts.length > 0 ? (
                     previewProducts?.map((item) => (
-                      <div
+                      <motion.div
+                        whileHover={{ scale: 0.95 }}
                         className="item"
                         key={item.id}
                         onClick={() => handleCartProduct(item)}
@@ -209,7 +212,7 @@ export const PreviewItemsAferAdjustPage = () => {
                             <span className="measurements">{`${item.width} cm x ${item.height} cm  `}</span>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))
                   ) : (
                     <div className="item">
@@ -227,7 +230,8 @@ export const PreviewItemsAferAdjustPage = () => {
                 <div className="cart-items">
                   {data?.length > 0 ? (
                     data?.map((item) => (
-                      <div
+                      <motion.div
+                        whileHover={{ scale: 0.95 }}
                         className="item"
                         key={item.id}
                         onClick={() => handleShopProduct(item)}
@@ -251,7 +255,7 @@ export const PreviewItemsAferAdjustPage = () => {
                             <span className="measurements">{`${item.attributes?.width} cm x ${item.attributes?.height} cm  `}</span>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))
                   ) : (
                     <div className="item">
@@ -275,7 +279,12 @@ export const PreviewItemsAferAdjustPage = () => {
               <div className="bottom-selected">
                 {selectedProduct && (
                   <>
-                    <span onClick={handleReset}>RESET</span>
+                    <motion.span
+                      whileHover={{ scale: 0.8 }}
+                      onClick={handleReset}
+                    >
+                      RESET
+                    </motion.span>
                     <div className="bottom-adjust">
                       <input
                         type="range"
@@ -321,9 +330,12 @@ export const PreviewItemsAferAdjustPage = () => {
               <hr style={{ width: "90%" }} />
             </div>
             <div className="update">
-              <button onClick={handleConfirm}>
+              <motion.button
+                whileHover={{ scale: 0.95 }}
+                onClick={handleConfirm}
+              >
                 Update cart with products on background
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -356,8 +368,8 @@ export const PreviewItemsAferAdjustPage = () => {
                             className="rotate-image"
                             style={{
                               transform: `rotateX(${0}deg) rotateY(${0}deg) rotateZ(${0}deg)`,
-                              width: `${item.width * pixelSize}px`,
-                              height: `${item.height * pixelSize}px}`,
+                              width: `${item.width / pixelSize}px`,
+                              height: `${item.height / pixelSize}px}`,
                             }}
                           >
                             <img

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./styles.scss";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeProductFromCart, resetCart } from "../services/reduceCart";
-import { loadStripe } from "@stripe/stripe-js";
 import { makeRequest } from "../services/request";
+import Checkout from "./Checkout";
 
 const Cart = () => {
+  const [checkout, setCheckout] = useState(false);
   const products = useSelector((state) => state.cart.products);
   const dispatchHook = useDispatch();
   const [total, setTotal] = useState(0);
+
   useEffect(() => {
     var total = 0;
     products.forEach((item) => {
@@ -19,24 +21,6 @@ const Cart = () => {
     setTotal(total);
   }, [products]);
 
-  const loadStripePromise = loadStripe(
-    "pk_test_51Mol6YJwRVpmwHIv2qOMTXtqDX6Inb6bUU6L1hbcvVnNHkXLTlrM2egvYv6za2IVdYhD40o4uMTw2r5OEN7HeVCR00TijcTwpA"
-  );
-  const handlePayment = async () => {
-    try {
-      const userId = JSON.parse(sessionStorage.getItem("user"))["sub"];
-      const stripe = await loadStripePromise;
-      const response = await makeRequest.post("/orders", {
-        userId,
-        products,
-      });
-      await stripe.redirectToCheckout({
-        sessionId: response.data.stripeSession.id,
-      });
-    } catch {
-      console.log("Error");
-    }
-  };
   return (
     <div className="cart p01hz">
       {products.length === 0 ? (
@@ -69,9 +53,15 @@ const Cart = () => {
             <span className="p01hz">{total.toFixed(2)} €</span>
           </div>
           <div className="checkout-button p01hz">
-            <button className="checkout p01hz" onClick={handlePayment}>
-              Checkout
-            </button>
+            {!checkout && (
+              <button
+                className="checkout p01hz"
+                onClick={() => setCheckout(true)}
+              >
+                Checkout
+              </button>
+            )}
+            {checkout && <Checkout sum={total.toFixed(2)} />}
           </div>
           <span
             className="reset-cart p01hz"

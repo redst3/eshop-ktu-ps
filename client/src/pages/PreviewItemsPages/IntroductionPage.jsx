@@ -18,7 +18,7 @@ export const IntroductionPage = () => {
   }, [navigate]);
   const handleClick = () => {
     loadedImage
-      ? navigate("/preview/preview-items-temp")
+      ? navigate("/preview/preview-items")
       : navigate("/preview/upload");
   };
   return (
