@@ -18,7 +18,7 @@ export const FeaturedProducts = ({ type }) => {
     hiddenCards.forEach((card) => {
       observer.observe(card);
     });
-  }, []);
+  }, [type]);
   const { data, loading, error } = useFetch(
     `products?populate=*&[filters][type][$eq]=${type}`
   );

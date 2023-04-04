@@ -4,6 +4,7 @@ import "./zitempreview.scss";
 import { PathLine } from "react-svg-pathline";
 import backgroundService from "../../services/BackgroundImageServices";
 import { motion } from "framer-motion";
+import AlertConfirm from "react-alert-confirm";
 export const AdjustUploadImagePage = () => {
   const navigate = useNavigate();
   const [next, setNext] = useState("disabled");
@@ -18,6 +19,11 @@ export const AdjustUploadImagePage = () => {
   const [pixelSize, setPixelSize] = useState(1);
   const [selectedLineSize, setSelectedLineSize] = useState(0);
   const [lastSelectedLineSize, setLastSelectedLineSize] = useState(0);
+  AlertConfirm.config({
+    maskClosable: true,
+    okText: "Continue",
+    cancelText: "Cancel",
+  });
   useEffect(() => {
     var userId = JSON.parse(sessionStorage.getItem("user")).sub;
     document.getElementById("continue").disabled = true;
@@ -89,19 +95,25 @@ export const AdjustUploadImagePage = () => {
     if (selectedLineSize === lastSelectedLineSize) return;
     if (selectedLineSize <= 0) return;
     if (isNaN(selectedLineSize)) return;
-    var newSize =
-      parseFloat(selectedLineSize) / parseFloat(lastSelectedLineSize);
-    var newlengths = [];
-    linelength.forEach((length) => {
-      newlengths.push((parseFloat(length) * newSize).toFixed(2));
-    });
-    setPixelSize(pixelSize * newSize);
-    setLinelength(newlengths);
-    var lines = document.querySelectorAll(".line");
-    lines.forEach((line) => {
-      line.style.stroke = "red";
-    });
-    document.querySelector(".image-option-pixels").style = "display:none";
+    AlertConfirm("This action will update all line lengths, continue?").then(
+      (res) => {
+        if (res[0]) {
+          var newSize =
+            parseFloat(selectedLineSize) / parseFloat(lastSelectedLineSize);
+          var newlengths = [];
+          linelength.forEach((length) => {
+            newlengths.push((parseFloat(length) * newSize).toFixed(2));
+          });
+          setPixelSize(pixelSize * newSize);
+          setLinelength(newlengths);
+          var lines = document.querySelectorAll(".line");
+          lines.forEach((line) => {
+            line.style.stroke = "red";
+          });
+          document.querySelector(".image-option-pixels").style = "display:none";
+        }
+      }
+    );
   };
   const handleUpload = async () => {
     var status = document.getElementById("status");
@@ -113,25 +125,32 @@ export const AdjustUploadImagePage = () => {
     if (loadedImage) {
       flag = true;
     }
+
     if (flag) {
-      try {
-        var userId = JSON.parse(sessionStorage.getItem("user")).sub;
-      } catch {
-        status.innerHTML = "You are not logged in!";
-        status.style.color = "red";
-        return;
-      }
-      await backgroundService
-        .uploadBackgroundInformation(userId, selectedImage, pixelSize)
-        .then(() => {
-          status.innerHTML = "Information has been saved successfully!";
-          setNext("");
-          document.getElementById("continue").disabled = false;
-        })
-        .catch((err) => {
-          status.innerHTML = err;
-          status.style.color = "red";
-        });
+      AlertConfirm(
+        "This action will save current image and line lengths, continue?"
+      ).then(async (res) => {
+        if (res[0]) {
+          try {
+            var userId = JSON.parse(sessionStorage.getItem("user")).sub;
+          } catch {
+            status.innerHTML = "You are not logged in!";
+            status.style.color = "red";
+            return;
+          }
+          await backgroundService
+            .uploadBackgroundInformation(userId, selectedImage, pixelSize)
+            .then(() => {
+              status.innerHTML = "Information has been saved successfully!";
+              setNext("");
+              document.getElementById("continue").disabled = false;
+            })
+            .catch((err) => {
+              status.innerHTML = err;
+              status.style.color = "red";
+            });
+        }
+      });
     }
     if (!flag) {
       status.innerHTML = "Please select an image!";

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./authPages.scss";
 import authServices from "../../services/AuthServices";
 import wishServices from "../../services/WishlistServices";
 import { useEffect } from "react";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [update, setUpdate] = useState(false);
-
+  const [visibility, setVisibility] = useState(false);
   const handleSumbit = (e) => {
     e.preventDefault();
     if (!username || !password) return setError("Please fill in all fields");
@@ -20,8 +22,7 @@ const Login = () => {
         handleWishlist(response);
       },
       (error) => {
-        setError(error.code);
-        console.log(error);
+        setError(error.response.data);
         return;
       }
     );
@@ -57,9 +58,20 @@ const Login = () => {
           </div>
           <div className="login-form-password">
             <label htmlFor="password">PASSWORD</label>
+            {visibility ? (
+              <VisibilityIcon
+                className="visible"
+                onClick={() => setVisibility(!visibility)}
+              />
+            ) : (
+              <VisibilityOffIcon
+                className="visible"
+                onClick={() => setVisibility(!visibility)}
+              />
+            )}
             <input
               className="form-input"
-              type="password"
+              type={visibility ? "text" : "password"}
               name="password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}

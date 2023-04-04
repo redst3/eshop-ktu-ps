@@ -55,7 +55,7 @@ export const PreviewItemsAferAdjustPage = () => {
           setLoadedType(response.image.contentType);
         })
         .catch(() => {
-          navigate("/introduction");
+          navigate("/preview/introduction");
         });
     }
     fetchData(userId);

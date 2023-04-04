@@ -24,10 +24,11 @@ export default function Checkout({ sum }) {
         }}
         onApprove={(data, actions) => {
           console.log("approved");
-          return actions.order.capture().then(function (details) {
-            console.log(
-              "transaction completed by " + details.payer.name.given_name
-            );
+          console.log("data", data);
+          console.log("actions", actions);
+          return actions.order.capture().then(function (details, payer) {
+            console.log(details);
+            console.log(payer);
           });
         }}
         onCancel={(data) => {

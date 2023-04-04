@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "OrderId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "orders"
+    },
+    "order_status": {
+      "type": "enumeration",
+      "enum": [
+        "Created",
+        "Confirmed",
+        "Shipped",
+        "Canceled",
+        "Finished"
+      ]
+    },
+    "order_date": {
+      "type": "date"
+    }
+  }
+}

@@ -1,10 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import authServices from "../services/AuthServices";
-// import { useNavigate } from "react-router-dom";
 
 export const UserPanel = () => {
-  // const navigate = useNavigate();
   const handleLogout = () => {
     authServices.logout();
     window.location.reload();

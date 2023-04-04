@@ -13,8 +13,10 @@ import Cart from "./Cart";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { UserPanel } from "./UserPanel";
+import { Search } from "./Search";
 
 const Navbar = () => {
+  const [search, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(false);
   const [openPanel, setOpenPanel] = useState(false);
@@ -27,6 +29,9 @@ const Navbar = () => {
     }
     if (!(zz.includes("h01hz") || zz.includes("[object SVGAnimatedString]"))) {
       setOpenPanel(false);
+    }
+    if (!(zz.includes("s01hz") || zz.includes("[object SVGAnimatedString]"))) {
+      setSearch(false);
     }
     if (zz.includes("mobile-navbar-placeholder") && backgroundNav !== "") {
       handleMobileNavbar();
@@ -43,11 +48,17 @@ const Navbar = () => {
     if (open) {
       setOpen(false);
     }
+    if (search) {
+      setSearch(false);
+    }
   };
   const handleCart = () => {
     setOpen(open ? false : true);
     if (openPanel) {
       setOpenPanel(false);
+    }
+    if (search) {
+      setSearch(false);
     }
   };
   const handleMobileNavbar = () => {
@@ -59,6 +70,16 @@ const Navbar = () => {
       setOpen(false);
     }
     if (openPanel) {
+      setOpenPanel(false);
+    }
+    if (search) {
+      setSearch(false);
+    }
+  };
+  const handleSearch = () => {
+    setSearch(search ? false : true);
+    if (open || openPanel) {
+      setOpen(false);
       setOpenPanel(false);
     }
   };
@@ -89,7 +110,7 @@ const Navbar = () => {
           <div className="right">
             <div className="icons">
               <motion.div whileHover={{ scale: 1.15 }}>
-                <SearchIcon />
+                <SearchIcon onClick={handleSearch} />
               </motion.div>
               {user ? (
                 <motion.div
@@ -212,6 +233,7 @@ const Navbar = () => {
 
       {open && <Cart />}
       {openPanel && <UserPanel />}
+      {search && <Search />}
     </div>
   );
 };
