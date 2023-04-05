@@ -1,14 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeProductFromCart, resetCart } from "../services/reduceCart";
-import { makeRequest } from "../services/request";
-import Checkout from "./Checkout";
-
+import { useNavigate } from "react-router-dom";
+import AlertConfirm from "react-alert-confirm";
+import StripeContainer from "./StripeContainer";
+AlertConfirm.config({
+  title: "Are you sure you want to delete this item?",
+  okText: null,
+});
 const Cart = () => {
-  const [checkout, setCheckout] = useState(false);
+  const navigate = useNavigate();
   const products = useSelector((state) => state.cart.products);
   const dispatchHook = useDispatch();
   const [total, setTotal] = useState(0);
@@ -53,15 +57,17 @@ const Cart = () => {
             <span className="p01hz">{total.toFixed(2)} €</span>
           </div>
           <div className="checkout-button p01hz">
-            {!checkout && (
-              <button
-                className="checkout p01hz"
-                onClick={() => setCheckout(true)}
-              >
-                Checkout
-              </button>
-            )}
-            {checkout && <Checkout sum={total.toFixed(2)} />}
+            <button
+              className="checkout p01hz"
+              onClick={async () => {
+                const [action] = await AlertConfirm({
+                  custom: () => <StripeContainer props={products} />,
+                });
+                action && console.log("alert ok");
+              }}
+            >
+              Checkout
+            </button>
           </div>
           <span
             className="reset-cart p01hz"
