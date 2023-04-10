@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { makeRequest } from "./../services/request";
 
 const CARD_OPTIONS = {
   hidePostalCode: true,
@@ -41,7 +42,7 @@ export default function Checkout(props) {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await axios.post(
+        const response = await makeRequest.post(
           "http://localhost:1337/api/order/payment",
           {
             amount: total * 100,
