@@ -66,10 +66,31 @@ public class AuthController : ControllerBase
             return BadRequest("Wrong password or username!");
 
         // the user is valid at this point
-
+        var shippingAddress = user.Country + "," + user.City + "," + user.Address + "," + user.PostalCode;
         var roles = await _userManager.GetRolesAsync(user);
-        var accessToken = _jwtTokenService.CreateAccessToken(user.UserName, user.Id, roles);
+        var accessToken = _jwtTokenService.CreateAccessToken(user.UserName, user.Id, roles, user.Email, shippingAddress);
         return Ok(new SuccessfulLoginDto(accessToken));
 
+    }
+    [HttpPut]
+    [Route("shipping-address/{userId}")]
+    public async Task<IActionResult> UpdateShippingAddress(string userId, [FromBody] UpdateShippingAddressDto updateShippingAddressDto)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+            return BadRequest("User does not exist!");
+
+        user.Country = updateShippingAddressDto.Country;
+        user.City = updateShippingAddressDto.City;
+        user.Address = updateShippingAddressDto.Address;
+        user.PostalCode = updateShippingAddressDto.PostalCode;
+
+        var updateUserResult = await _userManager.UpdateAsync(user);
+        if (!updateUserResult.Succeeded)
+        {
+            return BadRequest(updateUserResult.Errors);
+        }
+
+        return Ok("Shipping address updated successfully!");
     }
 }

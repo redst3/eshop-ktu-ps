@@ -54,6 +54,33 @@ class AuthService {
     const response = await axios(config);
     return response.data;
   }
+  async updateShippingAddress(userId, country, city, address, postalCode) {
+    let data = JSON.stringify({
+      City: city,
+      Address: address,
+      Country: country,
+      PostalCode: postalCode,
+    });
+
+    let config = {
+      method: "put",
+      maxBodyLength: Infinity,
+      url: API_URL + "/shipping-address/" + userId,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then(() => {
+        return true;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
 }
 const authServices = new AuthService();
 export default authServices;

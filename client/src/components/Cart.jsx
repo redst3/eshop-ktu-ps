@@ -62,6 +62,9 @@ const Cart = () => {
               onClick={async () => {
                 const [action] = await AlertConfirm({
                   custom: () => <StripeContainer props={products} />,
+                  style: {
+                    zIndex: 9999,
+                  },
                 });
                 action && console.log("alert ok");
               }}

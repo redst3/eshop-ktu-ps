@@ -8,7 +8,7 @@ export const Search = () => {
     `/products?populate=*&[filters][title][$containsi]=${keyword}`
   );
   return (
-    <div className="search s01hz">
+    <div className="search-navbar s01hz">
       <div className="search-container s01hz">
         <input
           className="search-input s01hz"

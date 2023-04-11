@@ -16,6 +16,7 @@ import { UserPanel } from "./UserPanel";
 import { Search } from "./Search";
 
 const Navbar = () => {
+  const [checkout, setCheckout] = useState(sessionStorage.getItem("checkout"));
   const [search, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(false);

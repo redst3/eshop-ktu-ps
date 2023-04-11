@@ -7,7 +7,7 @@ namespace persuasiveAPI.Auth;
 
 public interface IJwtTokenService
 {
-    string CreateAccessToken(string userName, string userID, IEnumerable<string> userRoles);
+    string CreateAccessToken(string userName, string userID, IEnumerable<string> userRoles, string Email, string shippingAddress);
 }
 
 public class JwtTokenService : IJwtTokenService
@@ -23,13 +23,15 @@ public class JwtTokenService : IJwtTokenService
         _audience = configuration["JWT:ValidAudience"];
     }
 
-    public string CreateAccessToken(string userName, string userId, IEnumerable<string> userRoles)
+    public string CreateAccessToken(string userName, string userId, IEnumerable<string> userRoles, string Email, string shippingAddress)
     {
         var authClaims = new List<Claim>
         {
             new (ClaimTypes.Name, userName),
             new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new (JwtRegisteredClaimNames.Sub, userId)
+            new (JwtRegisteredClaimNames.Sub, userId),
+            new ("email", Email),
+            new ("shipping-address", shippingAddress)
         };
 
         authClaims.AddRange(userRoles.Select(userRole => new Claim(ClaimTypes.Role, userRole)));
