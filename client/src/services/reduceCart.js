@@ -14,8 +14,8 @@ export const cartSlice = createSlice({
         (item) => item.id === product.id
       );
       if (productInCart) {
-        if (productInCart.quantity + action.payload.quantity <= 5) {
-          productInCart.quantity += action.payload.quantity;
+        if (productInCart.quantity + action.payload.quantity >= 5) {
+          productInCart.quantity = 5;
         }
       } else {
         state.products.push(product);

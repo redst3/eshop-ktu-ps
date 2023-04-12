@@ -15,6 +15,7 @@ import { WishlistPage } from "./pages/UserPages/WishlistPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { AdjustUploadImagePage } from "./pages/PreviewItemsPages/AdjustUploadImagePage";
 import { PreviewItemsAferAdjustPage } from "./pages/PreviewItemsPages/PreviewItemsAfterAdjustPage";
+import { OrderHistoryPage } from "./pages/UserPages/OrderHistoryPage";
 
 const Layout = (error) => {
   if (error.error) {
@@ -66,7 +67,6 @@ const router = createBrowserRouter([
         path: "/product/:id",
         element: <Product />,
       },
-
       {
         path: "/preview/introduction",
         element: (
@@ -95,6 +95,12 @@ const router = createBrowserRouter([
         path: "/user/wishlist",
         element: (
           <ProtectedRoutes requiredRole={"User"} page={<WishlistPage />} />
+        ),
+      },
+      {
+        path: "/user/orders",
+        element: (
+          <ProtectedRoutes requiredRole={"User"} page={<OrderHistoryPage />} />
         ),
       },
     ],

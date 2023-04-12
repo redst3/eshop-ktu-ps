@@ -25,8 +25,8 @@ const CARD_OPTIONS = {
 };
 
 export default function Checkout(props) {
-  const [succeeded, setSucceeded] = useState(false);
-  const [products, setProducts] = useState(props.flag.props);
+  const products = props.flag.props.products;
+  const window = props.flag.props.window;
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -34,6 +34,7 @@ export default function Checkout(props) {
   const [email, setEmail] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     try {
@@ -77,6 +78,7 @@ export default function Checkout(props) {
     });
     if (!error && !empty) {
       try {
+        setLoading(true);
         const { id } = paymentMethod;
         const response = await makeRequest.post(
           "http://localhost:1337/api/order/payment",
@@ -91,10 +93,10 @@ export default function Checkout(props) {
           }
         );
         if (response.data.successful) {
-          console.log("Successful payment");
-          setSucceeded(true);
+          window(true);
         }
       } catch (error) {
+        setLoading(false);
         console.log("Error", error);
       }
     } else {
@@ -134,108 +136,107 @@ export default function Checkout(props) {
   return (
     <div className="checkout-modal">
       <div className="checkout-form">
-        {!succeeded ? (
-          <>
-            <form onSubmit={handleSubmit}>
-              <span>INFORMATION</span>
-              <fieldset className="FormGroup shipping-details">
-                <div className="FormRow">
-                  <label>COUNTRY</label>
-                  <input
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    onClick={() =>
-                      (document.getElementById("shipping-adress").innerHTML =
-                        "")
-                    }
-                  ></input>
-                </div>
-                <div className="FormRow">
-                  <label>CITY</label>
-                  <input
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    onClick={() =>
-                      (document.getElementById("shipping-adress").innerHTML =
-                        "")
-                    }
-                  ></input>
-                </div>
-                <div className="FormRow">
-                  <label>ADDRESS</label>
-                  <input
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    onClick={() =>
-                      (document.getElementById("shipping-adress").innerHTML =
-                        "")
-                    }
-                  ></input>
-                </div>
-                <div className="FormRow">
-                  <label>POSTAL CODE</label>
-                  <input
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    onClick={() =>
-                      (document.getElementById("shipping-adress").innerHTML =
-                        "")
-                    }
-                  ></input>
-                </div>
-                {loggedIn ? (
-                  <div className="FormRow">
-                    <label>EMAIL</label>
-                    <input value={email} readOnly disabled></input>
-                  </div>
-                ) : (
-                  <div className="FormRow">
-                    <label>EMAIL</label>
-                    <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onClick={() =>
-                        (document.getElementById("shipping-adress").innerHTML =
-                          "")
-                      }
-                    ></input>
-                  </div>
-                )}
-                <h4 id="shipping-adress" style={{ color: "red" }}>
-                  {" "}
-                </h4>
-              </fieldset>
-
-              <button onClick={handleSave}>SAVE SHIPPING ADDRESS</button>
-              <span>INFORMATION</span>
-              <div className="cart-information">
-                {products?.map((item, id) => (
-                  <div key={id}>
-                    <h4>{item.title}</h4>
-                    <h4>{item.price + " € X " + item.quantity}</h4>
-                  </div>
-                ))}
-                <div className="total">
-                  <h3>TOTAL COST</h3>
-                  <h3>{total + "€"}</h3>
-                </div>
+        <>
+          <form onSubmit={handleSubmit}>
+            <span>INFORMATION</span>
+            <fieldset className="FormGroup shipping-details">
+              <div className="FormRow">
+                <label>COUNTRY</label>
+                <input
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  onClick={() =>
+                    (document.getElementById("shipping-adress").innerHTML = "")
+                  }
+                ></input>
               </div>
-              <span>CARD DETAILS</span>
-              <fieldset className="FormGroup">
-                <div className="FormRowName">
-                  <input placeholder=" Name"></input>
-                  <input placeholder=" Surname"></input>
-                </div>
+              <div className="FormRow">
+                <label>CITY</label>
+                <input
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  onClick={() =>
+                    (document.getElementById("shipping-adress").innerHTML = "")
+                  }
+                ></input>
+              </div>
+              <div className="FormRow">
+                <label>ADDRESS</label>
+                <input
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  onClick={() =>
+                    (document.getElementById("shipping-adress").innerHTML = "")
+                  }
+                ></input>
+              </div>
+              <div className="FormRow">
+                <label>POSTAL CODE</label>
+                <input
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  onClick={() =>
+                    (document.getElementById("shipping-adress").innerHTML = "")
+                  }
+                ></input>
+              </div>
+              {loggedIn ? (
                 <div className="FormRow">
-                  <CardElement options={CARD_OPTIONS} />
+                  <label>EMAIL</label>
+                  <input value={email} readOnly disabled></input>
                 </div>
-              </fieldset>
-              <button>PAY</button>
-            </form>
-          </>
-        ) : (
-          <h2>Payment successful!</h2>
-        )}
+              ) : (
+                <div className="FormRow">
+                  <label>EMAIL</label>
+                  <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onClick={() =>
+                      (document.getElementById("shipping-adress").innerHTML =
+                        "")
+                    }
+                  ></input>
+                </div>
+              )}
+              <h4 id="shipping-adress" style={{ color: "red" }}>
+                {" "}
+              </h4>
+            </fieldset>
+            <div className="spin">
+              <button onClick={handleSave}>SAVE SHIPPING ADDRESS</button>
+            </div>
+            <span>INFORMATION</span>
+            <div className="cart-information">
+              {products?.map((item, id) => (
+                <div key={id}>
+                  <h4>{item.title}</h4>
+                  <h4>{item.price + " € X " + item.quantity}</h4>
+                </div>
+              ))}
+              <div className="total">
+                <h3>TOTAL COST</h3>
+                <h3>{total + "€"}</h3>
+              </div>
+            </div>
+            <span>CARD DETAILS</span>
+            <fieldset className="FormGroup">
+              <div className="FormRowName">
+                <input placeholder=" Name"></input>
+                <input placeholder=" Surname"></input>
+              </div>
+              <div className="FormRow">
+                <CardElement options={CARD_OPTIONS} />
+              </div>
+            </fieldset>
+            <div className="spin">
+              {loading ? (
+                <div id="spin" className="spinner" />
+              ) : (
+                <button>PAY</button>
+              )}
+            </div>
+          </form>
+        </>
       </div>
     </div>
   );

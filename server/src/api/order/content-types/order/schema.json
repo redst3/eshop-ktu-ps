@@ -21,25 +21,30 @@
     },
     "products": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "inversedBy": "orders"
+      "relation": "oneToMany",
+      "target": "api::product.product"
     },
     "order_status": {
       "type": "enumeration",
       "enum": [
-        "Created",
-        "Confirmed",
-        "Shipped",
-        "Canceled",
-        "Finished"
+        "created",
+        "confirmed",
+        "shipped",
+        "canceled",
+        "completed"
       ]
-    },
-    "order_date": {
-      "type": "date"
     },
     "total_cost": {
       "type": "decimal"
+    },
+    "shipping_address": {
+      "type": "json"
+    },
+    "order_date": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
     }
   }
 }

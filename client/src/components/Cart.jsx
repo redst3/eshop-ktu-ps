@@ -4,7 +4,6 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeProductFromCart, resetCart } from "../services/reduceCart";
-import { useNavigate } from "react-router-dom";
 import AlertConfirm from "react-alert-confirm";
 import StripeContainer from "./StripeContainer";
 AlertConfirm.config({
@@ -12,7 +11,6 @@ AlertConfirm.config({
   okText: null,
 });
 const Cart = () => {
-  const navigate = useNavigate();
   const products = useSelector((state) => state.cart.products);
   const dispatchHook = useDispatch();
   const [total, setTotal] = useState(0);
@@ -58,15 +56,21 @@ const Cart = () => {
           </div>
           <div className="checkout-button p01hz">
             <button
-              className="checkout p01hz"
+              className="checkout "
               onClick={async () => {
                 const [action] = await AlertConfirm({
-                  custom: () => <StripeContainer props={products} />,
-                  style: {
-                    zIndex: 9999,
-                  },
+                  custom: (window) => (
+                    <StripeContainer props={{ products, window }} />
+                  ),
                 });
-                action && console.log("alert ok");
+                if (action) {
+                  dispatchHook(resetCart());
+                  AlertConfirm.alert(
+                    <span>
+                      Your payment was successful, thank you for your order!
+                    </span>
+                  );
+                }
               }}
             >
               Checkout
