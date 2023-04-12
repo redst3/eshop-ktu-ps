@@ -4,6 +4,7 @@ import logo from "../img/logo_nobackground.png";
 const Order = (props) => {
   const order = props.props.data;
   const shippingAddress = order?.attributes.shipping_address;
+  const quantities = JSON.parse(order?.attributes.quantities);
   console.log(order);
   return (
     <div className="order-modal">
@@ -17,9 +18,7 @@ const Order = (props) => {
           {order?.attributes.products.data.map((item, id) => (
             <div className="order-cart-product" key={id}>
               <h4>{item.attributes.title}</h4>
-              <h4>
-                {item.attributes.price + " € X " + item.attributes.quantity}
-              </h4>
+              <h4>{item.attributes.price + " € X " + quantities[id]}</h4>
             </div>
           ))}
         </div>

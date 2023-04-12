@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
   const { data } = useFetch(
     `/products?populate=*&[filters][title][$containsi]=${keyword}`
@@ -17,7 +19,9 @@ export const Search = () => {
           onChange={(e) => setKeyword(e.target.value)}
         ></input>
         {keyword !== "" && (
-          <span className="search-results">Search results: {data?.length}</span>
+          <span className="search-results s01hz">
+            Search results: {data?.length}
+          </span>
         )}
         <div className="cart-items s01hz">
           {keyword !== "" &&
@@ -25,9 +29,9 @@ export const Search = () => {
               data?.map((item) => (
                 <motion.div
                   whileHover={{ scale: 0.95 }}
-                  className="item s01hz"
+                  className="item"
                   key={item.id}
-                  onClick={() => console.log(item)}
+                  onClick={() => navigate(`product/${item.id}`)}
                 >
                   <img
                     src={
@@ -36,14 +40,14 @@ export const Search = () => {
                     }
                     alt={item.id}
                   />
-                  <div className="info s01hz">
+                  <div className="info">
                     <h1>{item.attributes.title}</h1>
-                    <h1 className="author s01hz">
+                    <h1 className="author">
                       {item.attributes.author ? item.attributes.author : "-"}
                     </h1>
-                    <div className="price s01hz">
+                    <div className="price">
                       {item.attributes.price} €
-                      <span className="measurements s01hz">{`${item.attributes?.width} cm x ${item.attributes?.height} cm  `}</span>
+                      <span className="measurements">{`${item.attributes?.width} cm x ${item.attributes?.height} cm  `}</span>
                     </div>
                   </div>
                 </motion.div>

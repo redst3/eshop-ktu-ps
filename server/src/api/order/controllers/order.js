@@ -20,21 +20,26 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         shippingAdress,
       } = ctx.request.body;
       const payment = await stripe.paymentIntents.create({
-        amount,
+        amount: parseInt(amount),
         currency: "EUR",
         description: `Ordered by ${email} for ${products.length} products`,
         payment_method: id,
         confirm: true,
       });
       if (payment.status === "succeeded") {
+        var quanitities = products.map((product) => {
+          return product.quantity;
+        });
         var user = userId.length > 0 ? userId : "guest";
         const address = shippingAdress.split(",");
+
         await strapi.entityService.create("api::order.order", {
           data: {
             OrderId: id,
             userId: user,
             order_status: "created",
             products: products,
+            quantities: JSON.stringify(quanitities),
             order_date: new Date().toLocaleDateString(),
             total_cost: total_cost,
             email: email,

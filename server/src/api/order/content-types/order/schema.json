@@ -45,6 +45,9 @@
     },
     "email": {
       "type": "string"
+    },
+    "quantities": {
+      "type": "string"
     }
   }
 }
