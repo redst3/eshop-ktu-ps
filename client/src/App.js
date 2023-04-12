@@ -16,6 +16,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { AdjustUploadImagePage } from "./pages/PreviewItemsPages/AdjustUploadImagePage";
 import { PreviewItemsAferAdjustPage } from "./pages/PreviewItemsPages/PreviewItemsAfterAdjustPage";
 import { OrderHistoryPage } from "./pages/UserPages/OrderHistoryPage";
+import { ConfirmOrdersPage } from "./pages/AdminPages/ConfirmOrdersPage";
 
 const Layout = (error) => {
   if (error.error) {
@@ -101,6 +102,15 @@ const router = createBrowserRouter([
         path: "/user/orders",
         element: (
           <ProtectedRoutes requiredRole={"User"} page={<OrderHistoryPage />} />
+        ),
+      },
+      {
+        path: "/admin/orders",
+        element: (
+          <ProtectedRoutes
+            requiredRole={"Admin"}
+            page={<ConfirmOrdersPage />}
+          />
         ),
       },
     ],

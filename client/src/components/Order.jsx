@@ -8,8 +8,9 @@ const Order = (props) => {
   return (
     <div className="order-modal">
       <img src={logo} className="logo" alt="logo"></img>
-      <h1>ORDER DETAILS</h1>
-
+      <div className="details">
+        <h1>ORDER DETAILS</h1>
+      </div>
       <div className="order-cart-information">
         <div className="order-cart-products">
           <span>PRODUCTS</span>

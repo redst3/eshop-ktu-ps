@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using persuasiveAPI.Auth;
 using persuasiveAPI.Auth.Model;
+using persuasiveAPI.Data.Repositories;
 
 namespace persuasiveAPI.Data;
 
@@ -8,10 +9,12 @@ public class AuthDbSeeder
 {
     private readonly UserManager<User> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    public AuthDbSeeder(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+    private readonly IWishlistRepository _wishlistRepository;
+    public AuthDbSeeder(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IWishlistRepository wishlistRepository)
     {
         _userManager = userManager;
         _roleManager = roleManager;
+        _wishlistRepository = wishlistRepository;
     }
 
     public async Task SeedAsync()
@@ -34,6 +37,7 @@ public class AuthDbSeeder
             if (createAdminResult.Succeeded)
             {
                 await _userManager.AddToRolesAsync(newAdmin, UserRoles.All);
+                await _wishlistRepository.CreateWishlist(newAdmin.Id);
             }
         }
     }

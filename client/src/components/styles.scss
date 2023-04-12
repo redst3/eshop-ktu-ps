@@ -1207,6 +1207,11 @@
   .logo {
     height: 20%;
   }
+  .details {
+    display: flex;
+    width: 60%;
+    padding-bottom: 2px;
+  }
   .order-cart-information {
     display: flex;
     align-items: center;
@@ -1220,7 +1225,7 @@
       color: gray;
 
       height: 25%;
-      overflow: scroll;
+      overflow-y: scroll;
       padding-left: 5px;
       padding-right: 5px;
       .order-cart-product {

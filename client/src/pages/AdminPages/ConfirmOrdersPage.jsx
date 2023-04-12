@@ -1,25 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import useFetch from "../../hooks/useFetch";
-import "./authPages.scss";
+import "../UserPages/authPages.scss";
 import AlertConfirm from "react-alert-confirm";
 import Order from "../../components/Order";
 
-export const OrderHistoryPage = () => {
-  const { data, error } = useFetch(
-    `/orders?populate=*&[filters][userId][$eq]=${
-      JSON.parse(sessionStorage.getItem("user"))["sub"]
-    }`
-  );
+export const ConfirmOrdersPage = () => {
+  const { data, error } = useFetch(`/orders?populate=*`);
 
   return (
     <div className="order-page">
       {error ? (
-        <h1>Something went wrong or you have no order history</h1>
+        <h1>Something went wrong or there is no orders</h1>
       ) : (
         <>
           <div className="header">
-            <h1>Order History!</h1>
+            <h1>Orders</h1>
           </div>
           <div className="order-container">
             <ul className="responsive-table">
