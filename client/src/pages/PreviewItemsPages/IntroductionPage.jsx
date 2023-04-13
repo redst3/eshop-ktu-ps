@@ -10,9 +10,14 @@ export const IntroductionPage = () => {
   useEffect(() => {
     var userId = JSON.parse(sessionStorage.getItem("user")).sub;
     async function fetchData() {
-      await backgroundService.getBackgroundImage(userId).then(() => {
-        setLoadedImage(true);
-      });
+      try {
+        await backgroundService.getBackgroundImage(userId).then(() => {
+          setLoadedImage(true);
+        });
+      } catch {
+        console.log("No image found");
+        setLoadedImage(false);
+      }
     }
     fetchData(userId);
   }, [navigate]);

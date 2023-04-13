@@ -223,12 +223,24 @@
 }
 
 .order-page {
-  height: 85vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
   color: teal;
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 30px;
+      width: 350px;
+    }
+
+    .arrow {
+      cursor: pointer;
+    }
+  }
   .order-container {
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);

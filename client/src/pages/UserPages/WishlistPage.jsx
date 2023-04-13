@@ -48,7 +48,7 @@ export const WishlistPage = () => {
                       alt={item.id}
                     />
                   </div>
-                  <div className="info">
+                  <div className="info" style={{ overflow: "hidden" }}>
                     <h1>{item.attributes?.title}</h1>
                     <h2>{item.attributes?.description}</h2>
                     <h3>{item.attributes?.author}</h3>

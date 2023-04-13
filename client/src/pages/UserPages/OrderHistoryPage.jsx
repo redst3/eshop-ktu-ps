@@ -19,7 +19,7 @@ export const OrderHistoryPage = () => {
       ) : (
         <>
           <div className="header">
-            <h1>Order History!</h1>
+            <h1>Order History</h1>
           </div>
           <div className="order-container">
             <ul className="responsive-table">
@@ -46,7 +46,9 @@ export const OrderHistoryPage = () => {
                     data-label="VIEW ORDER"
                     onClick={async () => {
                       await AlertConfirm({
-                        custom: () => <Order props={{ data }} />,
+                        custom: () => (
+                          <Order props={{ data, isAdmin: false }} />
+                        ),
                       });
                     }}
                   >

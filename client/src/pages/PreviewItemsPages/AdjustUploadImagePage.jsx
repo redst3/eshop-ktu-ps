@@ -28,17 +28,20 @@ export const AdjustUploadImagePage = () => {
     var userId = JSON.parse(sessionStorage.getItem("user")).sub;
     document.getElementById("continue").disabled = true;
     async function fetchData() {
-      await backgroundService
-        .getBackgroundImage(userId)
-        .then((response) => {
-          setPixelSize(response.px_to_cm);
-          setLoadedImage(true);
-          setLoadedContent(response.image.fileContents);
-          setLoadedType(response.image.contentType);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      try {
+        await backgroundService
+          .getBackgroundImage(userId)
+          .then((response) => {
+            setPixelSize(response.px_to_cm);
+            setLoadedImage(true);
+            setLoadedContent(response.image.fileContents);
+            setLoadedType(response.image.contentType);
+          })
+          .catch(() => {
+            console.log("No image found");
+            setLoadedImage(false);
+          });
+      } catch {}
     }
     fetchData(userId);
   }, []);
