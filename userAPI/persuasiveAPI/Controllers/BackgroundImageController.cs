@@ -23,7 +23,7 @@ public class BackgroundImageController: ControllerBase
         var background = await _backgroundImageRepository.GetBackgroundByUserId(userId);
         if(background.ImageUrl == null)
         {
-            return NotFound("Image has not been set yet");
+            return NoContent();
         }
         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", background.ImageUrl);
         try {

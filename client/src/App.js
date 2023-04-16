@@ -10,7 +10,6 @@ import LoginPage from "./pages/UserPages/LoginPage";
 import RegisterPage from "./pages/UserPages/RegisterPage";
 import { motion } from "framer-motion";
 import ProtectedRoutes from "./services/protectedRoutes";
-import { IntroductionPage } from "./pages/PreviewItemsPages/IntroductionPage";
 import { WishlistPage } from "./pages/UserPages/WishlistPage";
 import { ErrorPage } from "./pages/ErrorPage";
 import { AdjustUploadImagePage } from "./pages/PreviewItemsPages/AdjustUploadImagePage";
@@ -67,12 +66,6 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <Product />,
-      },
-      {
-        path: "/preview/introduction",
-        element: (
-          <ProtectedRoutes requiredRole={"User"} page={<IntroductionPage />} />
-        ),
       },
       {
         path: "/preview/upload",

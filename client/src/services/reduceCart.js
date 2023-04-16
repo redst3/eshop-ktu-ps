@@ -14,9 +14,11 @@ export const cartSlice = createSlice({
         (item) => item.id === product.id
       );
       if (productInCart) {
-        if (productInCart.quantity + action.payload.quantity >= 5) {
-          productInCart.quantity = 5;
-        }
+        state.products = state.products.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + product.quantity }
+            : item
+        );
       } else {
         state.products.push(product);
       }

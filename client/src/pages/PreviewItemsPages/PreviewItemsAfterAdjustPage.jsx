@@ -15,6 +15,8 @@ import useFetch from "../../hooks/useFetch";
 import x_img from "../../img/rotate/x.png";
 import y_img from "../../img/rotate/y.png";
 import z_img from "../../img/rotate/z.png";
+import HelpIcon from "@mui/icons-material/Help";
+import { Tutorial } from "../../components/Tutorial";
 AlertConfirm.config({
   maskClosable: true,
   okText: "Continue",
@@ -55,7 +57,7 @@ export const PreviewItemsAferAdjustPage = () => {
           setLoadedType(response.image.contentType);
         })
         .catch(() => {
-          navigate("/preview/introduction");
+          navigate("/preview/upload");
         });
     }
     fetchData(userId);
@@ -98,10 +100,14 @@ export const PreviewItemsAferAdjustPage = () => {
       quantity: 1,
       img:
         process.env.REACT_APP_IMG_URL + e.attributes.img.data[0].attributes.url,
+      preview_img:
+        process.env.REACT_APP_IMG_URL +
+        e.attributes.preview_img.data.attributes.url,
       height: e.attributes.height,
       width: e.attributes.width,
       inCart: false,
     };
+    console.log(product);
     setDisplayProducts([...displayProducts, product]);
   };
   const handleRotate = (e, direction) => {
@@ -164,6 +170,17 @@ export const PreviewItemsAferAdjustPage = () => {
     <div className="adjust-upload-page">
       <div className="container">
         <div className="left">
+          <div
+            className="help"
+            onClick={async () => {
+              await AlertConfirm({
+                custom: () => <Tutorial />,
+              });
+            }}
+          >
+            <HelpIcon />
+            <p>HOW TO USE?</p>
+          </div>
           <div className="image-options-back" style={{ marginTop: "20px" }}>
             <motion.button
               whileHover={{ scale: 0.95 }}
@@ -190,7 +207,7 @@ export const PreviewItemsAferAdjustPage = () => {
           </div>
           {option === "cart" ? (
             <>
-              <h1>Your shopping cart</h1>
+              <h4>Your shopping cart</h4>
               <div className="image-options size">
                 <div className="cart-items">
                   {previewProducts.length > 0 ? (
@@ -225,7 +242,7 @@ export const PreviewItemsAferAdjustPage = () => {
           ) : (
             <>
               {" "}
-              <h1>Search all products</h1>
+              <h4>Search all products</h4>
               <div className="image-options size">
                 <div className="cart-items">
                   {data?.length > 0 ? (
@@ -375,7 +392,7 @@ export const PreviewItemsAferAdjustPage = () => {
                             <img
                               draggable="false"
                               className="product-image"
-                              src={item.img}
+                              src={item.preview_img}
                               alt="img"
                             />
                           </div>

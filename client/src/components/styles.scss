@@ -1501,3 +1501,65 @@
     width: 90vw;
   }
 }
+.tutorial {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 60vw;
+    user-select: none;
+    background-color: rgba($color: #ffffff, $alpha: 0.9);
+    .left {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      -webkit-box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      -moz-box-shadow: 10px -1px 5px 0px rgba(0, 0, 0, 0.39);
+      .options {
+        display: flex;
+        flex-direction: column;
+        a {
+          font-size: 20px;
+          font-weight: 500;
+          color: teal;
+          margin: 2px;
+          margin-left: 10px;
+          text-decoration: none;
+        }
+        a:hover {
+          color: rgb(2, 88, 88);
+        }
+        gap: 20px;
+      }
+    }
+    .right {
+      flex: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: justify;
+      overflow-y: scroll;
+      gap: 30px;
+      .tutorial-part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 30px;
+        margin-right: 30px;
+        h1 {
+          font-size: 30px;
+          font-weight: 500;
+          color: teal;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

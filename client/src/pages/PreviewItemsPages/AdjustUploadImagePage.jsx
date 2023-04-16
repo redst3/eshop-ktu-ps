@@ -5,6 +5,8 @@ import { PathLine } from "react-svg-pathline";
 import backgroundService from "../../services/BackgroundImageServices";
 import { motion } from "framer-motion";
 import AlertConfirm from "react-alert-confirm";
+import HelpIcon from "@mui/icons-material/Help";
+import { Tutorial } from "../../components/Tutorial";
 export const AdjustUploadImagePage = () => {
   const navigate = useNavigate();
   const [next, setNext] = useState("disabled");
@@ -33,13 +35,14 @@ export const AdjustUploadImagePage = () => {
           .getBackgroundImage(userId)
           .then((response) => {
             setPixelSize(response.px_to_cm);
-            setLoadedImage(true);
             setLoadedContent(response.image.fileContents);
             setLoadedType(response.image.contentType);
+            setLoadedImage(true);
           })
           .catch(() => {
             console.log("No image found");
             setLoadedImage(false);
+            setPixelSize(1);
           });
       } catch {}
     }
@@ -101,6 +104,7 @@ export const AdjustUploadImagePage = () => {
     AlertConfirm("This action will update all line lengths, continue?").then(
       (res) => {
         if (res[0]) {
+          console.log(selectedLineSize, lastSelectedLineSize);
           var newSize =
             parseFloat(selectedLineSize) / parseFloat(lastSelectedLineSize);
           var newlengths = [];
@@ -168,6 +172,17 @@ export const AdjustUploadImagePage = () => {
     <div className="adjust-upload-page">
       <div className="container">
         <div className="left">
+          <div
+            className="help"
+            onClick={async () => {
+              await AlertConfirm({
+                custom: () => <Tutorial />,
+              });
+            }}
+          >
+            <HelpIcon />
+            <p>HOW TO USE?</p>
+          </div>
           <h1>Options</h1>
           <div className="image-options">
             <motion.label

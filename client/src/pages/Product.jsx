@@ -136,6 +136,9 @@ const Product = () => {
                         img:
                           process.env.REACT_APP_IMG_URL +
                           data[0]?.attributes.img.data[0].attributes.url,
+                        preview_img:
+                          process.env.REACT_APP_IMG_URL +
+                          data[0]?.attributes.preview_img.data.attributes.url,
                         quantity,
                       })
                     )

@@ -16,7 +16,6 @@ import { UserPanel } from "./UserPanel";
 import { Search } from "./Search";
 
 const Navbar = () => {
-  const [checkout, setCheckout] = useState(sessionStorage.getItem("checkout"));
   const [search, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(false);
@@ -102,7 +101,7 @@ const Navbar = () => {
             </motion.div>
             {user ? (
               <motion.div className="item" whileHover={{ scale: 1.15 }}>
-                <Link className="link" to="/preview/introduction">
+                <Link className="link" to="/preview/preview-items">
                   PREVIEW
                 </Link>
               </motion.div>
