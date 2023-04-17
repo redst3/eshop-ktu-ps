@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./authPages.scss";
 import authServices from "../../services/AuthServices";
 import wishServices from "../../services/WishlistServices";

@@ -13,7 +13,7 @@ class BackgroundImageService {
       method: "post",
       maxBodyLength: Infinity,
       url: API_URL + userId,
-      headers: {},
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       data: formdata,
     };
     await axios

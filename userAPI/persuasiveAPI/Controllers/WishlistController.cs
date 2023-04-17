@@ -1,5 +1,7 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using persuasiveAPI.Auth;
 using persuasiveAPI.Data.Repositories;
 
 namespace persuasiveAPI.Controllers;
@@ -14,6 +16,7 @@ public class WishlistController: ControllerBase
     }
     [HttpGet]
     [Route("{userId}")]
+    [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> GetWishlist(string userId)
     {
         var wishlist = await _wishlistRepository.GetWishlistByUserId(userId);
@@ -21,6 +24,7 @@ public class WishlistController: ControllerBase
     }
     [HttpPut]
     [Route("{userId}/{productId}")]
+    [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> AddProduct(string userId, int productId)
     {
         await _wishlistRepository.AddProductToWishlist(userId, productId);
@@ -28,6 +32,7 @@ public class WishlistController: ControllerBase
     }
     [HttpDelete]
     [Route("{userId}/{productId}")]
+    [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> RemoveProduct(string userId, int productId)
     {
         await _wishlistRepository.RemoveProductFromWishlist(userId, productId);

@@ -24,13 +24,12 @@ function Slider() {
         <div className="info modal-1">
           <p>
             Welcome to my interior design website! I am excited to introduce you
-            to a collection of carefully selected paintings, vases, candles,
-            cushions, lamps, and mirrors, all of which have been selected to
-            complement modern and minimalist interior design styles.
+            to a collection of carefully selected paintings, mirrors, clocks,
+            wall stickers and neon signs.
           </p>
           <p>
             As a student at Kaunas University of Technology, this website is
-            created for my final project. I am passionate about showcasing my
+            created for my final project, as I am passionate about showcasing my
             love for interior design.
           </p>
         </div>

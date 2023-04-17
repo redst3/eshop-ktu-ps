@@ -13,15 +13,27 @@ const List = ({ maxPrice, sort, keyword }) => {
   }, [sort]);
 
   const { data, loading } = useFetch(
-    `/products?populate=*&[filters][price][$lte]=${maxPrice}${sortOrder}&[filters][title][$containsi]=${keyword}`
+    `/products?populate=*&[filters][price][$lte]=${maxPrice}${sortOrder}`
   );
+  const [searchProducts, setSearchProducts] = useState([]);
+
+  useEffect(() => {
+    if (keyword !== "") {
+      const results = data?.filter((product) =>
+        product.attributes.title.toLowerCase().includes(keyword)
+      );
+      setSearchProducts(results);
+    } else {
+      setSearchProducts(data);
+    }
+  }, [keyword, data]);
 
   return (
     <div className="listCards">
       {loading ? (
         <div id="spin" className="spinner"></div>
       ) : (
-        data.map((item) => <Card item={item} key={item.id} />)
+        searchProducts.map((item) => <Card item={item} key={item.id} />)
       )}
     </div>
   );

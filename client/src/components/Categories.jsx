@@ -2,38 +2,49 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 import { motion } from "framer-motion";
+import useFetch from "../hooks/useFetch";
 
 function Categories() {
+  const categories = useFetch(`/categories?populate=*`);
   return (
     <div className="categories">
       <div className="col">
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <Link className="link" to="/products/2">
+          <Link className="link" to={`/products/${categories?.data[3]?.id}`}>
             <img
-              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={
+                process.env.REACT_APP_IMG_URL +
+                categories?.data[3]?.attributes?.img?.data?.attributes?.url
+              }
               alt=""
             />
-            <span>Vases</span>
+            <span>Clocks</span>
           </Link>
         </motion.div>
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <Link className="link" to="/products/1">
+          <Link className="link" to={`/products/${categories?.data[1]?.id}`}>
             <img
-              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={
+                process.env.REACT_APP_IMG_URL +
+                categories?.data[1]?.attributes?.img?.data?.attributes?.url
+              }
               alt=""
             />
-            <span>Paintings</span>
+            <span>Mirrors</span>
           </Link>
         </motion.div>
       </div>
       <div className="col">
         <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <Link className="link" to="/products">
+          <Link className="link" to={`/products/${categories?.data[0]?.id}`}>
             <img
-              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={
+                process.env.REACT_APP_IMG_URL +
+                categories?.data[0]?.attributes?.img?.data?.attributes?.url
+              }
               alt=""
             />
-            <span>Candles</span>
+            <span>Paintings</span>
           </Link>
         </motion.div>
       </div>
@@ -41,37 +52,39 @@ function Categories() {
         <div className="row">
           <div className="col">
             <motion.div className="row" whileHover={{ scale: 0.95 }}>
-              <Link className="link" to="/products">
+              <Link
+                className="link"
+                to={`/products/${categories?.data[2]?.id}`}
+              >
                 <img
-                  src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src={
+                    process.env.REACT_APP_IMG_URL +
+                    categories?.data[2]?.attributes?.img?.data?.attributes?.url
+                  }
                   alt=""
                 />
-                <span>Cushions</span>
+                <span>Neon signs</span>
               </Link>
             </motion.div>
           </div>
           <div className="col">
             <motion.div className="row" whileHover={{ scale: 0.95 }}>
-              <Link className="link" to="/products">
+              <Link
+                className="link"
+                to={`/products/${categories?.data[4]?.id}`}
+              >
                 <img
-                  src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src={
+                    process.env.REACT_APP_IMG_URL +
+                    categories?.data[4]?.attributes?.img?.data?.attributes?.url
+                  }
                   alt=""
                 />
-                <span>Lamps</span>
+                <span>Wall stickers</span>
               </Link>
             </motion.div>
           </div>
         </div>
-        <motion.div className="row" whileHover={{ scale: 0.95 }}>
-          <Link className="link wide" to="/products">
-            <img
-              className="img"
-              src="https://images.pexels.com/photos/1585325/pexels-photo-1585325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt=""
-            />
-            <span>Mirrors</span>
-          </Link>
-        </motion.div>
       </div>
     </div>
   );

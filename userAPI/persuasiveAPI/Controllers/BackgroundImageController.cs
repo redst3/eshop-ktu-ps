@@ -41,6 +41,7 @@ public class BackgroundImageController: ControllerBase
     }
     [HttpPost]
     [Route("{userId}")]
+    [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> ImportBackgroundImage(string userId, [FromForm] IFormFile? background,[FromForm] double px_to_cm)
     {
         if(userId == null || px_to_cm == 0){

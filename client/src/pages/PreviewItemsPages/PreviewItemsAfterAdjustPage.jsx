@@ -39,12 +39,21 @@ export const PreviewItemsAferAdjustPage = () => {
       return { ...item, inCart: true };
     }),
   ]);
+  const [searchProducts, setSearchProducts] = useState([]);
   const [displayProducts, setDisplayProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
   const dispatchHook = useDispatch();
-  const { data } = useFetch(
-    `/products?populate=*&[filters][title][$containsi]=${keyword}`
-  );
+  const { data } = useFetch(`/products?populate=*`);
+  useEffect(() => {
+    if (keyword !== "") {
+      const results = data?.filter((product) =>
+        product.attributes.title.toLowerCase().includes(keyword)
+      );
+      setSearchProducts(results);
+    } else {
+      setSearchProducts(data);
+    }
+  }, [keyword, data]);
   useEffect(() => {
     var userId = JSON.parse(sessionStorage.getItem("user")).sub;
     async function fetchData() {
@@ -107,7 +116,6 @@ export const PreviewItemsAferAdjustPage = () => {
       width: e.attributes.width,
       inCart: false,
     };
-    console.log(product);
     setDisplayProducts([...displayProducts, product]);
   };
   const handleRotate = (e, direction) => {
@@ -245,8 +253,8 @@ export const PreviewItemsAferAdjustPage = () => {
               <h4>Search all products</h4>
               <div className="image-options size">
                 <div className="cart-items">
-                  {data?.length > 0 ? (
-                    data?.map((item) => (
+                  {searchProducts?.length > 0 ? (
+                    searchProducts?.map((item) => (
                       <motion.div
                         whileHover={{ scale: 0.95 }}
                         className="item"
@@ -394,6 +402,13 @@ export const PreviewItemsAferAdjustPage = () => {
                               className="product-image"
                               src={item.preview_img}
                               alt="img"
+                              style={
+                                item.img === item.preview_img
+                                  ? {
+                                      border: "5px solid white",
+                                    }
+                                  : {}
+                              }
                             />
                           </div>
                           <span

@@ -10,7 +10,7 @@ class WishlistService {
       method: "get",
       maxBodyLength: Infinity,
       url: API_URL + userId,
-      headers: {},
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       data: data,
     };
     const response = await axios(config);
@@ -34,7 +34,7 @@ class WishlistService {
       method: "put",
       maxBodyLength: Infinity,
       url: API_URL + userId + "/" + productId,
-      headers: {},
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       data: data,
     };
 
@@ -51,7 +51,7 @@ class WishlistService {
       method: "delete",
       maxBodyLength: Infinity,
       url: API_URL + userId + "/" + productId,
-      headers: {},
+      headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       data: data,
     };
 

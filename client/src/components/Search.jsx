@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
@@ -6,9 +6,20 @@ import { useNavigate } from "react-router-dom";
 export const Search = () => {
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState("");
-  const { data } = useFetch(
-    `/products?populate=*&[filters][title][$containsi]=${keyword}`
-  );
+  const { data } = useFetch(`/products?populate=*`);
+  const [searchProducts, setSearchProducts] = useState([]);
+
+  useEffect(() => {
+    if (keyword !== "") {
+      const results = data?.filter((product) =>
+        product.attributes.title.toLowerCase().includes(keyword)
+      );
+      setSearchProducts(results);
+    } else {
+      setSearchProducts([]);
+    }
+  }, [keyword, data]);
+
   return (
     <div className="search-navbar s01hz">
       <div className="search-container s01hz">
@@ -20,13 +31,13 @@ export const Search = () => {
         ></input>
         {keyword !== "" && (
           <span className="search-results s01hz">
-            Search results: {data?.length}
+            Search results: {searchProducts?.length}
           </span>
         )}
         <div className="cart-items s01hz">
           {keyword !== "" &&
-            (data?.length > 0 ? (
-              data?.map((item) => (
+            (searchProducts?.length > 0 ? (
+              searchProducts?.map((item) => (
                 <motion.div
                   whileHover={{ scale: 0.95 }}
                   className="item"
