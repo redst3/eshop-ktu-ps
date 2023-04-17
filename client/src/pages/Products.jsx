@@ -20,6 +20,9 @@ const Products = () => {
     `/sub-categories?[filters][category][id][$eq]=${categoryId}`
   );
   const categories = useFetch(`/categories?populate=*`);
+
+  const category = categories.data?.find((item) => item.id === categoryId);
+
   const handleChange = (e) => {
     if (e.target.checked) {
       setSelected([...selected, e.target.value]);
@@ -82,6 +85,7 @@ const Products = () => {
                       id={item.id}
                       value={item.id}
                       key={item.id}
+                      defaultChecked
                       onChange={handleChange}
                     ></input>
                     <label htmlFor={item.id}>{item.attributes.title}</label>
@@ -245,8 +249,7 @@ const Products = () => {
               className="categoryImg"
               src={
                 process.env.REACT_APP_IMG_URL +
-                categories.data[categoryId - 1]?.attributes.img.data.attributes
-                  .url
+                category?.attributes.img.data.attributes.url
               }
               alt=" "
             ></img>
