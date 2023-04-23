@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using persuasiveAPI.Auth;
-using persuasiveAPI.Data.Entities;
 using persuasiveAPI.Data.Repositories;
 
 namespace persuasiveAPI.Controllers;
@@ -11,15 +10,22 @@ namespace persuasiveAPI.Controllers;
 public class BackgroundImageController: ControllerBase
 {
     private readonly IBackgroundImageRepository _backgroundImageRepository;
-    public BackgroundImageController(IBackgroundImageRepository backgroundImageRepository)
+    private readonly IJwtTokenService _jwtTokenService;
+    public BackgroundImageController(IBackgroundImageRepository backgroundImageRepository, IJwtTokenService jwtTokenService)
     {
         _backgroundImageRepository = backgroundImageRepository;
+        _jwtTokenService = jwtTokenService;
     }
     [HttpGet]
     [Route("{userId}")]
     [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> GetBackgroundImage(string userId)
     {
+        var token = Request.Headers["Authorization"].ToString().Substring(7);
+        var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
+        if(!isValid)
+            return Unauthorized("Requested user id does not match token");
+
         var background = await _backgroundImageRepository.GetBackgroundByUserId(userId);
         if(background.ImageUrl == null)
         {
@@ -44,6 +50,11 @@ public class BackgroundImageController: ControllerBase
     [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> ImportBackgroundImage(string userId, [FromForm] IFormFile? background,[FromForm] double px_to_cm)
     {
+        var token = Request.Headers["Authorization"].ToString().Substring(7);
+        var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
+        if(!isValid)
+            return Unauthorized("Requested user id does not match token");
+
         if(userId == null || px_to_cm == 0){
             return BadRequest("no userId or px_to_cm");
         }
