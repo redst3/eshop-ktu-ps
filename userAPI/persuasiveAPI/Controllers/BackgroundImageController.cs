@@ -21,11 +21,15 @@ public class BackgroundImageController: ControllerBase
     [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> GetBackgroundImage(string userId)
     {
-        var token = Request.Headers["Authorization"].ToString().Substring(7);
-        var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
-        if(!isValid)
-            return Unauthorized("Requested user id does not match token");
-
+        try
+        {
+            var token = Request.Headers["Authorization"].ToString().Substring(7);
+            var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
+            if (!isValid)
+                return Unauthorized("Requested user id does not match token");
+        }
+        catch{}
+        
         var background = await _backgroundImageRepository.GetBackgroundByUserId(userId);
         if(background.ImageUrl == null)
         {
@@ -50,11 +54,15 @@ public class BackgroundImageController: ControllerBase
     [Authorize(Roles = UserRoles.User)]
     public async Task<IActionResult> ImportBackgroundImage(string userId, [FromForm] IFormFile? background,[FromForm] double px_to_cm)
     {
-        var token = Request.Headers["Authorization"].ToString().Substring(7);
-        var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
-        if(!isValid)
-            return Unauthorized("Requested user id does not match token");
-
+        try
+        {
+            var token = Request.Headers["Authorization"].ToString().Substring(7);
+            var isValid = _jwtTokenService.CheckAccessTokenWithUserId(token, userId);
+            if (!isValid)
+                return Unauthorized("Requested user id does not match token");
+        }
+        catch{}
+        
         if(userId == null || px_to_cm == 0){
             return BadRequest("no userId or px_to_cm");
         }

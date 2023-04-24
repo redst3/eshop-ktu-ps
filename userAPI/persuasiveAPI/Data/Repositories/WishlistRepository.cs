@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using persuasiveAPI.Data.Entities;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 namespace persuasiveAPI.Data.Repositories;
 
@@ -17,48 +19,55 @@ public class WishlistRepository : IWishlistRepository
         if (userId.Length == 0)
             throw new ArgumentNullException(nameof(userId));
         var userWishlist = await _context.Wishlists.FirstOrDefaultAsync(w => w.UserId == userId);
-        if(userWishlist == null)
-            throw new ArgumentNullException(nameof(userWishlist));
+        if (userWishlist == null)
+            return new Wishlist
+            {
+                Id = -1,
+                ProductIds = null,
+                UserId = "-1",
+            };
         return userWishlist;
     }
-    public async Task AddProductToWishlist(string userId, int productId)
+    public async Task<bool> AddProductToWishlist(string userId, int productId)
     {
         if (userId.Length == 0)
-            throw new ArgumentNullException(nameof(userId));
+            return false;
         if (productId == 0)
-            throw new ArgumentNullException(nameof(productId));
+            return false;
         Wishlist? userWishlist = await _context.Wishlists.FirstOrDefaultAsync(w => w.UserId == userId);
         if(userWishlist == null)
-            throw new ArgumentNullException(nameof(userWishlist));
+            return false;
         Console.WriteLine(userWishlist);
         var wishlist = JsonSerializer.Deserialize<List<int>>(userWishlist.ProductIds ?? "[]");
         if(wishlist == null)
-            throw new ArgumentNullException(nameof(wishlist));
-        if(wishlist.Contains(productId))
-            return;
+            return false;
+        if (wishlist.Contains(productId))
+            return false;
 
         wishlist.Add(productId);
         userWishlist.ProductIds = JsonSerializer.Serialize(wishlist);
         await _context.SaveChangesAsync();
+        return true;
     }
-    public async Task RemoveProductFromWishlist(string userId, int productId)
+    public async Task<bool> RemoveProductFromWishlist(string userId, int productId)
     {
         if (userId.Length == 0)
-            throw new ArgumentNullException(nameof(userId));
+            return false;
         if (productId == 0)
-            throw new ArgumentNullException(nameof(productId));
+            return false;
         Wishlist? userWishlist = await _context.Wishlists.FirstOrDefaultAsync(w => w.UserId == userId);
-        if(userWishlist == null)
-            throw new ArgumentNullException(nameof(userWishlist));
+        if (userWishlist == null)
+            return false;
         var wishlist = JsonSerializer.Deserialize<List<int>>(userWishlist.ProductIds ?? "[]");
-        if(wishlist == null)
-            throw new ArgumentNullException(nameof(wishlist));
-        if(!wishlist.Contains(productId))
-            return;
+        if (wishlist == null)
+            return false;
+        if (!wishlist.Contains(productId))
+            return false;
 
         wishlist.Remove(productId);
         userWishlist.ProductIds = JsonSerializer.Serialize(wishlist);
         await _context.SaveChangesAsync();
+        return true;
     }
     public async Task CreateWishlist(string userId)
     {
@@ -77,7 +86,7 @@ public class WishlistRepository : IWishlistRepository
 public interface IWishlistRepository
 {
     Task<Wishlist> GetWishlistByUserId(string userId);
-    Task AddProductToWishlist(string userId, int productId);
-    Task RemoveProductFromWishlist(string userId, int productId);
+    Task<bool> AddProductToWishlist(string userId, int productId);
+    Task<bool> RemoveProductFromWishlist(string userId, int productId);
     Task CreateWishlist(string userId);
 }

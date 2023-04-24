@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "persuasiveAPI", "persuasiveAPI.csproj", "{03312D25-4C87-4775-86ED-D0407BE84F54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "persuasiveAPI_Tests", "..\persuasiveAPI_Tests\persuasiveAPI_Tests.csproj", "{65E9F7C7-9813-49C4-AB82-705845A9B7EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{03312D25-4C87-4775-86ED-D0407BE84F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03312D25-4C87-4775-86ED-D0407BE84F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03312D25-4C87-4775-86ED-D0407BE84F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E9F7C7-9813-49C4-AB82-705845A9B7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E9F7C7-9813-49C4-AB82-705845A9B7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E9F7C7-9813-49C4-AB82-705845A9B7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E9F7C7-9813-49C4-AB82-705845A9B7EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

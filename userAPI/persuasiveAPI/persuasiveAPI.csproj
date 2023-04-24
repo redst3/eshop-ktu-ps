@@ -29,4 +29,12 @@
       <Folder Include="Migrations" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="persuasiveAPI.Tests\bin\Debug\net7.0\persuasiveAPI.Tests.deps.json" />
+      <_ContentIncludedByDefault Remove="persuasiveAPI.Tests\bin\Debug\net7.0\persuasiveAPI.Tests.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="persuasiveAPI.Tests\obj\persuasiveAPI.Tests.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="persuasiveAPI.Tests\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="persuasiveAPI.Tests\obj\project.packagespec.json" />
+    </ItemGroup>
+
 </Project>

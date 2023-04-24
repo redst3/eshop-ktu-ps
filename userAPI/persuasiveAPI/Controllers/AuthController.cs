@@ -16,6 +16,7 @@ public class AuthController : ControllerBase
     private readonly IJwtTokenService _jwtTokenService;
     private readonly IAuthorizationService _authorizationService;
     private readonly IWishlistRepository _wishlistRepository;
+    
 
     public AuthController(UserManager<User> userManager, IJwtTokenService jwtTokenService,
         IAuthorizationService authService, IWishlistRepository wishlistRepository)

@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b63f7ffb-16b6-4bda-bc41-d357394fe0e7" name="Changes" comment="user api">
-      <change afterPath="$PROJECT_DIR$/Controllers/WishlistController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Entities/Wishlist.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/components/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/components/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/PreviewItemsPages/PreviewItemsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/PreviewItemsPages/PreviewItemsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/PreviewItemsPages/zitempreview.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/PreviewItemsPages/zitempreview.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/Products.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/UserPages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/UserPages/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/UserPages/RegisterPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/UserPages/RegisterPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/pages/UserPages/authPages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/pages/UserPages/authPages.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/services/AuthServices.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/services/AuthServices.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/src/services/protectedRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/src/services/protectedRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/indexLayout.xml" afterDir="false" />
+    <list default="true" id="b63f7ffb-16b6-4bda-bc41-d357394fe0e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/Images/test_background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auth/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Auth/Model/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Context.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/BackgroundImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BackgroundImageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/WishlistController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/WishlistController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persuasiveAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/persuasiveAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persuasiveAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/persuasiveAPI.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +30,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f64d90774174ac9bb7b7bb64cbace5f32719a308ed114b4a7a5c52ee0cf1d36/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -57,26 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.5633588&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.environmentSetup&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
-      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
-      &quot;/home/redas/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/home/redas/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
+      "/home/redas/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache",
+      "/home/redas/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.persuasiveAPI: http">
     <configuration name="persuasiveAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/persuasiveAPI.csproj" />
@@ -147,6 +134,9 @@
       <workItem from="1678779656406" duration="1708000" />
       <workItem from="1678781378069" duration="2234000" />
       <workItem from="1678783752466" duration="49000" />
+      <workItem from="1682316814837" duration="769000" />
+      <workItem from="1682317849357" duration="13249000" />
+      <workItem from="1682334435507" duration="3734000" />
     </task>
     <task id="LOCAL-00001" summary="user api">
       <created>1678555780155</created>
@@ -161,6 +151,46 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="241" />
+    <coverage-tree-state>
+      <expand>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Controllers 48% 85/162" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Data 6% 125/133" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+      </expand>
+      <select />
+    </coverage-tree-state>
+  </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
@@ -172,355 +202,210 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
+          <url>file://$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs</url>
+          <line>30</line>
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs" initialLine="30" containingFunctionPresentation="method 'AuthController_Register_ReturnsBadRequestWeakPassword'" />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs</url>
+          <line>31</line>
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs" initialLine="31" containingFunctionPresentation="method 'AuthController_Register_ReturnsBadRequestWeakPassword'" />
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs</url>
           <line>33</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="33" containingFunctionPresentation="method 'AddProductToWishlist'">
-            <startOffsets>
-              <option value="1277" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1351" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs" initialLine="33" containingFunctionPresentation="method 'AuthController_Register_ReturnsBadRequestWeakPassword'" />
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>36</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="34" containingFunctionPresentation="method 'AddProductToWishlist'">
-            <startOffsets>
-              <option value="1441" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1470" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs</url>
+          <line>35</line>
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs" initialLine="35" containingFunctionPresentation="method 'AuthController_Register_ReturnsBadRequestWeakPassword'" />
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>38</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="36" containingFunctionPresentation="method 'AddProductToWishlist'">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>33</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="33" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1557" />
+              <option value="1089" />
             </startOffsets>
             <endOffsets>
-              <option value="1569" />
+              <option value="1157" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>41</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="39" containingFunctionPresentation="method 'AddProductToWishlist'">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>35</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="35" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1630" />
+              <option value="1196" />
             </startOffsets>
             <endOffsets>
-              <option value="1631" />
+              <option value="1238" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>40</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="38" containingFunctionPresentation="method 'AddProductToWishlist'">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>34</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="34" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1592" />
+              <option value="1166" />
             </startOffsets>
             <endOffsets>
-              <option value="1621" />
+              <option value="1183" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>43</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="41" containingFunctionPresentation="method 'AddProductToWishlist'">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>37</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="37" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1710" />
+              <option value="1248" />
             </startOffsets>
             <endOffsets>
-              <option value="1744" />
+              <option value="1375" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
           <line>42</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="40" containingFunctionPresentation="method 'AddProductToWishlist'">
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="42" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1640" />
+              <option value="1384" />
             </startOffsets>
             <endOffsets>
-              <option value="1701" />
+              <option value="1469" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="22" />
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>46</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="46" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>45</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="45" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1833" />
+              <option value="1520" />
             </startOffsets>
             <endOffsets>
-              <option value="1834" />
+              <option value="1521" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>44</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="44" containingFunctionPresentation="method 'Register'">
+            <startOffsets>
+              <option value="1479" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1511" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
           <line>47</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="47" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="47" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1843" />
+              <option value="1586" />
             </startOffsets>
             <endOffsets>
-              <option value="1866" />
+              <option value="1587" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>46</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="46" containingFunctionPresentation="method 'Register'">
+            <startOffsets>
+              <option value="1534" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1577" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
           <line>48</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="48" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="48" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1879" />
+              <option value="1596" />
             </startOffsets>
             <endOffsets>
-              <option value="1927" />
+              <option value="1655" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
+          <line>51</line>
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="51" containingFunctionPresentation="method 'Register'">
+            <startOffsets>
+              <option value="1727" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1826" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
           <line>49</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="49" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="49" containingFunctionPresentation="method 'Register'">
             <startOffsets>
-              <option value="1936" />
+              <option value="1664" />
             </startOffsets>
             <endOffsets>
-              <option value="1955" />
+              <option value="1717" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="26" />
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>50</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="50" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <url>file://$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs</url>
+          <line>41</line>
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" initialLine="41" containingFunctionPresentation="method 'AuthController_Register_ReturnUserExists'">
             <startOffsets>
-              <option value="1968" />
+              <option value="1358" />
             </startOffsets>
             <endOffsets>
-              <option value="2019" />
+              <option value="1391" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>52</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="52" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
+          <url>file://$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs</url>
+          <line>40</line>
+          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" initialLine="40" containingFunctionPresentation="method 'AuthController_Register_ReturnUserExists'">
             <startOffsets>
-              <option value="2132" />
+              <option value="1267" />
             </startOffsets>
             <endOffsets>
-              <option value="2156" />
+              <option value="1349" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>53</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="53" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2169" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2223" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>54</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="54" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2232" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2307" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>57</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="57" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2318" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2365" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>59</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="59" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2398" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2399" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>58</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="58" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2374" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2389" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>62</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="62" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2494" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2555" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>61</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="61" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2484" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2485" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>64</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="64" containingFunctionPresentation="method 'RemoveProductFromWishlist'">
-            <startOffsets>
-              <option value="2565" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2599" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>67</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="67" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2662" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2663" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>68</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="68" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2672" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2695" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>69</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="69" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2708" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2756" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>70</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="70" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2765" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2916" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>75</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="74" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2925" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2973" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs</url>
-          <line>76</line>
-          <properties documentPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" initialLine="75" containingFunctionPresentation="method 'CreateWishlist'">
-            <startOffsets>
-              <option value="2982" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3016" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="42" />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
