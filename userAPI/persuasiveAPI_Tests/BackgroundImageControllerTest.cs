@@ -15,7 +15,7 @@ public class BackgroundImageControllerTest
     private readonly Mock<IBackgroundImageRepository> _backgroundImageRepository;
     private readonly Mock<IJwtTokenService> _jwtTokenService;
     private readonly Fixture _fixture;
-    private BackgroundImageController _backgroundImageController;
+    private BackgroundImageController? _backgroundImageController;
     
     public BackgroundImageControllerTest()
     {
@@ -23,7 +23,6 @@ public class BackgroundImageControllerTest
         _backgroundImageRepository = new Mock<IBackgroundImageRepository>();
         _jwtTokenService = new Mock<IJwtTokenService>();
     }
-    
     [TestMethod]
     public async Task BackgroundImageController_GetBackgroundImage_ReturnNoContent()
     {

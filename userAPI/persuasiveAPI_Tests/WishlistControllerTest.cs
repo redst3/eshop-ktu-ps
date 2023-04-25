@@ -15,7 +15,7 @@ public class WishlistControllerTest
     private readonly Mock<IWishlistRepository> _wishlistRepository;
     private readonly Mock<IJwtTokenService> _jwtTokenService;
     private readonly Fixture _fixture;
-    private WishlistController _wishlistController;
+    private WishlistController? _wishlistController;
 
     public WishlistControllerTest()
     {

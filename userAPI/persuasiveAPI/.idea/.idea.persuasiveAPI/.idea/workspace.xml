@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b63f7ffb-16b6-4bda-bc41-d357394fe0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/Images/test_background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageRepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/BackgroundImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BackgroundImageController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/WishlistController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/WishlistController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Repositories/WishlistRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persuasiveAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/persuasiveAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persuasiveAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/persuasiveAPI.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/WishlistControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/WishlistControllerTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,25 +41,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/home/redas/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache",
-      "/home/redas/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache",
-      "/home/redas/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/redas/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.persuasiveAPI: http">
     <configuration name="persuasiveAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/persuasiveAPI.csproj" />
@@ -136,7 +132,8 @@
       <workItem from="1678783752466" duration="49000" />
       <workItem from="1682316814837" duration="769000" />
       <workItem from="1682317849357" duration="13249000" />
-      <workItem from="1682334435507" duration="3734000" />
+      <workItem from="1682334435507" duration="5710000" />
+      <workItem from="1682422738375" duration="4020000" />
     </task>
     <task id="LOCAL-00001" summary="user api">
       <created>1678555780155</created>
@@ -145,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678555780155</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="unit testing controllers">
+      <created>1682339823477</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682339823477</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,37 +159,38 @@
     <option name="coveragePercentColumnWidth" value="150" />
     <option name="sortOrder" value="DESCENDING" />
     <option name="sortedColumn" value="1" />
-    <option name="symbolColumnWidth" value="241" />
+    <option name="symbolColumnWidth" value="324" />
     <coverage-tree-state>
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Controllers 48% 85/162" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-        </path>
-        <path>
-          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 17% 860/1038" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 846/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 9% 810/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="Data 6% 125/133" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Data 6% 125/133" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Repositories 0% 75/75" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />
@@ -196,7 +201,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="user api" />
-    <option name="LAST_COMMIT_MESSAGE" value="user api" />
+    <MESSAGE value="unit testing controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="unit testing controllers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -224,188 +230,6 @@
           <line>35</line>
           <properties documentPath="$PROJECT_DIR$/../persuasiveAPI.Tests/Controllers/AuthControllerTests.cs" initialLine="35" containingFunctionPresentation="method 'AuthController_Register_ReturnsBadRequestWeakPassword'" />
           <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>33</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="33" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1089" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1157" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="35" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1196" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1238" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>34</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="34" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1166" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1183" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>37</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="37" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1248" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1375" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>42</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="42" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1384" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1469" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>45</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="45" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1520" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1521" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>44</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="44" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1479" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1511" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>47</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="47" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1586" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1587" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>46</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="46" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1534" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1577" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>48</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="48" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1596" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1655" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>51</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="51" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1727" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1826" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Controllers/AuthController.cs</url>
-          <line>49</line>
-          <properties documentPath="$PROJECT_DIR$/Controllers/AuthController.cs" initialLine="49" containingFunctionPresentation="method 'Register'">
-            <startOffsets>
-              <option value="1664" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1717" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs</url>
-          <line>41</line>
-          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" initialLine="41" containingFunctionPresentation="method 'AuthController_Register_ReturnUserExists'">
-            <startOffsets>
-              <option value="1358" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1391" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs</url>
-          <line>40</line>
-          <properties documentPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" initialLine="40" containingFunctionPresentation="method 'AuthController_Register_ReturnUserExists'">
-            <startOffsets>
-              <option value="1267" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1349" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
