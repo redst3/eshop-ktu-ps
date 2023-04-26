@@ -2,16 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b63f7ffb-16b6-4bda-bc41-d357394fe0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageRepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/WishlistControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/WishlistControllerTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/persuasiveAPI_Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/persuasiveAPI_Tests.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSON File" />
+      </list>
+    </option>
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -26,9 +31,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f64d90774174ac9bb7b7bb64cbace5f32719a308ed114b4a7a5c52ee0cf1d36/Type.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -41,26 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/DecompilerCache&quot;,
-      &quot;/home/redas/.config/JetBrains/Rider2022.3/resharper-host/SourcesCache&quot;,
-      &quot;/home/redas/.local/share/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\redas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\redas\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\redas\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.persuasiveAPI: http">
+}]]></component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.persuasiveAPI: IIS Express">
     <configuration name="persuasiveAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/persuasiveAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -134,6 +136,7 @@
       <workItem from="1682317849357" duration="13249000" />
       <workItem from="1682334435507" duration="5710000" />
       <workItem from="1682422738375" duration="4020000" />
+      <workItem from="1682444055704" duration="4359000" />
     </task>
     <task id="LOCAL-00001" summary="user api">
       <created>1678555780155</created>

@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "../img/logo_nobackground.png";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import StarRateIcon from "@mui/icons-material/StarRate";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import SegmentIcon from "@mui/icons-material/Segment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import PersonIcon from "@mui/icons-material/Person";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import "./styles.scss";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
@@ -96,12 +98,14 @@ const Navbar = () => {
           <div className="center">
             <motion.div className="item" whileHover={{ scale: 1.15 }}>
               <Link className="link" to="/products">
+                <ManageSearchIcon />
                 BROWSE
               </Link>
             </motion.div>
             {user ? (
               <motion.div className="item" whileHover={{ scale: 1.15 }}>
                 <Link className="link" to="/preview/preview-items">
+                  <VisibilityIcon />
                   PREVIEW
                 </Link>
               </motion.div>
@@ -120,7 +124,7 @@ const Navbar = () => {
                     handleUserPanel();
                   }}
                 >
-                  <PersonIcon />
+                  <ManageAccountsIcon />
                 </motion.div>
               ) : (
                 <Link className="link" to="/login">
@@ -131,7 +135,7 @@ const Navbar = () => {
               )}
               <motion.div whileHover={{ scale: 1.15 }}>
                 <Link to="/user/wishlist" className="link wishlist">
-                  <FavoriteBorderOutlinedIcon />
+                  <StarRateIcon />
                 </Link>
               </motion.div>
               <motion.div
