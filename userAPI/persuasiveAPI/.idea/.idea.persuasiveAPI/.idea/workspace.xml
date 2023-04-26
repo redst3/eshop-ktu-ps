@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b63f7ffb-16b6-4bda-bc41-d357394fe0e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageRepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.persuasiveAPI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/AuthControllerTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../persuasiveAPI_Tests/BackgroundImageControllerTest.cs" afterDir="false" />
@@ -133,7 +132,7 @@
       <workItem from="1682316814837" duration="769000" />
       <workItem from="1682317849357" duration="13249000" />
       <workItem from="1682334435507" duration="5710000" />
-      <workItem from="1682422738375" duration="4020000" />
+      <workItem from="1682422738375" duration="4415000" />
     </task>
     <task id="LOCAL-00001" summary="user api">
       <created>1678555780155</created>
@@ -164,33 +163,32 @@
       <expand>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 30% 774/1103" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 30% 774/1103" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 30% 774/1103" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
         <path>
           <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Total 30% 774/1103" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+          <item name="Controllers 76% 39/162" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
+        </path>
+        <path>
+          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
+          <item name="Total 30% 774/1103" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
           <item name="Data 6% 125/133" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-        </path>
-        <path>
-          <item name="rootNode" type="c53c71d1:RiderDotCoverCoverageTreeModel$RootNode" />
-          <item name="Total 26% 822/1114" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 17% 774/931" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="persuasiveAPI 18% 738/895" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Data 6% 125/133" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
-          <item name="Repositories 0% 75/75" type="8b8fad3a:RiderDotCoverCoverageTreeNode" />
         </path>
       </expand>
       <select />

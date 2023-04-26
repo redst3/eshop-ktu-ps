@@ -203,7 +203,9 @@ export default function Checkout(props) {
               </h4>
             </fieldset>
             <div className="spin">
-              <button onClick={handleSave}>SAVE SHIPPING ADDRESS</button>
+              {loggedIn && (
+                <button onClick={handleSave}>SAVE SHIPPING ADDRESS</button>
+              )}
             </div>
             <span>INFORMATION</span>
             <div className="cart-information">
