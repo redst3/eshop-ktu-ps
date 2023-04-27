@@ -10,6 +10,7 @@ import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import SegmentIcon from "@mui/icons-material/Segment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import EditIcon from "@mui/icons-material/Edit";
 import "./styles.scss";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
@@ -20,7 +21,7 @@ import { Search } from "./Search";
 const Navbar = () => {
   const [search, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState("");
   const [openPanel, setOpenPanel] = useState(false);
   const [mobileNav, setMobileNav] = useState("navbar-mobile");
   const [backgroundNav, setBackgroundNav] = useState("");
@@ -41,8 +42,8 @@ const Navbar = () => {
   });
   const products = useSelector((state) => state.cart.products);
   useEffect(() => {
-    if (sessionStorage.getItem("user")) {
-      setUser(true);
+    if (sessionStorage.getItem("role")) {
+      setUser(sessionStorage.getItem("role"));
     }
   }, [user]);
   const handleUserPanel = () => {
@@ -102,11 +103,24 @@ const Navbar = () => {
                 BROWSE
               </Link>
             </motion.div>
-            {user ? (
+
+            {user === "User" || user === "Admin" ? (
               <motion.div className="item" whileHover={{ scale: 1.15 }}>
                 <Link className="link" to="/preview/preview-items">
                   <VisibilityIcon />
                   PREVIEW
+                </Link>
+              </motion.div>
+            ) : null}
+            {user === "Admin" ? (
+              <motion.div className="item" whileHover={{ scale: 1.15 }}>
+                <Link
+                  className="link"
+                  target="_blank"
+                  to={process.env.REACT_APP_STRAPI_ADMIN}
+                >
+                  <EditIcon />
+                  MANAGE
                 </Link>
               </motion.div>
             ) : null}
@@ -116,7 +130,7 @@ const Navbar = () => {
               <motion.div whileHover={{ scale: 1.15 }}>
                 <SearchIcon onClick={handleSearch} />
               </motion.div>
-              {user ? (
+              {user !== "" ? (
                 <motion.div
                   whileHover={{ scale: 1.15 }}
                   className="active"
@@ -193,32 +207,24 @@ const Navbar = () => {
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/2">
-                    VASES
+                  <Link className="link" to="/products/7">
+                    NEON SIGNS
                   </Link>
                 </motion.div>
                 <motion.div
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/3">
-                    CANDLES
+                  <Link className="link" to="/products/9">
+                    WALL STICKERS
                   </Link>
                 </motion.div>
                 <motion.div
                   onClick={handleMobileNavbar}
                   whileHover={{ scale: 1.15 }}
                 >
-                  <Link className="link" to="/products/4">
-                    CUSHIONS
-                  </Link>
-                </motion.div>
-                <motion.div
-                  onClick={handleMobileNavbar}
-                  whileHover={{ scale: 1.15 }}
-                >
-                  <Link className="link" to="/products/5">
-                    MIRRORS
+                  <Link className="link" to="/products/8">
+                    CLOCKS
                   </Link>
                 </motion.div>
                 <motion.div
@@ -226,7 +232,7 @@ const Navbar = () => {
                   whileHover={{ scale: 1.15 }}
                 >
                   <Link className="link" to="/products/6">
-                    LAMPS
+                    MIRRORS
                   </Link>
                 </motion.div>
               </div>

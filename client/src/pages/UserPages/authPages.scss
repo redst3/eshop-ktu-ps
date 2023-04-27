@@ -148,6 +148,42 @@
     }
   }
 }
+@media (max-width: 1000px) {
+  .login {
+    .login-window {
+      width: 50vw;
+    }
+  }
+  .register {
+    .register-window {
+      width: 50vw;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .login {
+    .login-window {
+      width: 60vw;
+    }
+  }
+  .register {
+    .register-window {
+      width: 60vw;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .login {
+    .login-window {
+      width: 80vw;
+    }
+  }
+  .register {
+    .register-window {
+      width: 80vw;
+    }
+  }
+}
 .error-message {
   color: red;
   font-size: 20px;

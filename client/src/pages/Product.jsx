@@ -72,10 +72,10 @@ const Product = () => {
           <div className="product-container">
             <div className="left">
               <div className="images">
-                {data[0]?.attributes.img.data.map((image, id) => (
+                {data[0]?.attributes?.img?.data?.map((image, id) => (
                   <motion.img
                     whileHover={{ scale: 0.95 }}
-                    src={process.env.REACT_APP_IMG_URL + image.attributes.url}
+                    src={process.env.REACT_APP_IMG_URL + image.attributes?.url}
                     alt="product"
                     key={id}
                     onClick={() => setSelectedImage(id)}
@@ -86,7 +86,8 @@ const Product = () => {
                 <img
                   src={
                     process.env.REACT_APP_IMG_URL +
-                    data[0]?.attributes.img.data[selectedImage].attributes.url
+                    data[0]?.attributes?.img?.data[selectedImage]?.attributes
+                      ?.url
                   }
                   alt="product"
                 />
