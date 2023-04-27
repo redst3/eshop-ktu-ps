@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.scss";
-import slider1 from "../img/slider/1.webp";
-import slider2 from "../img/slider/2.webp";
+import slider1 from "../img/slider/1.jpg";
+import slider2 from "../img/slider/2.jpg";
 import slider3 from "../img/slider/3.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -22,15 +22,12 @@ function Slider() {
       >
         <img src={slider1} alt="" />
         <div className="info modal-1">
+          <p>Welcome to persuasive paint</p>
           <p>
-            Welcome to my interior design website! I am excited to introduce you
-            to a collection of carefully selected paintings, mirrors, clocks,
-            wall stickers and neon signs.
-          </p>
-          <p>
-            As a student at Kaunas University of Technology, this website is
-            created for my final project, as I am passionate about showcasing my
-            love for interior design.
+            The online shop that will transform your living space with its
+            stunning collection of interior design essentials. Our wide variety
+            of unique paintings, neon signs, clocks, mirrors, and wall stickers
+            will elevate your home decor game to the next level.
           </p>
         </div>
         <img src={slider3} alt="" />

@@ -17,7 +17,7 @@ public class Program
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
         builder.Services.AddControllers();
-        var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+        var connString = builder.Configuration.GetConnectionString("AzureConnectionString");
 
         builder.Services.AddIdentity<User, IdentityRole>()
             .AddEntityFrameworkStores<Context>()

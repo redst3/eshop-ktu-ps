@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5246/api/wishlists/";
+const API_URL = "https://persuasive-userapi.azurewebsites.net/api/wishlists/";
 
 class WishlistService {
   async getWishList(userId) {

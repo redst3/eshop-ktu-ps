@@ -1,6 +1,6 @@
 import axios from "axios";
 import jwt from "jwt-decode";
-const API_URL = "http://localhost:5246/api";
+const API_URL = "https://persuasive-userapi.azurewebsites.net/api";
 
 class AuthService {
   async login(username, password) {

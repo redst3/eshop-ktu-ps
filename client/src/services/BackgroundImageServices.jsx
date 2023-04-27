@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5246/api/backgroundimages/";
+const API_URL =
+  "https://persuasive-userapi.azurewebsites.net/api/backgroundimages/";
 
 class BackgroundImageService {
   async uploadBackgroundInformation(userId, file, px_to_cm) {
