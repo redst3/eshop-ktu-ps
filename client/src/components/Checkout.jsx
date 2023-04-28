@@ -81,7 +81,7 @@ export default function Checkout(props) {
         setLoading(true);
         const { id } = paymentMethod;
         const response = await makeRequest.post(
-          "http://localhost:1337/api/order/payment",
+          `${process.env.REACT_APP_API_URL}/order/payment`,
           {
             amount: total * 100,
             id: id,
