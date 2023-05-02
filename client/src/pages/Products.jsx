@@ -20,8 +20,8 @@ const Products = () => {
     `/sub-categories?[filters][category][id][$eq]=${categoryId}`
   );
   const categories = useFetch(`/categories?populate=*`);
-
   const category = categories.data?.find((item) => item.id === categoryId);
+  const image = category?.attributes.img.data.attributes.url;
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -85,7 +85,6 @@ const Products = () => {
                       id={item.id}
                       value={item.id}
                       key={item.id}
-                      defaultChecked
                       onChange={handleChange}
                     ></input>
                     <label htmlFor={item.id}>{item.attributes.title}</label>
@@ -99,21 +98,19 @@ const Products = () => {
                   type="range"
                   min="0"
                   value={maxPrice}
-                  max="1000"
+                  max="500"
                   onChange={(e) => setMaxPrice(e.target.value)}
                 />
                 <span>{maxPrice}</span>
-                <div className="filter">
-                  <motion.button
-                    whileHover={{ scale: 0.95 }}
-                    className="priceButton"
-                    onClick={() => {
-                      setPrice(maxPrice);
-                    }}
-                  >
-                    FILTER
-                  </motion.button>
-                </div>
+                <motion.button
+                  whileHover={{ scale: 0.95 }}
+                  className="priceButton"
+                  onClick={() => {
+                    setPrice(maxPrice);
+                  }}
+                >
+                  FILTER
+                </motion.button>
               </div>
               <div className="filter">
                 <h2>SORT BY</h2>
@@ -159,100 +156,23 @@ const Products = () => {
               </div>
             </div>
           </div>
-          <div className="left">
-            <div className="filter">
-              <h2> SECONDARY CATEGORIES</h2>
-              {data?.map((item) => (
-                <div
-                  className="inputItem"
-                  key={item.id}
-                  style={{ textTransform: "uppercase" }}
-                >
-                  <input
-                    type="checkbox"
-                    id={item.id}
-                    value={item.id}
-                    key={item.id}
-                    onChange={handleChange}
-                  ></input>
-                  <label htmlFor={item.id}>{item.attributes.title}</label>
-                </div>
-              ))}
-            </div>
-            <div className="filter">
-              <h2>FILTER BY PRICE</h2>
-              <span>0</span>
-              <input
-                type="range"
-                min="0"
-                value={maxPrice}
-                max="1000"
-                onChange={(e) => setMaxPrice(e.target.value)}
-              />
-              <span>{maxPrice}</span>
-              <div className="filter">
-                <motion.button
-                  whileHover={{ scale: 0.95 }}
-                  className="priceButton"
-                  onClick={() => {
-                    setPrice(maxPrice);
-                  }}
-                >
-                  FILTER
-                </motion.button>
-              </div>
-            </div>
-            <div className="filter">
-              <h2>SORT BY</h2>
-              <div className="inputItem">
-                <input
-                  type="radio"
-                  id="asc"
-                  value="asc"
-                  name="price"
-                  onChange={() => setSort("asc")}
-                ></input>
-                <label htmlFor="asc">LOWEST FIRST</label>
-              </div>
-              <div className="inputItem">
-                <input
-                  type="radio"
-                  id="desc"
-                  value="desc"
-                  name="price"
-                  onChange={() => setSort("desc")}
-                ></input>
-                <label htmlFor="desc">HIGHEST FIRST</label>
-              </div>
-            </div>
-            <div className="filter" style={{ textTransform: "uppercase" }}>
-              <h2>CATEGORIES</h2>
-              {categories.data?.map((item) => (
-                <Link
-                  className="link"
-                  key={item.id}
-                  to={`../products/${item.id}`}
-                >
-                  <motion.div
-                    className="category"
-                    key={item.id}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {item.attributes.title + "s"}
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </div>
           <div className="right">
-            <img
-              className="categoryImg"
-              src={
-                process.env.REACT_APP_IMG_URL +
-                category?.attributes.img.data.attributes.url
-              }
-              alt=" "
-            ></img>
+            {image === undefined ? (
+              <div id="spin" className="spinner"></div>
+            ) : (
+              <>
+                <div className="category-image">
+                  <div className="category-name">
+                    {category.attributes.title + "s"}
+                  </div>
+                  <img
+                    className="categoryImg"
+                    src={process.env.REACT_APP_IMG_URL + image}
+                    alt=" "
+                  />
+                </div>
+              </>
+            )}
             <List
               categoryId={categoryId}
               maxPrice={price}

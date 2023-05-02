@@ -17,7 +17,6 @@ const Product = () => {
   const { data, error, loading } = useFetch(
     `/products?populate=*&[filters][id][$eq]=${productId}`
   );
-  const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const dispatchHook = useDispatch();
   const navigate = useNavigate();
@@ -57,13 +56,24 @@ const Product = () => {
       navigate("/login");
     }
   };
+
+  const [image, setImage] = useState("");
+  useEffect(() => {
+    if (data.length !== 0) {
+      setImage(
+        process.env.REACT_APP_IMG_URL +
+          data[0]?.attributes?.img?.data[0]?.attributes?.url
+      );
+    }
+  }, [data]);
+
   return (
     <div className="product">
       <div className="back-arrow" onClick={() => navigate(-1)}>
         <ArrowBackIcon />
         <span>GO BACK</span>
       </div>
-      {loading ? (
+      {loading && data.length !== 0 ? (
         <div id="spin" className="spinner"></div>
       ) : error ? (
         <h1>Something went wrong....</h1>
@@ -71,26 +81,32 @@ const Product = () => {
         <>
           <div className="product-container">
             <div className="left">
-              <div className="images">
-                {data[0]?.attributes?.img?.data?.map((image, id) => (
-                  <motion.img
-                    whileHover={{ scale: 0.95 }}
-                    src={process.env.REACT_APP_IMG_URL + image.attributes?.url}
-                    alt="product"
-                    key={id}
-                    onClick={() => setSelectedImage(id)}
-                  />
-                ))}
-              </div>
               <div className="mainImage">
-                <img
-                  src={
-                    process.env.REACT_APP_IMG_URL +
-                    data[0]?.attributes?.img?.data[selectedImage]?.attributes
-                      ?.url
-                  }
-                  alt="product"
-                />
+                {!loading && <img src={image} alt="product" />}
+              </div>
+              <div className="links">
+                {exists ? (
+                  <>
+                    {" "}
+                    <motion.div
+                      className="item-exists"
+                      whileHover={{ scale: 1.05 }}
+                      onClick={handleAddToWishlist}
+                    >
+                      <FavoriteBorderIcon /> REMOVE FROM WISHLIST
+                    </motion.div>
+                  </>
+                ) : (
+                  <>
+                    <motion.div
+                      className="item"
+                      whileHover={{ scale: 1.05 }}
+                      onClick={handleAddToWishlist}
+                    >
+                      <FavoriteBorderIcon /> ADD TO WISHLIST
+                    </motion.div>
+                  </>
+                )}
               </div>
             </div>
             <div className="right">
@@ -148,30 +164,7 @@ const Product = () => {
                   <AddShoppingCartIcon /> ADD TO CART
                 </motion.button>
               </div>
-              <div className="links">
-                {exists ? (
-                  <>
-                    {" "}
-                    <motion.div
-                      className="item-exists"
-                      whileHover={{ scale: 1.05 }}
-                      onClick={handleAddToWishlist}
-                    >
-                      <FavoriteBorderIcon /> REMOVE FROM WISHLIST
-                    </motion.div>
-                  </>
-                ) : (
-                  <>
-                    <motion.div
-                      className="item"
-                      whileHover={{ scale: 1.05 }}
-                      onClick={handleAddToWishlist}
-                    >
-                      <FavoriteBorderIcon /> ADD TO WISHLIST
-                    </motion.div>
-                  </>
-                )}
-              </div>
+
               <hr
                 style={{
                   color: "tealdark",
@@ -180,20 +173,8 @@ const Product = () => {
                 }}
               />
               <div className="info">
-                <span>ABOUT</span>
-                <span className="info-about">
-                  CATEGORY: {data[0]?.attributes.category.data.attributes.title}
-                </span>
-                <span className="info-about">
-                  SUB-CATEGORY:{" "}
-                  {data[0]?.attributes.sub_category.data.attributes.title}
-                </span>
-                <span className="info-about">
-                  WIDTH: {data[0]?.attributes.width} cm
-                </span>
-                <span className="info-about">
-                  HEIGHT: {data[0]?.attributes.height} cm
-                </span>
+                WIDTH AND HEIGHT: {data[0]?.attributes.width} cm x{" "}
+                {data[0]?.attributes.height} cm
               </div>
             </div>
           </div>

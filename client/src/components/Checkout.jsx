@@ -102,6 +102,7 @@ export default function Checkout(props) {
     } else {
       document.getElementById("shipping-adress").innerHTML =
         "Please fill in all the fields";
+      document.getElementById("shipping-adress").style.color = "red";
     }
   };
   const handleSave = async (event) => {
@@ -222,10 +223,6 @@ export default function Checkout(props) {
             </div>
             <span>CARD DETAILS</span>
             <fieldset className="FormGroup">
-              <div className="FormRowName">
-                <input placeholder=" Name"></input>
-                <input placeholder=" Surname"></input>
-              </div>
               <div className="FormRow">
                 <CardElement options={CARD_OPTIONS} />
               </div>

@@ -26,10 +26,9 @@ const Cart = () => {
   return (
     <div className="cart p01hz">
       {products.length === 0 ? (
-        <h1 className="p01hz">No items in cart</h1>
+        <h1 className="p01hz">Cart is empty</h1>
       ) : (
         <>
-          <h1 className="p01hz">Currently selected items</h1>
           <div className="cart-items">
             {products?.map((item) => (
               <div className="item p01hz" key={item.id}>
@@ -76,11 +75,13 @@ const Cart = () => {
               Checkout
             </button>
           </div>
+
           <span
             className="reset-cart p01hz"
             onClick={() => dispatchHook(resetCart())}
           >
-            Reset cart
+            <DeleteOutlinedIcon />
+            Remove all
           </span>
         </>
       )}

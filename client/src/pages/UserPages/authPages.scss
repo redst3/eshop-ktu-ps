@@ -15,7 +15,6 @@
     width: 30vw;
     height: 70vh;
     border-radius: 5px;
-    overflow-y: scroll;
     .login-form {
       letter-spacing: 3px;
       .login-form-email,
@@ -83,7 +82,6 @@
     width: 30vw;
     height: 80vh;
     border-radius: 5px;
-    overflow-y: scroll;
     .register-form {
       letter-spacing: 3px;
       .register-name {
@@ -205,6 +203,7 @@
     height: 85%;
     border-radius: 5px;
     overflow-y: scroll;
+    margin-bottom: 20px;
     .wishlist-items {
       .wishlist-item {
         display: flex;

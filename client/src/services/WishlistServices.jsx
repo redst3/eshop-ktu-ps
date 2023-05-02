@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://persuasive-userapi.azurewebsites.net/api/wishlists/";
+const API_URL = process.env.REACT_APP_USER_API + "/wishlists/";
 
 class WishlistService {
   async getWishList(userId) {
@@ -19,13 +19,6 @@ class WishlistService {
     } else {
       console.log(response.statusText);
     }
-    // .then(function (response) {
-    //   sessionStorage.setItem("wishlist", response.data.productIds);
-    //   return true;
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
   }
   addToWishList(userId, productId) {
     var data = "";

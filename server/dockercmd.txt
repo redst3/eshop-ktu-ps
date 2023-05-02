@@ -1,1 +1,2 @@
 docker build --build-arg NODE_ENV=production -t productapi:latest -f Dockerfile.prod .
+az webapp config appsettings set --resource-group persuasivepaint --name persuasive-admin --settings WEBSITES_PORT=1337

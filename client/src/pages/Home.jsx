@@ -16,7 +16,6 @@ const Home = () => {
   return (
     <div className="home">
       <Slider />
-      <FeaturedProducts type="Featured" />
       <FeaturedProducts type="Trending" />
       <center>
         <h1>BROWSE CATEGORIES</h1>

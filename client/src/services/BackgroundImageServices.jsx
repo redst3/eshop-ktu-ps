@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL =
-  "https://persuasive-userapi.azurewebsites.net/api/backgroundimages/";
+const API_URL = process.env.REACT_APP_USER_API + "/backgroundimages/";
 
 class BackgroundImageService {
   async uploadBackgroundInformation(userId, file, px_to_cm) {

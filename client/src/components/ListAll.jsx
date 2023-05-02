@@ -19,8 +19,10 @@ const List = ({ maxPrice, sort, keyword }) => {
 
   useEffect(() => {
     if (keyword !== "") {
-      const results = data?.filter((product) =>
-        product.attributes.title.toLowerCase().includes(keyword)
+      const results = data?.filter(
+        (product) =>
+          product.attributes.title.toLowerCase().includes(keyword) ||
+          product.attributes.author.toLowerCase().includes(keyword)
       );
       setSearchProducts(results);
     } else {

@@ -1,5 +1,6 @@
 .navbar-placeholder {
-  height: 80px;
+  height: 78px;
+  background-color: rgb(145, 190, 190);
 }
 .navbar {
   user-select: none;
@@ -365,7 +366,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     h1 {
       text-transform: uppercase;
       color: teal;
@@ -385,29 +386,9 @@
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 30px;
-    opacity: 0;
-    transition: all 1s;
-    filter: blur(5px);
-    transform: translateY(30%);
     max-height: 450px;
     grid-template-columns: repeat(3, 1fr);
     overflow: hidden;
-  }
-  @media (prefers-reduced-motion) {
-    .bottom {
-      transition: none;
-    }
-  }
-  .visible {
-    opacity: 1;
-    transition: all 1s;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion) {
-    .visible {
-      transition: none;
-    }
   }
 
   @media (min-width: 1800px) {
@@ -476,7 +457,7 @@
     .firstImage {
       z-index: 1;
     }
-    span {
+    .tag {
       position: absolute;
       z-index: 2;
       top: 10px;
@@ -486,6 +467,15 @@
       font-size: 14px;
       font-weight: bold;
       padding: 3px 5px;
+    }
+    .New {
+      color: limegreen;
+    }
+    .Popular {
+      color: red;
+    }
+    .Featured {
+      color: rgb(0, 221, 255);
     }
   }
   h2 {
@@ -648,7 +638,6 @@
       }
       .priceButton {
         width: 100px;
-        margin-left: 40px;
         margin-top: 15px;
         padding: 10px;
         background-color: turquoise;
@@ -677,14 +666,30 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  .categoryImg {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+    .category-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      position: relative;
+      .category-name {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        color: white;
+        text-shadow: 0 0 10px black;
+        letter-spacing: 5px;
+      }
+      .categoryImg {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+    }
   }
 }
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 2440px) {
   .products {
     .list {
       display: none;
@@ -730,7 +735,7 @@
         left: 0;
         width: 40vw;
         height: 100vh;
-        overflow-x: scroll;
+        overflow-y: scroll;
         background-color: rgba(0, 0, 0, 0.8);
         transform: translateX(-100%);
         display: flex;
@@ -755,6 +760,11 @@
           font-size: 20px;
           font-weight: 500;
           color: white;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        .left-navbar-open {
+          width: 35vw;
         }
       }
       .show {
@@ -839,16 +849,9 @@
     .left {
       flex: 1;
       display: flex;
-      gap: 20px;
-      .images {
-        flex: 1;
-        img {
-          width: 100%;
-          object-fit: scale-down;
-          cursor: pointer;
-          margin-bottom: 10px;
-        }
-      }
+      gap: 10px;
+      flex-direction: column;
+      align-items: center;
       .mainImage {
         flex: 5;
         img {
@@ -856,6 +859,20 @@
           box-shadow: 2px 2px 15px black;
           object-fit: cover;
         }
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: rgb(3, 75, 75);
+        cursor: pointer;
+      }
+      .item-exists {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: red;
+        cursor: pointer;
       }
     }
     .right {
@@ -920,18 +937,7 @@
         margin-top: 20px;
         cursor: pointer;
         user-select: none;
-        .item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: rgb(3, 75, 75);
-        }
-        .item-exists {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: red;
-        }
+
         // .item-exists:hover {
         //   color: rgb(3, 75, 75);
         // }
@@ -1103,9 +1109,13 @@
   }
 
   .reset-cart {
+    display: flex;
     color: red;
     cursor: pointer;
-    text-decoration: underline;
+    font-size: 15px;
+    font-weight: 500;
+    user-select: none;
+    align-items: center;
   }
 }
 .user-panel {

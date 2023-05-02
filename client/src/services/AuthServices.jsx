@@ -1,6 +1,6 @@
 import axios from "axios";
 import jwt from "jwt-decode";
-const API_URL = "https://persuasive-userapi.azurewebsites.net/api";
+const API_URL = process.env.REACT_APP_USER_API;
 
 class AuthService {
   async login(username, password) {

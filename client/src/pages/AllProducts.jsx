@@ -31,7 +31,6 @@ const AllProducts = () => {
     <div className="products">
       <>
         <div className={placeholder} onClick={handleButton}></div>
-
         <div className="left-navbar">
           <div className={`left-navbar-arrow ${button}`} onClick={handleButton}>
             {button === "hide-button" ? (
@@ -40,7 +39,6 @@ const AllProducts = () => {
               <KeyboardDoubleArrowLeftIcon />
             )}
           </div>
-
           <div className={`left-navbar-open ${show}`}>
             <div className="filter">
               <h2> SEARCH</h2>
@@ -58,11 +56,11 @@ const AllProducts = () => {
                 type="range"
                 min="0"
                 value={maxPrice}
-                max="1000"
+                max="500"
                 onChange={(e) => setMaxPrice(e.target.value)}
               />
               <span>{maxPrice}</span>
-              <div className="filter">
+              <div className="filter-price-button">
                 <motion.button
                   whileHover={{ scale: 0.95 }}
                   className="priceButton"
@@ -115,80 +113,6 @@ const AllProducts = () => {
                 </Link>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="left">
-          <div className="filter">
-            <h2> SEARCH</h2>
-            <input
-              type="text"
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-            ></input>
-          </div>
-          <div className="filter">
-            <h2>FILTER BY PRICE</h2>
-            <span>0</span>
-            <input
-              type="range"
-              min="0"
-              value={maxPrice}
-              max="1000"
-              onChange={(e) => setMaxPrice(e.target.value)}
-            />
-            <span>{maxPrice}</span>
-            <div className="filter">
-              <motion.button
-                whileHover={{ scale: 0.95 }}
-                className="priceButton"
-                onClick={() => {
-                  setPrice(maxPrice);
-                }}
-              >
-                FILTER
-              </motion.button>
-            </div>
-          </div>
-          <div className="filter">
-            <h2>SORT BY</h2>
-            <div className="inputItem">
-              <input
-                type="radio"
-                id="asc"
-                value="asc"
-                name="price"
-                onChange={() => setSort("asc")}
-              ></input>
-              <label htmlFor="asc">LOWEST FIRST</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="radio"
-                id="desc"
-                value="desc"
-                name="price"
-                onChange={() => setSort("desc")}
-              ></input>
-              <label htmlFor="desc">HIGHEST FIRST</label>
-            </div>
-          </div>
-          <div className="filter" style={{ textTransform: "uppercase" }}>
-            <h2>CATEGORIES</h2>
-            {categories.data?.map((item) => (
-              <Link
-                className="link"
-                key={item.id}
-                to={`../products/${item.id}`}
-              >
-                <motion.div
-                  className="category"
-                  key={item.id}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {item.attributes.title + "s"}
-                </motion.div>
-              </Link>
-            ))}
           </div>
         </div>
         <div className="right">
