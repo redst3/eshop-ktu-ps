@@ -157,6 +157,8 @@ const Product = () => {
                           process.env.REACT_APP_IMG_URL +
                           data[0]?.attributes.preview_img.data.attributes.url,
                         quantity,
+                        category:
+                          data[0]?.attributes.category.data.attributes.title,
                       })
                     )
                   }

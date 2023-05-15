@@ -116,6 +116,7 @@ export const PreviewItemsAferAdjustPage = () => {
         e.attributes.preview_img.data.attributes.url,
       height: e.attributes.height,
       width: e.attributes.width,
+      category: e.attributes.category.data.attributes.title,
       inCart: false,
     };
     setDisplayProducts([...displayProducts, product]);
@@ -401,7 +402,9 @@ export const PreviewItemsAferAdjustPage = () => {
                           >
                             <img
                               draggable="false"
-                              className="product-image"
+                              className={`product-image ${
+                                item.category === "Painting" && "shadow"
+                              }`}
                               src={item.preview_img}
                               alt="img"
                               style={
